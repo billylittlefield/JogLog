@@ -1,47 +1,5 @@
 # Schema Information
 
-## notes
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-title       | string    | not null
-body        | text      | not null
-author_id   | integer   | not null, foreign key (references users), indexed
-notebook_id | integer   | not null, foreign key (references notebooks), indexed
-archived    | boolean   | not null, default: false
-
-## notebooks
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-author_id   | integer   | not null, foreign key (references users), indexed
-title       | string    | not null
-description | string    | 
-
-## reminders
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-user_id     | integer   | not null, foreign key (references users), indexed
-note_id     | string    | not null, foreign key (references notes), indexed
-date        | datetime  | not null
-type        | string    | not null
-prev_id     | integer   | foreign key (references reminders), indexed
-
-## tags
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-name        | string    | not null
-
-## taggings
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-name        | string    | not null
-note_id     | integer   | not null, foreign key (references notes), indexed, unique [tag_id]
-tag_id      | integer   | not null, foreign key (references tags), indexed
-
 ## users
 column name     | data type | details
 ----------------|-----------|-----------------------
@@ -49,3 +7,45 @@ id              | integer   | not null, primary key
 username        | string    | not null, indexed, unique
 password_digest | string    | not null
 session_token   | string    | not null, indexed, unique
+
+## workouts
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+user_id     | integer   | not null, foreign key (references users), indexed
+title       | string    | not null
+activity    | string    | not null
+date        | datetime  | not null
+miles       | float     | not null
+time        | time      | not null
+pace        | time      | not null
+notes       | text      |
+
+## teams
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+admin_id    | integer   | not null, foreign key (references users), indexed
+name        | string    | not null
+
+## memberships
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+member_id   | integer   | not null, foreign key (references users), indexed
+team_id     | integer   | not null, foreign key (references teams), indexed
+
+## follows
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+follower_id | integer   | not null, foriegn key (references users), indexed
+followee_id | integer   | not null, foreign key (references users), indexed
+
+## comments
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+body        | text      | not null
+workout_id  | integer   | not null, foreign_key (referneces workouts), indexed
+author_id   | integer   | not null, foreign_key (references users), indexed

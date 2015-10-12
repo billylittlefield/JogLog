@@ -6,21 +6,41 @@
 ## New Session
 ![new-session]
 
-## NotesIndex / NoteIndexItem / NoteForm
-![notes]
+## Root Page (Home)
+![root-homepage]
 
-## NotebooksIndex / NotebookIndexItem
-![notebooks]
+## Calendar Page
+![root-calendar]
 
-## NoteBookForm
-![notebook-form]
+## Team Page
+![root-team-teamid]
 
-## Component Heirarchy
-![component-heirarchy]
+## User Page
+![root-user-userid]
+
+## Navbar
+![navbar]
+
+## Workout Form
+![workout-form]
+
+## Workout Detail
+![workout-detail]
+
+## New Team Form
+![team-form]
+
+## Component Hierarchy
+![component-hierarchy]
 
 [new-user]: ./wireframes/new_user.png
 [new-session]: ./wireframes/new_session.png
-[notes]: ./wireframes/root_notes.png
-[notebooks]: ./wireframes/root_notebooks.png
-[notebook-form]: ./wireframes/notebook_form.png
-[component-heirarchy]: ./wireframes/component_heirarchy.png
+[root-homepage]: ./wireframes/root_homepage.png
+[workout-form]: ./wireframes/new_workout_form.png
+[root-calendar]: ./wireframes/root_calendar.png
+[root-team-teamid]: ./wireframes/root_team_teamid.png
+[root-user-userid]: ./wireframes/root_user_userid.png
+[navbar]: ./wireframes/sample_navbar.png
+[workout-detail]: ./wireframes/sample_workout_detail.png
+[component-hierarchy]: ./wireframes/component_hierarchy.png
+[team-form]: ./wireframes/new_team_form.png
