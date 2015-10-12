@@ -1,24 +1,27 @@
-# FresherNote
+# JoggerLogger
 
-[Heroku link][heroku] **NB:** This should be a link to your production site
+[Heroku link][heroku]
 
 [heroku]: http://www.herokuapp.com
 
 ## Minimum Viable Product
 
-FresherNote is a web application inspired by Evernote built using Ruby on Rails
-and React.js. FresherNote allows users to:
+JoggerLogger is an exercise-tracking web application inspired by LogARun.com
+built using Ruby on Rails and React.js. JoggerLogger allows users to:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
 - [ ] Create an account
 - [ ] Log in / Log out
-- [ ] Create, read, edit, and delete notes
-- [ ] Organize notes within Notebooks
-- [ ] Tag notes with multiple tags and search notes by tag
-- [ ] Search through notes for blocks of text
-- [ ] Apply complex styling to notes while editing
-- [ ] Set reminders on notes
+- [ ] Create, read, edit, and delete workouts
+- [ ] View workouts in a 'calendar view' (by month)
+- [ ] See weekly and monthly totals in 'calendar view'
+- [ ] Create / join a 'team' comprised of other users
+- [ ] View team members' workouts all together in 'team view'
+- [ ] Comment on other users workouts
+- [ ] 'Follow' users and see most recent workouts by followed users on homepage
+- [ ] View user leaderboards for most miles in past 7 days
+- [ ] User / team search functionality
 
 ## Design Docs
 * [View Wireframes][view]
@@ -64,7 +67,7 @@ extend this to a fuzzy search through every Note's content.
 
 ### Phase 4: Allow Complex Styling in Notes (1 day)
 
-Using quill.js, allow for complex styling of notes. 
+Using quill.js, allow for complex styling of notes.
 
 [Details][phase-four]
 
@@ -85,11 +88,17 @@ Phase 6 I will add styling flourishes and make modals out of some elements (like
 the NotebookForm).
 
 ### Bonus Features (TBD)
-- [ ] Prettify transitions
-- [ ] Use javascript library for cleaner tag selection
-- [ ] Changelogs for Notes
-- [ ] Pagination / infinite scroll for Notes Index
-- [ ] Multiple sessions
+- [ ] Add 'private' option to Team so owner must approve 'Join Team' requests
+- [ ] Track shoes for users to keep track of total mileage
+- [ ] Add message board to Team page
+- [ ] 'Like' feature on workouts (in addition to comments)
+- [ ] Profile (running) pictures for users that cycle on homepage
+- [ ] RSS feed on homepage with running news
+- [ ] Create monthly / weekly status reports on homepage
+- [ ] Add tags to workout (#easy, #longrun, #intervals) and search by tags
+- [ ] Change 'follow' feature to 'friend' feature, add notifications
+- [ ] Garmin upload for GPS watch to auto-fill workout form
+- [ ] Forums for users to discuss running topics
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
