@@ -1,4 +1,4 @@
-# Phase 5: Workout Feed and Leaderboards
+# Phase 6: Seeding and Final Styling
 
 ## Rails
 ### Models
@@ -9,11 +9,6 @@
 
 ## Flux
 ### Views (React Components)
-* WorkoutFeed
-  - WorkoutFeedItem
-* WorkoutDetail
-* Leaderboard
-  - LeaderboardItem
 
 ### Stores
 
@@ -22,3 +17,4 @@
 ### ApiUtil
 
 ## Gems/Libraries
+* Bootstrap

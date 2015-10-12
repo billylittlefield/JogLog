@@ -21,71 +21,84 @@ built using Ruby on Rails and React.js. JoggerLogger allows users to:
 - [ ] Comment on other users workouts
 - [ ] 'Follow' users and see most recent workouts by followed users on homepage
 - [ ] View user leaderboards for most miles in past 7 days
-- [ ] User / team search functionality
+- [ ] User / team search functionality from Navbar
 
 ## Design Docs
 * [View Wireframes][view]
 * [DB schema][schema]
+* [Routes table][routes]
 
 [view]: ./docs/views.md
 [schema]: ./docs/schema.md
+[routes]: ./docs/routes.md
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, Note Model and JSON API (1.5 days)
+### Phase 1: User Authentication, Workout Model and JSON API (1.5 days)
 
-In Phase 1, I will begin by implementing user signup and authentication (using
-BCrypt). There will be a basic landing page after signup that will contain the
-container for the application's root React component. Before building out the
-front end, I will begin by setting up a full JSON API for Notes.
+In Phase 1, I will implement user signup and session authentication (using
+BCrypt). There will be rough pages for sign in / sign up just to verify
+functionality, and the sign-in landing page will be the root where the highest-
+nested React 'Home' component will live. Accessing any part of the site aside
+from the new session / new user will result in a redirect. I will then set up
+the JSON API for the Workout model.
 
 [Details][phase-one]
 
-### Phase 2: Flux Architecture and Note CRUD (2.5 days)
+### Phase 2: Flux Setup, Workout CRUD, Teams (1.5 days)
 
-Phase 2 is focused on setting up Flux, the React Router, and the React view
-structure for the main application. After the basic Flux architecture has been
-set up, a Note store will be implemented and a set of actions corresponding to
-the needed CRUD functionality created. Once this is done, I will create React
-views for the Notes `Index`, `IndexItem` and `Form`. At the end of Phase 2,
-Notes can be created, read, edited and destroyed in the browser. Notes should
-save to the database when the form loses focus or is left idle after editing.
-Lastly, while constructing the views I will start using basic bootstrap for
-styling.
+Phase 2 consists of getting the Flux architecture up and running for the
+Workout model. This will include a Workout store that will update the eventually
+update the calendar and workout feed upon change / addition of a Workout
+instance. I will create basic versions of the Workout Form and Workout Detail to
+test CRUD functionality, and will prevent Users from editing any Workouts aside
+from their own. I will also build out the Team model (including the New Team
+form) to allow for creation and membership of Teams.
 
 [Details][phase-two]
 
-### Phase 3: Notebooks and Tags (2 days)
+### Phase 3: Navbar and Calendar View (2.5 days)
 
-Phase 3 adds organization to the Notes. Notes belong to a Notebook, which has
-its own `Index` view. Create JSON API for Notebooks. Notes can also now be
-tagged with multiple tags. Users can bring up notes in a separate `SearchIndex`
-view by searching for their tags. Once the tag search is implemented, I will
-extend this to a fuzzy search through every Note's content.
+In Phase 3, I will add the Navbar to the root 'App' React component and will
+style it with bootstrap. I will also implement real-time Search functionality
+in the Navbar with clickable results that lead to either Team or User, depending
+on the selection of the drop down in the Navbar. I will then create the
+CalendarGrid React components for both PersonalCalendar and TeamCalendar to
+show a nested WorkoutItem for every given day. I will also add styling to the
+calendar views as I build them out to build this up fully before moving on.
+The grid boxes in the calendars will be associated with the workout for the
+specified user on that given day.
 
 [Details][phase-three]
 
-### Phase 4: Allow Complex Styling in Notes (1 day)
+### Phase 4: Modal Views, Follows, and Comments (1.5 day)
 
-Using quill.js, allow for complex styling of notes.
+In Phase 4 I will add the smaller-scale models to allow users to 'Follow' and
+'Unfollow' other Users, as well as create 'Comments' on Workouts. This phase
+will also include the implementation of modal views for the New Workout (if
+accessed via Calendar view), New Team, and Workout Detail.
 
 [Details][phase-four]
 
-### Phase 5: Reminders and Garbage Collection (1 day)
+### Phase 5: Workout Feed and Leaderboards (1 day)
 
-Phase 5 introduces two new features. First, users can set reminders on notes
-which will at the time they are set for prompt the user to review and edit the
-given note. In addition, I will implement a feature that asks users to review
-notes once they reach a certain age and ask whether they should be kept,
-archived, or deleted.
+Once the Follow feature is working from Phase 4, I will implement a Workout
+Feed feature that allows a user to see the most recent workouts completed by
+any users that they are following. These items will be clickable to expand the
+Workout Detail modal and allow for commenting. I will also create the
+Leaderboards for the homepage by scraping data from the Workouts DB
 
 [Details][phase-five]
 
-### Phase 6: Styling Cleanup and Seeding (1 day)
+### Phase 6: Seeding and Final Styling (1 days)
 
-Bootstrap will have been used to keep things organized up until now, but in
-Phase 6 I will add styling flourishes and make modals out of some elements (like
-the NotebookForm).
+The bulk styling of the calendar views and Navbar should have been completed by
+this point, so in this phase I will finish any lingering styling necessities of
+those two components then finish styling the homepage and Form views. I will
+also add enough seed data to showcase the social aspect of this run-logging
+site, and test every aspect of the site to look for any bugs.
+
+[Details][phase-six]
 
 ### Bonus Features (TBD)
 - [ ] Add 'private' option to Team so owner must approve 'Join Team' requests
@@ -105,3 +118,4 @@ the NotebookForm).
 [phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md
+[phase-six]: ./docs/phases/phase6.md

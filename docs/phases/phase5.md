@@ -1,4 +1,4 @@
-# Phase 5: Workout Feed and Leaderboards
+# Phase 5: Reminders and Garbage Collection
 
 ## Rails
 ### Models
