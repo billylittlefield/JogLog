@@ -17,5 +17,7 @@
 //= require eventemitter
 //= require react
 //= require react_ujs
+//= require reactrouter.min
+//= require moment
 //= require components
 //= require_tree .
