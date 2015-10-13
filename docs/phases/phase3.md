@@ -1,38 +1,40 @@
-# Phase 3: Notebooks and Tags (2 days)
+# Phase 2: Teams (1 day)
 
 ## Rails
 ### Models
-* Workout
 * Team
+* Membership
 
 ### Controllers
+* Api::TeamsController (create, destroy, show)
+* Api::MembershipsController (create, destroy, index)
 
 ### Views
 
 ## Flux
 ### Views (React Components)
-* PersonalCalendar
-  - PersonalCalendarGrid
-    - WorkoutItem
-    - TotalsItem
-  - PersonalCalendarHeader
-* TeamCalendar
-  - PersonalCalendarGrid
-    - UserItem
-    - TotalsItem
-    - Workout Item
-  -TeamCalendarHeader
-* Navbar
-  - Searchbar
-
+* ReactRouter / Routes
+* WorkoutForm
+* WorkoutDetail
+* TeamForm
 
 ### Stores
-* Team
 * Workout
+* Team
 
 ### Actions
+* ApiActions.receiveAllWorkouts
+* ApiActions.receiveSingleWorkout
+* ApiActions.receiveAllMemberships
 
 ### ApiUtil
+* ApiUtil.fetchAllWorkouts
+* ApiUtil.createWorkout
+* ApiUtil.updateWorkout
+* ApiUtil.destroyWorkout
+* ApiUtil.createMembership
+* ApiUtil.destroyMembership
 
 ## Gems/Libraries
-* Look for calendar-helper gems
+* Flux Dispatcher
+* Twitter Bootstrap

@@ -1,4 +1,4 @@
-# Phase 1: User Authentication, Workout Model and JSON API
+# Phase 1: User Authentication, Workout Model and JSON API (1.5 days)
 
 ## Rails
 ### Models

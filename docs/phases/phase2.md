@@ -1,4 +1,4 @@
-# Phase 2: Flux Setup, Workout CRUD, Teams (2 days)
+# Phase 2: Flux Setup and Workout CRUD (1 day)
 
 ## Rails
 ### Models

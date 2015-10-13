@@ -1,35 +1,38 @@
-# Phase 4: Allow Complex Styling in Notes (1 day)
+# Phase 4: Navbar and Calendar View (2 days)
 
 ## Rails
 ### Models
-* Follow
-* Comment
+* Workout
+* Team
 
 ### Controllers
-* FollowsController (create, destroy)
-* CommentsController (create, destroy)
 
 ### Views
 
 ## Flux
 ### Views (React Components)
-* WorkoutDetail
-  - WorkoutDetailInfo
-  - CommentList
-    -CommentListItem
-* WorkoutForm
-* TeamForm
+* PersonalCalendar
+  - PersonalCalendarGrid
+    - WorkoutItem
+    - TotalsItem
+  - PersonalCalendarHeader
+* TeamCalendar
+  - PersonalCalendarGrid
+    - UserItem
+    - TotalsItem
+    - Workout Item
+  -TeamCalendarHeader
+* Navbar
+  - Searchbar
+
 
 ### Stores
-* Follow
-* Comment
+* Team
+* Workout
 
 ### Actions
-* ApiActions.receiveAllFollows
-* ApiActions.receiveAllComments
+
+### ApiUtil
 
 ## Gems/Libraries
-* ApiUtil.createFollow
-* ApiUtil.destroyFollow
-* ApiUtil.createComment
-* ApiUtil.destroyComment
+* Look for calendar-helper gems

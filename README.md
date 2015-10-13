@@ -45,7 +45,7 @@ the JSON API for the Workout model.
 
 [Details][phase-one]
 
-### Phase 2: Flux Setup, Workout CRUD, Teams (1.5 days)
+### Phase 2: Flux Setup and Workout CRUD (1 day)
 
 Phase 2 consists of getting the Flux architecture up and running for the
 Workout model. This will include a Workout store that will update the eventually
@@ -57,7 +57,17 @@ form) to allow for creation and membership of Teams.
 
 [Details][phase-two]
 
-### Phase 3: Navbar and Calendar View (2.5 days)
+### Phase 3: Teams (1 day)
+
+Here I will implement the Team feature by building out the Team model (including
+the New Team form) to allow for creation and membership of Teams. On the page
+for a given team, the functionality should exist to join and leave a team
+that updates automatically as a React feature. The "Create Team" will move to
+the navbar in phase 4.
+
+[Details][phase-three]
+
+### Phase 4: Navbar and Calendar View (2 days)
 
 In Phase 3, I will add the Navbar to the root 'App' React component and will
 style it with bootstrap. I will also implement real-time Search functionality
@@ -69,18 +79,18 @@ calendar views as I build them out to build this up fully before moving on.
 The grid boxes in the calendars will be associated with the workout for the
 specified user on that given day.
 
-[Details][phase-three]
+[Details][phase-four]
 
-### Phase 4: Modal Views, Follows, and Comments (1.5 day)
+### Phase 5: Modal Views, Follows, and Comments (1.5 day)
 
 In Phase 4 I will add the smaller-scale models to allow users to 'Follow' and
 'Unfollow' other Users, as well as create 'Comments' on Workouts. This phase
 will also include the implementation of modal views for the New Workout (if
 accessed via Calendar view), New Team, and Workout Detail.
 
-[Details][phase-four]
+[Details][phase-five]
 
-### Phase 5: Workout Feed and Leaderboards (1 day)
+### Phase 6: Workout Feed and Leaderboards (1 day)
 
 Once the Follow feature is working from Phase 4, I will implement a Workout
 Feed feature that allows a user to see the most recent workouts completed by
@@ -88,9 +98,9 @@ any users that they are following. These items will be clickable to expand the
 Workout Detail modal and allow for commenting. I will also create the
 Leaderboards for the homepage by scraping data from the Workouts DB
 
-[Details][phase-five]
+[Details][phase-six]
 
-### Phase 6: Seeding and Final Styling (1 days)
+### Phase 7: Seeding and Final Styling (1 days)
 
 The bulk styling of the calendar views and Navbar should have been completed by
 this point, so in this phase I will finish any lingering styling necessities of
@@ -98,7 +108,7 @@ those two components then finish styling the homepage and Form views. I will
 also add enough seed data to showcase the social aspect of this run-logging
 site, and test every aspect of the site to look for any bugs.
 
-[Details][phase-six]
+[Details][phase-seven]
 
 ### Bonus Features (TBD)
 - [ ] Add 'private' option to Team so owner must approve 'Join Team' requests
@@ -115,7 +125,7 @@ site, and test every aspect of the site to look for any bugs.
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
-[phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md
 [phase-six]: ./docs/phases/phase6.md
+[phase-seven]: ./docs/phases/phase7.md

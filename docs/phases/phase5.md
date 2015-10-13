@@ -1,24 +1,35 @@
-# Phase 5: Reminders and Garbage Collection
+# Phase 5: Modal Views, Follows, and Comments (1.5 days)
 
 ## Rails
 ### Models
+* Follow
+* Comment
 
 ### Controllers
+* FollowsController (create, destroy)
+* CommentsController (create, destroy)
 
 ### Views
 
 ## Flux
 ### Views (React Components)
-* WorkoutFeed
-  - WorkoutFeedItem
 * WorkoutDetail
-* Leaderboard
-  - LeaderboardItem
+  - WorkoutDetailInfo
+  - CommentList
+    -CommentListItem
+* WorkoutForm
+* TeamForm
 
 ### Stores
+* Follow
+* Comment
 
 ### Actions
-
-### ApiUtil
+* ApiActions.receiveAllFollows
+* ApiActions.receiveAllComments
 
 ## Gems/Libraries
+* ApiUtil.createFollow
+* ApiUtil.destroyFollow
+* ApiUtil.createComment
+* ApiUtil.destroyComment
