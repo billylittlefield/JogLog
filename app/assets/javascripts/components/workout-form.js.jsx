@@ -3,18 +3,30 @@ window.WorkoutForm = React.createClass({
   getInitialState: function() {
     return {
       title: "",
-      activity: "",
+      activity: "running",
       date: moment().format('YYYY-MM-DD'),
       distance: "0.00",
-      time: "00:00:00"
+      hours: 0,
+      minutes: 0,
+      seconds: 0
     };
   },
-  submitWorkoutForm: function() {
-
+  submitWorkoutForm: function(e) {
+    e.preventDefault();
+    ApiUtil.createWorkout(this.state);
+  },
+  updateHour: function() {
+    this.setState({ hours: document.getElementById("form-hours").value });
+  },
+  updateMin: function() {
+    this.setState({ minutes: document.getElementById("form-minutes").value });
+  },
+  updateSec: function() {
+    this.setState({ seconds: document.getElementById("form-seconds").value });
   },
   render: function() {
     return (
-      <form onSubmit={submitWorkoutForm}>
+      <form onSubmit={this.submitWorkoutForm}>
         <h1 className="form-header">New Workout</h1>
         <label htmlFor="workout_title">Title</label>
         <input name="workout_title"
@@ -23,14 +35,14 @@ window.WorkoutForm = React.createClass({
         <br/>
         <label htmlFor="workout_activity">Activity</label>
         <select name="workout_activity" valueLink={this.linkState("activity")}>
-          <option value="running">Run</option>
-          <option value="biking">Bike</option>
-          <option value="swimming">Swim</option>
-          <option value="swimming">Walk</option>
+          <option value="running">Running</option>
+          <option value="biking">Biking</option>
+          <option value="swimming">Swimming</option>
+          <option value="walking">Walking</option>
           <option value="elliptical">Elliptical</option>
-          <option value="elliptical">Exercise Bike</option>
-          <option value="nordic">Nordic Skiing</option>
-          <option value="rollerblading">Rowing</option>
+          <option value="exercise_bike">Exercise Bike</option>
+          <option value="nordic_skiing">Nordic Skiing</option>
+          <option value="rowing">Rowing</option>
           <option value="rollerblading">Rollerblading</option>
         </select>
         <br/>
@@ -45,10 +57,27 @@ window.WorkoutForm = React.createClass({
                step="0.01"
                valueLink={this.linkState("distance")}/>
         <br/>
-        <label htmlFor="workout_time">Time</label>
-        <input name="workout_time"
+        <label>Duration</label>
+        <input className="form-input-time"
+               id="form-hours"
                type="text"
-               valueLink={this.linkState("time")}/>
+               placeholder="HH"
+               onChange={this.updateHour}/>:
+        <input className="form-input-time"
+               id="form-minutes"
+               type="text"
+               placeholder="MM"
+               onChange={this.updateMin}/>:
+        <input className="form-input-time"
+               id="form-seconds"
+               type="text"
+               placeholder="SS"
+               onChange={this.updateSec}/>
+        <br/>
+        <label htmlFor="workout_notes">Notes</label>
+        <textarea name="workout_notes"
+                  valueLink={this.linkState("notes")}
+                  placeholder="Write any workout details here!"/>
         <br/>
         <input type="submit" value="Log Workout"/>
       </form>

@@ -3,4 +3,8 @@ Rails.application.routes.draw do
 
   resource :session, only: [:create, :new, :destroy]
   resources :users, only: [:create, :new]
+
+  namespace :api, defaults: {format: :json} do
+    resources :workouts, only: [:create]
+  end
 end

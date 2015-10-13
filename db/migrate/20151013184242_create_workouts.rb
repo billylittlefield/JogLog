@@ -5,8 +5,8 @@ class CreateWorkouts < ActiveRecord::Migration
       t.string :title, null: false
       t.string :activity, null: false
       t.datetime :date, null: false
-      t.float :miles, null: false
-      t.time :time, null: false
+      t.float :distance
+      t.time :duration
       t.text :notes
 
       t.timestamps null: false

@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20151013184242) do
     t.string   "title",      null: false
     t.string   "activity",   null: false
     t.datetime "date",       null: false
-    t.float    "miles",      null: false
-    t.time     "time",       null: false
+    t.float    "distance"
+    t.time     "duration"
     t.text     "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
