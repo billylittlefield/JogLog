@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     )
     if @user
       sign_in(@user)
-      redirect_to HOMEPAGE
+      redirect_to controller: "static_pages", action: "root"
     else
       flash.now[:errors] = ["Invalid Credentials"]
       @user = User.new(username: params[:user][:username])
