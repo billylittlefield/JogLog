@@ -69,7 +69,7 @@ the navbar in phase 4.
 
 ### Phase 4: Navbar and Calendar View (2 days)
 
-In Phase 3, I will add the Navbar to the root 'App' React component and will
+In Phase 4, I will add the Navbar to the root 'App' React component and will
 style it with bootstrap. I will also implement real-time Search functionality
 in the Navbar with clickable results that lead to either Team or User, depending
 on the selection of the drop down in the Navbar. I will then create the
@@ -83,7 +83,7 @@ specified user on that given day.
 
 ### Phase 5: Modal Views, Follows, and Comments (1.5 day)
 
-In Phase 4 I will add the smaller-scale models to allow users to 'Follow' and
+In Phase 5 I will add the smaller-scale models to allow users to 'Follow' and
 'Unfollow' other Users, as well as create 'Comments' on Workouts. This phase
 will also include the implementation of modal views for the New Workout (if
 accessed via Calendar view), New Team, and Workout Detail.
@@ -92,7 +92,7 @@ accessed via Calendar view), New Team, and Workout Detail.
 
 ### Phase 6: Workout Feed and Leaderboards (1 day)
 
-Once the Follow feature is working from Phase 4, I will implement a Workout
+Once the Follow feature is working from Phase 5, I will implement a Workout
 Feed feature that allows a user to see the most recent workouts completed by
 any users that they are following. These items will be clickable to expand the
 Workout Detail modal and allow for commenting. I will also create the
@@ -114,6 +114,7 @@ site, and test every aspect of the site to look for any bugs.
 - [ ] Add 'private' option to Team so owner must approve 'Join Team' requests
 - [ ] Track shoes for users to keep track of total mileage
 - [ ] Add message board to Team page
+- [ ] Linking workouts with other users to auto fill their calendars
 - [ ] 'Like' feature on workouts (in addition to comments)
 - [ ] Profile (running) pictures for users that cycle on homepage
 - [ ] RSS feed on homepage with running news

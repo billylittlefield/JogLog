@@ -18,7 +18,6 @@ activity    | string    | not null
 date        | datetime  | not null
 miles       | float     | not null
 time        | time      | not null
-pace        | time      | not null
 notes       | text      |
 
 ## teams
