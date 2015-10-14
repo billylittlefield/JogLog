@@ -8,6 +8,7 @@ $(function () {
   var routes = (
     <Route path="/" component={App}>
       <IndexRoute component={Home}/>
+      <Route path="calendar" component={PersonalCalendar}/>
     </Route>
   );
 
