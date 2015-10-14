@@ -52,8 +52,7 @@ Workout model. This will include a Workout store that will update the eventually
 update the calendar and workout feed upon change / addition of a Workout
 instance. I will create basic versions of the Workout Form and Workout Detail to
 test CRUD functionality, and will prevent Users from editing any Workouts aside
-from their own. I will also build out the Team model (including the New Team
-form) to allow for creation and membership of Teams.
+from their own.
 
 [Details][phase-two]
 
@@ -126,6 +125,7 @@ site, and test every aspect of the site to look for any bugs.
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
+[phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md
 [phase-six]: ./docs/phases/phase6.md
