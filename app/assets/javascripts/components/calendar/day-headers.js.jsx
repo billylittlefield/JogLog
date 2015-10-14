@@ -1,7 +1,7 @@
 window.DayHeaders = React.createClass({
   render: function() {
     return (
-      <div class="week">
+      <div className="week">
         <span className="day-header-item">Sunday</span>
         <span className="day-header-item">Monday</span>
         <span className="day-header-item">Tuesday</span>

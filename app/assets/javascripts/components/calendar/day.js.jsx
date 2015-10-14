@@ -1,4 +1,4 @@
-window.Day = react.createClass({
+window.Day = React.createClass({
   monthClass: function() {
     var klass = "day";
     if (this.props.displayMonth === this.props.date.month()) {
