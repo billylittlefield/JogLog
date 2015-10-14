@@ -18,20 +18,25 @@ body {
 
 .navbar-custom {
   background-color: #B8CAFD;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 2px solid #fff;
   position: relative;
   min-height: 60px;
   font-family: 'Racing Sans One', cursive;
   font-size: 28px;
-}
-
-.logo {
-  font-size: 36px;
   text-shadow:
    -1px -1px 0 #fff,
    1px -1px 0 #fff,
    -1px 1px 0 #fff,
    1px 1px 0 #fff;
+}
+
+.logo {
+  font-size: 36px;
+  text-shadow:
+   -2px -2px 0 #fff,
+   2px -2px 0 #fff,
+   -2px 2px 0 #fff,
+   2px 2px 0 #fff;
    padding: 15px 15px 15px 0px;
    line-height: 20px;
    color: #23527C;
@@ -57,7 +62,11 @@ a {
 .nav > li > a:hover, .nav > li > a:focus, .nav .open > a, .nav .open > a:hover,
 .nav .open > a:focus  {
   background-color: #B8CAFD;
-  text-shadow: 2px 2px #fff;
+  text-shadow:
+   -2px -2px 0 #fff,
+   2px -2px 0 #fff,
+   -2px 2px 0 #fff,
+   2px 2px 0 #fff;
 }
 
 .dropdown-menu {
