@@ -18,4 +18,19 @@ class Workout < ActiveRecord::Base
   validates :user_id, :title, :activity, :date, presence: true
 
   belongs_to :user
+
+  def self.find_by_month_and_user(params)
+    # Moment.js month is zero-indexed -- no adjustment needed to retrieve
+    # previous-month #, unless month=0 when we will wrap to 12
+    month = params[:month] == "0" ? 12 : params[:month].to_i
+    year = params[:year].to_i
+
+    # Range(start_date, end_date) includes full month plus at least 6 day
+    # buffer on both ends to account for months starting on Saturday
+    start_date = Date.new(year, month, 23);
+    end_date = start_date + 44;
+    
+    Workout.where("(user_id = ?) AND (date BETWEEN ? AND ?)",
+                  params[:user_id], start_date, end_date)
+  end
 end

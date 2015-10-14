@@ -1,4 +1,7 @@
 window.Day = React.createClass({
+  componentWillMount: function() {
+
+  },
   monthClass: function() {
     var klass = "day";
     if (this.props.displayMonth === this.props.date.month()) {
@@ -11,6 +14,7 @@ window.Day = React.createClass({
   render: function() {
     return (
       <div className={this.monthClass()}>
+
         {this.props.date.format("MM-DD-YYYY")}
       </div>
     );
