@@ -4,17 +4,18 @@ window.PersonalCalendarGrid = React.createClass({
       date: moment()
     };
   },
-  previousMonth: function() {
-    this.setState({ date: this.state.date.add(-1, "month") });
+  componentWillMount: function() {
     ApiUtil.getMonthsWorkoutsByUser(this.state.date.month(),
                                     this.state.date.year(),
                                     window.CURRENT_USERID);
   },
+  previousMonth: function() {
+    this.setState({ date: this.state.date.add(-1, "month") });
+
+  },
   nextMonth: function() {
     this.setState({ date: this.state.date.add(1, "month") });
-    ApiUtil.getMonthsWorkoutsByUser(this.state.date.month(),
-                                    this.state.date.year(),
-                                    window.CURRENT_USERID);
+
   },
   renderWeeks: function() {
     var weeks = [];

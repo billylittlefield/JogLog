@@ -4,7 +4,7 @@ window.ApiActions = {
       actionType: WorkoutConstants.WORKOUT_RECEIVED,
       workout: workout
     });
-    window.location = "/calendar";
+    window.location = "#/calendar";
   },
   receiveFilteredWorkouts: function(workouts) {
     AppDispatcher.dispatch({

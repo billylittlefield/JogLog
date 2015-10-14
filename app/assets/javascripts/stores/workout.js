@@ -19,6 +19,11 @@
     filteredWorkouts: function() {
       return _workouts.slice(0);
     },
+    retrieveWorkoutsForDate: function(date) {
+      return _workouts.filter(function(workout){
+        return moment(workout.date.substring(0,10)).isSame(date, 'day');
+      });
+    },
     addNewWorkoutListener: function(callback) {
       this.on(WORKOUT_ADDED_EVENT, callback);
     },
@@ -26,10 +31,10 @@
       this.removeListener(WORKOUT_ADDED_EVENT, callback);
     },
     AddCalendarChangeListener: function(callback) {
-      this.on(FILTERED_WORKOUTS_RECEIVED, callback);
+      this.on(CALENDAR_CHANGED_EVENT, callback);
     },
     removeCalendarChangeListener: function(callback) {
-      this.removeListener(FILTERED_WORKOUTS_RECEIVED, callback);
+      this.removeListener(CALENDAR_CHANGED_EVENT, callback);
     },
     dispatcherID: AppDispatcher.register(function(payload) {
       switch (payload.actionType) {
@@ -42,5 +47,7 @@
       }
     })
   });
+
+  WorkoutStore.setMaxListeners(50);
 
 }(this));
