@@ -2,7 +2,7 @@ window.App = React.createClass({
   render: function() {
     return (
       <div>
-        <div className="navbar">
+        <div>
           <Navbar />
         </div>
         {this.props.children}

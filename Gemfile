@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'react-rails', '1.3.0'
 gem 'flux-rails-assets'
-
+gem 'bootstrap-sass', '~> 3.3.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
