@@ -1,6 +1,7 @@
 window.Day = React.createClass({
   getInitialState: function() {
-    return { workouts: [] }
+    return { workouts: [],
+             displayIdx: 0 };
   },
   componentWillMount: function() {
     WorkoutStore.AddCalendarChangeListener(this.fetchWorkouts);
@@ -22,11 +23,37 @@ window.Day = React.createClass({
     }
     return klass;
   },
+  prevWorkout: function() {
+    var currentIdx = this.state.displayIdx;
+    var newIdx = currentIdx === 0 ?
+                          (this.state.workouts.length - 1) : (currentIdx - 1);
+    this.setState({ displayIdx: newIdx });
+  },
+  nextWorkout: function() {
+    var currentIdx = this.state.displayIdx;
+    var newIdx = currentIdx === (this.state.workouts.length - 1) ?
+                          0 : (currentIdx + 1);
+    this.setState({ displayIdx: newIdx });
+  },
+  multiWorkoutHeader: function() {
+    if (this.state.workouts.length > 1) {
+      return (
+        <div className="multiWorkoutHeader">
+          <span onClick={this.prevWorkout}>Prev</span>
+           <span>
+            {"(" + (this.state.displayIdx + 1) + " of " +
+                    this.state.workouts.length + ")" }
+           </span>
+           <span onClick={this.nextWorkout}>Next</span>
+        </div>
+     );
+    }
+  },
   render: function() {
     return (
       <div className={this.monthClass()}>
-        {this.state.workouts}
-        {this.props.date.format("MM-DD-YYYY")}
+        <span className="day-number">{this.props.date.date()}</span>
+        {this.multiWorkoutHeader()}
       </div>
     );
   }
