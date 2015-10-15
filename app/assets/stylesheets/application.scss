@@ -18,8 +18,14 @@ body {
 }
 
 .navbar-custom {
-  background-color: #B8CAFD;
+  background-color: #ccccff;
   border-bottom: 2px solid #fff;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#eaeffe), to(#B8CAFD));
+  background-image: -webkit-linear-gradient(top, #eaeffe, 0%, #B8CAFD, 100%);
+  background-image: -moz-linear-gradient(top, #eaeffe 0%, #B8CAFD 100%);
+  background-image: linear-gradient(to bottom, #eaeffe 0%, #B8CAFD 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeaeffe', endColorstr='#ffB8CAFD', GradientType=0);
   position: relative;
   min-height: 60px;
   font-family: 'Racing Sans One', cursive;
@@ -183,6 +189,7 @@ tr > th.day-header-item, .table > tbody > tr > td {
   text-align: center;
   font-size: 36px;
   font-family: 'Muli', sans-serif;
+  color: #183854;
   border-radius: 10px;
   &:hover {
     cursor: pointer;

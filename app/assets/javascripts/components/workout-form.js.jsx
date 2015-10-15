@@ -35,10 +35,10 @@ window.WorkoutForm = React.createClass({
         <br/>
         <label htmlFor="workout_activity">Activity</label>
         <select name="workout_activity" valueLink={this.linkState("activity")}>
-          <option value="Run">Running</option>
-          <option value="Bike">Biking</option>
-          <option value="Swim">Swimming</option>
-          <option value="Walk">Walking</option>
+          <option value="Run">Run</option>
+          <option value="Bike">Bike</option>
+          <option value="Swim">Swim</option>
+          <option value="Walk">Walk</option>
           <option value="Elliptical">Elliptical</option>
           <option value="Exercise Bike">Exercise Bike</option>
           <option value="Nordic Skiing">Nordic Skiing</option>
