@@ -194,7 +194,6 @@ tr > th.day-header-item, .table > tbody > tr > td {
   font-size: 36px;
   // font-family: 'Muli', sans-serif;
   color: #183854;
-  border-radius: 10px;
   &:hover {
     cursor: pointer;
   }
@@ -206,6 +205,14 @@ tr > th.day-header-item, .table > tbody > tr > td {
     text-align: left;
     border-right: 1px solid #fff;
   }
+}
+
+.neighbor-month {
+  background-color: #d7e1fd;
+}
+
+.week-totals, .totals-header {
+  background-color: #9fb7fc
 }
 
 .calendar-grid {

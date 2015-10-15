@@ -9,7 +9,7 @@ window.DayHeaders = React.createClass({
         <th className="day-header-item">Thursday</th>
         <th className="day-header-item">Friday</th>
         <th className="day-header-item">Saturday</th>
-        <th className="day-header-item">Totals</th>
+        <th className="day-header-item totals-header">Totals</th>
       </tr>
     );
   }
