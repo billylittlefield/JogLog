@@ -40,11 +40,11 @@ window.PersonalCalendarGrid = React.createClass({
       <table className="table calendar-grid">
         <thead>
         <tr className="calendar-header">
-          <th colSpan="2" onClick={this.previousMonth}>Prev</th>
+          <th colSpan="2" onClick={this.previousMonth}>&#9664;</th>
           <th colSpan="4">
             {this.state.date.format("MMMM")+" "+this.state.date.format("YYYY")}
           </th>
-          <th colSpan="2" onClick={this.nextMonth}>Next</th>
+          <th colSpan="2" onClick={this.nextMonth}>&#9654;</th>
         </tr>
         <DayHeaders />
         </thead>

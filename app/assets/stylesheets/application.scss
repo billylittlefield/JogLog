@@ -149,14 +149,14 @@ a {
 
 .calendar-page-container {
   width: 98%;
-  margin: auto;
+  margin: 10px auto;
   background-color: #B8CAFD;
   opacity: 0.9;
-  border-top: 2px solid #fff;
-  border-bottom: 2px solid #fff;
-  -webkit-box-shadow: -9px -8px 10px -6px #999;
-  -moz-box-shadow: -9px -8px 10px -6px #999;
-  box-shadow: 9px -8px 10px -6px #999;
+  border: 2px solid #fff;
+  // border-bottom: 2px solid #fff;
+  -webkit-box-shadow: 0px -8px 10px -6px #999;
+  -moz-box-shadow: 0px -8px 10px -6px #999;
+  box-shadow: 0px -8px 10px -6px #999;
 }
 
 .day {
@@ -188,7 +188,7 @@ tr > th.day-header-item, .table > tbody > tr > td {
 .calendar-header > th {
   text-align: center;
   font-size: 36px;
-  font-family: 'Muli', sans-serif;
+  // font-family: 'Muli', sans-serif;
   color: #183854;
   border-radius: 10px;
   &:hover {
