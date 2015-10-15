@@ -56,7 +56,7 @@ window.Day = React.createClass({
      );
    }
   },
-  workoutItemMiles: function(activeWorkout) {
+  workoutItemDistance: function(activeWorkout) {
     if (activeWorkout.distance !== 0) {
       return (<span><br/><b>Miles: </b>{activeWorkout.distance}</span>);
     }
@@ -78,14 +78,18 @@ window.Day = React.createClass({
           <br/>
           <span><b>Activity: </b>{activeWorkout.activity}</span>
           {this.workoutItemTime(activeWorkout)}
-          {this.workoutItemMiles(activeWorkout)}
+          {this.workoutItemDistance(activeWorkout)}
         </div>
       );
     }
   },
+  openDetailModal: function() {
+    console.log("what?");
+    React.render(<WorkoutDetail/>, document.getElementById("modal-hook"));
+  },
   render: function() {
     return (
-      <div className={this.monthClass()}>
+      <div onClick={this.openDetailModal} className={this.monthClass()}>
         {this.multiWorkoutHeader()}
         {this.workoutItem()}
       </div>
