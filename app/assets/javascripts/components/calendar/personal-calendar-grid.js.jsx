@@ -32,7 +32,6 @@ window.PersonalCalendarGrid = React.createClass({
                         displayMonth={displayMonth} /> );
       firstDayOfWeek.add(1, "week");
     }
-
     return weeks;
   },
   render: function() {

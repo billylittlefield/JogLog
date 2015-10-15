@@ -16,12 +16,16 @@
   };
 
   root.WorkoutStore = $.extend({}, EventEmitter.prototype, {
-    filteredWorkouts: function() {
-      return _workouts.slice(0);
-    },
-    retrieveWorkoutsForDate: function(date) {
+    workoutsForDay: function(date) {
       return _workouts.filter(function(workout){
         return moment(workout.date.substring(0,10)).isSame(date, 'day');
+      });
+    },
+    workoutsForWeek: function(weekStart) {
+      return _workouts.filter(function(workout){
+        return moment(workout.date.substring(0,10))
+               .isBetween(weekStart.clone().subtract(1, 'days'),
+                          weekStart.clone().add(7, 'days'));
       });
     },
     addNewWorkoutListener: function(callback) {

@@ -1,6 +1,6 @@
 window.Day = React.createClass({
   getInitialState: function() {
-    return { workouts: [],
+    return { dayWorkouts: [],
              displayIdx: 0 };
   },
   componentWillMount: function() {
@@ -11,7 +11,7 @@ window.Day = React.createClass({
   },
   fetchWorkouts: function() {
     this.setState({
-      workouts: WorkoutStore.retrieveWorkoutsForDate(this.props.date)
+      dayWorkouts: WorkoutStore.workoutsForDay(this.props.date)
     });
   },
   monthClass: function() {
@@ -26,17 +26,17 @@ window.Day = React.createClass({
   prevWorkout: function() {
     var currentIdx = this.state.displayIdx;
     var newIdx = currentIdx === 0 ?
-                          (this.state.workouts.length - 1) : (currentIdx - 1);
+                          (this.state.dayWorkouts.length - 1) : (currentIdx - 1);
     this.setState({ displayIdx: newIdx });
   },
   nextWorkout: function() {
     var currentIdx = this.state.displayIdx;
-    var newIdx = currentIdx === (this.state.workouts.length - 1) ?
+    var newIdx = currentIdx === (this.state.dayWorkouts.length - 1) ?
                           0 : (currentIdx + 1);
     this.setState({ displayIdx: newIdx });
   },
   multiWorkoutHeader: function() {
-    if (this.state.workouts.length > 1) {
+    if (this.state.dayWorkouts.length > 1) {
       return (
         <div className="multi-workout-header">
           <span className="day-number"><b>{this.props.date.date()}</b></span>
@@ -44,7 +44,7 @@ window.Day = React.createClass({
             <span onClick={this.prevWorkout}>&#9664;</span>
              <span>
               {" " + (this.state.displayIdx + 1) + " of " +
-                      this.state.workouts.length + " "}
+                      this.state.dayWorkouts.length + " "}
              </span>
              <span onClick={this.nextWorkout}>&#9654;</span>
            </span>
@@ -75,8 +75,8 @@ window.Day = React.createClass({
     }
   },
   workoutItem: function() {
-    if (this.state.workouts.length > 0) {
-      var activeWorkout = this.state.workouts[this.state.displayIdx];
+    if (this.state.dayWorkouts.length > 0) {
+      var activeWorkout = this.state.dayWorkouts[this.state.displayIdx];
       return (
         <div className="workout-item">
           <span><b>{activeWorkout.title}</b></span>
