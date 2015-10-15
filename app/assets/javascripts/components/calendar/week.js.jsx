@@ -10,13 +10,17 @@ window.Week = React.createClass({
       currentDay.add(1, "day");
     }
 
+    days.push( <WeekTotals key={this.props.key}
+                           user_id={window.CURRENT_USERID}
+                           weekStart={this.props.weekStart.clone()}/> );
+
     return days;
   },
   render: function() {
     return (
-      <div className="week">
+      <tr className="week">
         {this.renderDays()}
-      </div>
+      </tr>
     );
   }
 });

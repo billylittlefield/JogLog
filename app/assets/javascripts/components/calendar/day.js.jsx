@@ -39,20 +39,20 @@ window.Day = React.createClass({
     if (this.state.workouts.length > 1) {
       return (
         <div className="multi-workout-header">
-          <span className="day-number">{this.props.date.date()}</span>
-          <span onClick={this.prevWorkout}>Prev</span>
-           <span>
-            {"(" + (this.state.displayIdx + 1) + " of " +
-                    this.state.workouts.length + ")" }
+          <span className="day-number"><b>{this.props.date.date()}</b></span>
+          <span className="workout-toggle">
+            <span onClick={this.prevWorkout}>&#9664;</span>
+             <span>
+              {" " + (this.state.displayIdx + 1) + " of " +
+                      this.state.workouts.length + " "}
+             </span>
+             <span onClick={this.nextWorkout}>&#9654;</span>
            </span>
-           <span onClick={this.nextWorkout}>Next</span>
         </div>
      );
    } else {
      return (
-       <div className="multiWorkoutHeader">
-         <span className="day-number">{this.props.date.date()}</span>
-       </div>
+       <span className="day-number"><b>{this.props.date.date()}</b></span>
      );
    }
   },
@@ -83,16 +83,12 @@ window.Day = React.createClass({
       );
     }
   },
-  openDetailModal: function() {
-    console.log("what?");
-    React.render(<WorkoutDetail/>, document.getElementById("modal-hook"));
-  },
   render: function() {
     return (
-      <div onClick={this.openDetailModal} className={this.monthClass()}>
+      <td className={this.monthClass()}>
         {this.multiWorkoutHeader()}
         {this.workoutItem()}
-      </div>
+      </td>
     );
   }
 });

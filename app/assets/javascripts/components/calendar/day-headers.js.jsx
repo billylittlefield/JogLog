@@ -1,15 +1,16 @@
 window.DayHeaders = React.createClass({
   render: function() {
     return (
-      <div className="week">
-        <span className="day-header-item">Sunday</span>
-        <span className="day-header-item">Monday</span>
-        <span className="day-header-item">Tuesday</span>
-        <span className="day-header-item">Wednesday</span>
-        <span className="day-header-item">Thursday</span>
-        <span className="day-header-item">Friday</span>
-        <span className="day-header-item">Saturday</span>
-      </div>
+      <tr className="week">
+        <th className="day-header-item">Sunday</th>
+        <th className="day-header-item">Monday</th>
+        <th className="day-header-item">Tuesday</th>
+        <th className="day-header-item">Wednesday</th>
+        <th className="day-header-item">Thursday</th>
+        <th className="day-header-item">Friday</th>
+        <th className="day-header-item">Saturday</th>
+        <th className="day-header-item">Totals</th>
+      </tr>
     );
   }
 });
