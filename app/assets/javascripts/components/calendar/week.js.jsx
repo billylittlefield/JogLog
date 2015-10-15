@@ -10,9 +10,9 @@ window.Week = React.createClass({
       currentDay.add(1, "day");
     }
 
-    days.push( <WeekTotals key={this.props.key}
+    days.push( <WeekTotals key={this.props.key + "_total"}
                            user_id={window.CURRENT_USERID}
-                           weekStart={this.props.weekStart.clone()}/> );
+                           weekStart={this.props.weekStart.clone()} /> );
 
     return days;
   },
