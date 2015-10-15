@@ -27,7 +27,7 @@ body {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeaeffe', endColorstr='#ffB8CAFD', GradientType=0);
   position: relative;
-  min-height: 60px;
+  min-height: 58px;
   font-family: 'Racing Sans One', cursive;
   font-size: 28px;
   text-shadow:
@@ -44,7 +44,7 @@ body {
    2px -2px 0 #fff,
    -2px 2px 0 #fff,
    2px 2px 0 #fff;
-   padding: 15px 15px 15px 0px;
+   padding: 18px 15px 18px 0px;
    line-height: 20px;
    color: #23527C;
    top: -2px;
@@ -59,7 +59,7 @@ a {
 }
 
 .nav > li > a {
-  padding: 15px 10px;
+  padding: 18px 10px;
 }
 
 .navbar {
@@ -72,6 +72,12 @@ a {
 
 .nav > li > a:hover, .nav > li > a:focus, .nav .open > a, .nav .open > a:hover,
 .nav .open > a:focus  {
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#eaeffe), to(#B8CAFD));
+  background-image: -webkit-linear-gradient(top, #eaeffe, 0%, #B8CAFD, 100%);
+  background-image: -moz-linear-gradient(top, #eaeffe 0%, #B8CAFD 100%);
+  background-image: linear-gradient(to bottom, #eaeffe 0%, #B8CAFD 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeaeffe', endColorstr='#ffB8CAFD', GradientType=0);
   background-color: #B8CAFD;
   text-shadow:
    -2px -2px 0 #fff,
@@ -91,12 +97,10 @@ a {
 }
 
 .left-list {
-  padding: 5px;
   margin-left: 6%;
 }
 
 .right-list {
-  padding: 5px;
   margin-right: 6%;
 }
 
@@ -115,7 +119,7 @@ a {
   border-radius: 3px;
   border: 1px solid #8C9C82;
   background-color: #B8CAFD;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .form-header {
@@ -132,7 +136,7 @@ a {
   border-radius: 3px;
   border: 1px solid #8C9C82;
   background-color: #B8CAFD;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .leaderboards {
@@ -144,7 +148,7 @@ a {
   border-radius: 3px;
   border: 1px solid #8C9C82;
   background-color: #B8CAFD;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .calendar-page-container {
