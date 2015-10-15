@@ -58,14 +58,19 @@ window.Day = React.createClass({
   },
   workoutItemDistance: function(activeWorkout) {
     if (activeWorkout.distance !== 0) {
-      return (<span><br/><b>Miles: </b>{activeWorkout.distance}</span>);
+      return (<span>
+                <br/>
+                {activeWorkout.activity + ": " +
+                 activeWorkout.distance + " miles"}
+              </span>);
     }
   },
   workoutItemTime: function(activeWorkout) {
     if (activeWorkout.duration.substring(11,19) !== "00:00:00") {
       return (<span>
                 <br/>
-                <b>Time: </b>{activeWorkout.duration.stylizeDuration()}
+                {activeWorkout.activity + " time: " +
+                 activeWorkout.duration.stylizeDuration()}
               </span>);
     }
   },
@@ -75,10 +80,8 @@ window.Day = React.createClass({
       return (
         <div className="workout-item">
           <span><b>{activeWorkout.title}</b></span>
-          <br/>
-          <span><b>Activity: </b>{activeWorkout.activity}</span>
-          {this.workoutItemTime(activeWorkout)}
           {this.workoutItemDistance(activeWorkout)}
+          {this.workoutItemTime(activeWorkout)}
         </div>
       );
     }
