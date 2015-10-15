@@ -14,7 +14,7 @@ window.WeekTotals = React.createClass({
         sortedTotals[activity].distance += workout.distance;
       } else {
         sortedTotals[activity] = {
-          duration: moment.duration(workout.duration.substring(11,19)),
+          duration: moment.duration(workout.duration),
           distance: workout.distance
         };
       }
@@ -32,6 +32,18 @@ window.WeekTotals = React.createClass({
       weekWorkouts: WorkoutStore.workoutsForWeek(this.props.weekStart),
     });
   },
+  prevActivity: function() {
+    var currentIdx = this.state.displayIdx;
+    var newIdx = currentIdx === 0 ?
+                      (_.keys(this.sortedTotals).length - 1) : (currentIdx - 1);
+    this.setState({ displayIdx: newIdx });
+  },
+  nextActivity: function() {
+    var currentIdx = this.state.displayIdx;
+    var newIdx = currentIdx === (_.keys(this.sortedTotals).length - 1) ?
+                      0 : (currentIdx + 1);
+    this.setState({ displayIdx: newIdx });
+  },
   multiActivityHeader: function() {
     var allTotals = this.sortedTotals();
     if (_.keys(allTotals).length > 1) {
@@ -39,13 +51,29 @@ window.WeekTotals = React.createClass({
         <div className="multi-workout-header">
           <span className="workout-toggle">
             <span onClick={this.prevActivity}>&#9664;</span>
-            <span>
-              {" " + allTotals[_.keys(allTotals)[this.state.displayIdx]] + " "}
-            </span>
+            <span><b>
+              {" " + _.keys(allTotals)[this.state.displayIdx] + " "}
+            </b></span>
             <span onClick={this.nextActivity}>&#9654;</span>
           </span>
         </div>
       );
+    } else {
+      return (
+        <div className="multi-workout-header">
+          <b>{_.keys(this.sortedTotals())[0]}</b>
+        </div>
+      );
+    }
+  },
+  distanceTotal: function(distanceTotal) {
+    if (distanceTotal !== 0) {
+      return (<span><br/>{"Distance: " + distanceTotal}</span>);
+    }
+  },
+  durationTotal: function(durationTotal) {
+    if (durationTotal !== "0") {
+      return (<span><br/>{"Time: " + durationTotal}</span>);
     }
   },
   activityTotals: function() {
@@ -54,9 +82,8 @@ window.WeekTotals = React.createClass({
       var displayActivity = _.keys(allTotals)[this.state.displayIdx];
       return (
         <div className="workout-item">
-          <span><b>{displayActivity}</b></span>
-          {"Total distance: " + allTotals[displayActivity].distance}
-          {"Total time: " + allTotals[displayActivity].duration.format("h:mm:ss")}
+          {this.distanceTotal(allTotals[displayActivity].distance)}
+          {this.durationTotal(allTotals[displayActivity].duration.format("h:mm:ss"))}
         </div>
       );
     }

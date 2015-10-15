@@ -16,9 +16,7 @@ window.Day = React.createClass({
   },
   monthClass: function() {
     var klass = "day";
-    if (this.props.displayMonth === this.props.date.month()) {
-      klass += " current-month";
-    } else {
+    if (this.props.displayMonth !== this.props.date.month()) {
       klass += " neighbor-month";
     }
     return klass;
@@ -26,7 +24,7 @@ window.Day = React.createClass({
   prevWorkout: function() {
     var currentIdx = this.state.displayIdx;
     var newIdx = currentIdx === 0 ?
-                          (this.state.dayWorkouts.length - 1) : (currentIdx - 1);
+                         (this.state.dayWorkouts.length - 1) : (currentIdx - 1);
     this.setState({ displayIdx: newIdx });
   },
   nextWorkout: function() {
@@ -70,7 +68,7 @@ window.Day = React.createClass({
       return (<span>
                 <br/>
                 {displayWorkout.activity + " time: " +
-                 displayWorkout.duration.stylizeDuration()}
+                 moment.duration(displayWorkout.duration).format("h:mm:ss")}
               </span>);
     }
   },
