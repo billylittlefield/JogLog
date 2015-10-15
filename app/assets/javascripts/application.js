@@ -19,6 +19,8 @@
 //= require react
 //= require react_ujs
 //= require reactrouter.min
+//= require underscore.min
 //= require moment
+//= require moment-duration-format
 //= require components
 //= require_tree .

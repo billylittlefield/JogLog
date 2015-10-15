@@ -56,32 +56,32 @@ window.Day = React.createClass({
      );
    }
   },
-  workoutItemDistance: function(activeWorkout) {
-    if (activeWorkout.distance !== 0) {
+  workoutItemDistance: function(displayWorkout) {
+    if (displayWorkout.distance !== 0) {
       return (<span>
                 <br/>
-                {activeWorkout.activity + ": " +
-                 activeWorkout.distance + " miles"}
+                {displayWorkout.activity + ": " +
+                 displayWorkout.distance + " miles"}
               </span>);
     }
   },
-  workoutItemTime: function(activeWorkout) {
-    if (activeWorkout.duration.substring(11,19) !== "00:00:00") {
+  workoutItemTime: function(displayWorkout) {
+    if (displayWorkout.duration.substring(11,19) !== "00:00:00") {
       return (<span>
                 <br/>
-                {activeWorkout.activity + " time: " +
-                 activeWorkout.duration.stylizeDuration()}
+                {displayWorkout.activity + " time: " +
+                 displayWorkout.duration.stylizeDuration()}
               </span>);
     }
   },
   workoutItem: function() {
     if (this.state.dayWorkouts.length > 0) {
-      var activeWorkout = this.state.dayWorkouts[this.state.displayIdx];
+      var displayWorkout = this.state.dayWorkouts[this.state.displayIdx];
       return (
         <div className="workout-item">
-          <span><b>{activeWorkout.title}</b></span>
-          {this.workoutItemDistance(activeWorkout)}
-          {this.workoutItemTime(activeWorkout)}
+          <span><b>{displayWorkout.title}</b></span>
+          {this.workoutItemDistance(displayWorkout)}
+          {this.workoutItemTime(displayWorkout)}
         </div>
       );
     }
