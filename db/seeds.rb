@@ -1,7 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+User.create(username: "billylitt", password: "password")
+User.create(username: "GShorr", password: "password")
+User.create(username: "TallRob42", password: "password")
+
+Workout.create(user_id: 1, title: "Short run through Schenley", activity: "running", date: Date.new(2015,10,15), distance: 5.32, duration: "00:35:00", notes: "Feeling good today!")
+Workout.create(user_id: 1, title: "Quick thru Frick", activity: "running", date: Date.new(2015,10,16), distance: 8, duration: "00:56:00", notes: "Saw Mac Miller!")
+Workout.create(user_id: 1, title: "Long run downtown", activity: "running", date: Date.new(2015,11,01), distance: 0, duration: "01:30:00", notes: "Man my legs are dead")
+Workout.create(user_id: 2, title: "Alumni pre-race", activity: "biking", date: Date.new(2015,10,15), distance: 12, duration: "01:35:00", notes: "Hammies are sore")
+Workout.create(user_id: 2, title: "POST RACE BABYY", activity: "running", date: Date.new(2015,10,16), distance: 7, duration: "00:35:30", notes: "Crushed it")
+Workout.create(user_id: 3, title: "Durham forest", activity: "running", date: Date.new(2015,10,18), distance: 12, duration: "00:35:00", notes: "Feeling good today!")
+Workout.create(user_id: 3, title: "Double, ran in the evening", activity: "running", date: Date.new(2015,10,18), distance: 4, duration: "00:20:00", notes: "Flying")

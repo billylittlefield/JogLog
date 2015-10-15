@@ -12,3 +12,10 @@ window.parseTime = function (hh,mm,ss) {
   }
   return hh + ":" + mm + ":" + ss;
 };
+String.prototype.stylizeDuration = function () {
+  var stylized = this.substring(11,19);
+  while (stylized.length > 1 && (stylized[0] === ":" || stylized[0] === "0")) {
+    stylized = stylized.substring(1);
+  }
+  return stylized;
+};

@@ -38,7 +38,8 @@ window.Day = React.createClass({
   multiWorkoutHeader: function() {
     if (this.state.workouts.length > 1) {
       return (
-        <div className="multiWorkoutHeader">
+        <div className="multi-workout-header">
+          <span className="day-number">{this.props.date.date()}</span>
           <span onClick={this.prevWorkout}>Prev</span>
            <span>
             {"(" + (this.state.displayIdx + 1) + " of " +
@@ -47,13 +48,46 @@ window.Day = React.createClass({
            <span onClick={this.nextWorkout}>Next</span>
         </div>
      );
+   } else {
+     return (
+       <div className="multiWorkoutHeader">
+         <span className="day-number">{this.props.date.date()}</span>
+       </div>
+     );
+   }
+  },
+  workoutItemMiles: function(activeWorkout) {
+    if (activeWorkout.distance !== 0) {
+      return (<span><br/><b>Miles: </b>{activeWorkout.distance}</span>);
+    }
+  },
+  workoutItemTime: function(activeWorkout) {
+    if (activeWorkout.duration.substring(11,19) !== "00:00:00") {
+      return (<span>
+                <br/>
+                <b>Time: </b>{activeWorkout.duration.stylizeDuration()}
+              </span>);
+    }
+  },
+  workoutItem: function() {
+    if (this.state.workouts.length > 0) {
+      var activeWorkout = this.state.workouts[this.state.displayIdx];
+      return (
+        <div className="workout-item">
+          <span><b>{activeWorkout.title}</b></span>
+          <br/>
+          <span><b>Activity: </b>{activeWorkout.activity}</span>
+          {this.workoutItemTime(activeWorkout)}
+          {this.workoutItemMiles(activeWorkout)}
+        </div>
+      );
     }
   },
   render: function() {
     return (
       <div className={this.monthClass()}>
-        <span className="day-number">{this.props.date.date()}</span>
         {this.multiWorkoutHeader()}
+        {this.workoutItem()}
       </div>
     );
   }

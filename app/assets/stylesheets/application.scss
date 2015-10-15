@@ -2,7 +2,7 @@
 @import "bootstrap";
 
 body {
-  background-image: image-url('splash_background.jpg');
+  // background-image: image-url('splash_background.jpg');
   background-position: 50%;
 }
 
@@ -41,6 +41,10 @@ body {
    line-height: 20px;
    color: #23527C;
    top: -2px;
+}
+
+.logo:hover {
+  cursor: default;
 }
 
 a {
