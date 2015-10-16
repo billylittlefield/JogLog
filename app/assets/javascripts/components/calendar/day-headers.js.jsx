@@ -1,7 +1,15 @@
 window.DayHeaders = React.createClass({
+  userHeader: function() {
+    if (this.props.type === "team") {
+      return (
+        <th className="day-header-item teammates-header">Teammates</th>
+      );
+    }
+  },
   render: function() {
     return (
       <tr className="week">
+        {this.userHeader}
         <th className="day-header-item">Sunday</th>
         <th className="day-header-item">Monday</th>
         <th className="day-header-item">Tuesday</th>

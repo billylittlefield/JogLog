@@ -11,5 +11,11 @@ window.ApiActions = {
       actionType: WorkoutConstants.FILTERED_WORKOUTS_RECEIVED,
       workouts: workouts
     });
+  },
+  receiveTeamWorkouts: function(workoutsForTeam) {
+    AppDispatcher.dispatch({
+      actionType: TeamConstants.TEAM_WORKOUTS_RECEIVED,
+      workoutsForTeam: workoutsForTeam
+    });
   }
 };

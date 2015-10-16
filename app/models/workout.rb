@@ -27,10 +27,18 @@ class Workout < ActiveRecord::Base
 
     # Range(start_date, end_date) includes full month plus at least 6 day
     # buffer on both ends to account for months starting on Saturday
-    start_date = Date.new(year, month, 23);
-    end_date = start_date + 44;
-    
+    start_date = Date.new(year, month, 23)
+    end_date = start_date + 44
+
     Workout.where("(user_id = ?) AND (date BETWEEN ? AND ?)",
                   params[:user_id], start_date, end_date)
+  end
+
+  def self.find_by_week_and_user(user_id, week_start)
+    start_date = Date.parse(week_start) - 1
+    end_date = start_date + 8
+
+    Workout.where("(user_id = ?) AND (date BETWEEN ? AND ?)",
+                  user_id, start_date, end_date);
   end
 end

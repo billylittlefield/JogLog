@@ -5,15 +5,15 @@ window.PersonalCalendar = React.createClass({
     };
   },
   retrieveWorkoutsForMonth: function() {
-    ApiUtil.getMonthsWorkoutsByUser(this.state.date.month(),
-                                    this.state.date.year(),
-                                    window.CURRENT_USERID);
+    ApiUtil.getMonthsWorkoutsByUser(window.CURRENT_USERID,
+                                    this.state.date.month(),
+                                    this.state.date.year());
   },
   componentWillMount: function() {
     this.retrieveWorkoutsForMonth();
   },
   previousMonth: function() {
-    this.setState({ date: this.state.date.add(-1, "month") });
+    this.setState({ date: this.state.date.subtract(1, "month") });
     this.retrieveWorkoutsForMonth();
   },
   nextMonth: function() {
@@ -28,6 +28,7 @@ window.PersonalCalendar = React.createClass({
 
     while (firstDayOfWeek.month() !== nextMonth) {
       weeks.push( <Week key={firstDayOfWeek.toString()}
+                        user_id={window.CURRENT_USERID}
                         weekStart={firstDayOfWeek.clone()}
                         displayMonth={displayMonth} /> );
       firstDayOfWeek.add(1, "week");
@@ -46,7 +47,7 @@ window.PersonalCalendar = React.createClass({
             </th>
             <th colSpan="2" onClick={this.nextMonth}>&#9654;</th>
           </tr>
-          <DayHeaders />
+          <DayHeaders type="personal"/>
           </thead>
           <tbody>
             {this.renderWeeks()}
