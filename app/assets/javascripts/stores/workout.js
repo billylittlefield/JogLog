@@ -17,10 +17,7 @@
   };
 
   var resetWorkoutsForTeamCal = function(workoutsForTeam) {
-    _workouts = [];
-    _.each(workoutsForTeam.members, function(member){
-      _workouts = _workouts.concat(member.workouts);
-    });
+    _workouts = workoutsForTeam;
     WorkoutStore.emit(TEAM_WORKOUTS_CHANGED);
   };
 

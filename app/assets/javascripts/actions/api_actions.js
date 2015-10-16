@@ -13,9 +13,19 @@ window.ApiActions = {
     });
   },
   receiveTeamWorkouts: function(workoutsForTeam) {
+    workouts = [];
+    teamMembers = [];
+    _.each(workoutsForTeam.members, function(member) {
+      workouts = workouts.concat(member.workouts);
+      teamMembers.push(member.user_id);
+    });
     AppDispatcher.dispatch({
       actionType: WorkoutConstants.TEAM_WORKOUTS_RECEIVED,
-      workoutsForTeam: workoutsForTeam
+      workoutsForTeam: workouts
+    });
+    AppDispatcher.dispatch({
+      actionType: TeamConstants.TEAM_MEMBRS_RECEIVED,
+      teamMembers: teamMembers
     });
   }
 };

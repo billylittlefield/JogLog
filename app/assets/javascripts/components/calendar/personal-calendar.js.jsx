@@ -30,7 +30,8 @@ window.PersonalCalendar = React.createClass({
       weeks.push( <Week key={firstDayOfWeek.toString()}
                         userId={window.CURRENT_USERID}
                         weekStart={firstDayOfWeek.clone()}
-                        displayMonth={displayMonth} /> );
+                        displayMonth={displayMonth}
+                        type="personal" /> );
       firstDayOfWeek.add(1, "week");
     }
     return weeks;

@@ -7,7 +7,8 @@ window.Week = React.createClass({
       days.push( <Day key={currentDay.clone().toString()}
                       userId={this.props.userId}
                       date={currentDay.clone()}
-                      displayMonth={this.props.displayMonth} /> );
+                      displayMonth={this.props.displayMonth}
+                      type={this.props.type} /> );
       currentDay.add(1, "day");
     }
 

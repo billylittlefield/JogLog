@@ -1,0 +1,3 @@
+window.TeamConstants = {
+  TEAM_MEMBRS_RECEIVED: "TEAM_MEMBRS_RECEIVED"
+};

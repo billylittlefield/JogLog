@@ -18,7 +18,8 @@ window.Day = React.createClass({
   },
   monthClass: function() {
     var klass = "day no-selection";
-    if (this.props.displayMonth !== this.props.date.month()) {
+    if (this.props.type === "personal" &&
+        this.props.displayMonth !== this.props.date.month()) {
       klass += " neighbor-month";
     }
     return klass;
