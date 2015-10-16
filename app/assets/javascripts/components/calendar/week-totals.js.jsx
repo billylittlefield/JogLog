@@ -90,7 +90,7 @@ window.WeekTotals = React.createClass({
   },
   render: function() {
     return (
-      <td className="day week-totals">
+      <td className="no-selection day week-totals">
         {this.multiActivityHeader()}
         {this.activityTotals()}
       </td>

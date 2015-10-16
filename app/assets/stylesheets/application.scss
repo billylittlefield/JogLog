@@ -127,7 +127,7 @@ a {
   text-align: center;
 }
 
-.workout-form {
+.workout-form-container {
   float: right;
   width: 48.5%;
   margin: 1% 1% 0.5% 0.5%;
@@ -189,6 +189,20 @@ tr > th.day-header-item, .table > tbody > tr > td {
   }
 }
 
+.workout-item {
+  height: 100%;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.no-selection {
+  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+  -moz-user-select: none; /* mozilla browsers */
+  -khtml-user-select: none; /* webkit (konqueror) browsers */
+  -ms-user-select: none; /* IE10+ */
+}
+
 .calendar-header > th {
   text-align: center;
   font-size: 36px;
@@ -219,4 +233,8 @@ tr > th.day-header-item, .table > tbody > tr > td {
   width: 100%;
   table-layout: fixed;
   margin: 0;
+}
+
+.form-workout-title {
+  display: inline;
 }

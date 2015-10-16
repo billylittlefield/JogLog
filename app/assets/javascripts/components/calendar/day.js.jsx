@@ -1,7 +1,8 @@
 window.Day = React.createClass({
   getInitialState: function() {
     return { dayWorkouts: [],
-             displayIdx: 0 };
+             displayIdx: 0,
+             showModal: false };
   },
   componentWillMount: function() {
     WorkoutStore.AddCalendarChangeListener(this.fetchWorkouts);
@@ -15,7 +16,7 @@ window.Day = React.createClass({
     });
   },
   monthClass: function() {
-    var klass = "day";
+    var klass = "day no-selection";
     if (this.props.displayMonth !== this.props.date.month()) {
       klass += " neighbor-month";
     }
@@ -38,14 +39,14 @@ window.Day = React.createClass({
       return (
         <div className="multi-workout-header">
           <span className="day-number"><b>{this.props.date.date()}</b></span>
-          <span className="workout-toggle">
+          <div className="workout-toggle">
             <span onClick={this.prevWorkout}>&#9664;</span>
              <span>
               {" " + (this.state.displayIdx + 1) + " of " +
                       this.state.dayWorkouts.length + " "}
              </span>
              <span onClick={this.nextWorkout}>&#9654;</span>
-           </span>
+           </div>
         </div>
      );
    } else {
@@ -76,7 +77,7 @@ window.Day = React.createClass({
     if (this.state.dayWorkouts.length > 0) {
       var displayWorkout = this.state.dayWorkouts[this.state.displayIdx];
       return (
-        <div className="workout-item">
+        <div onClick={this.toggleModal} className="workout-item">
           <span><b>{displayWorkout.title}</b></span>
           {this.workoutItemDistance(displayWorkout)}
           {this.workoutItemTime(displayWorkout)}
@@ -84,11 +85,39 @@ window.Day = React.createClass({
       );
     }
   },
+  toggleModal: function() {
+    if (this.state.showModal) {
+      this.setState({ showModal: false });
+    } else {
+      this.setState({ showModal: true });
+    }
+  },
+  workoutModal: function() {
+    var workout = this.state.dayWorkouts[this.state.displayIdx];
+    if (workout) {
+      if (workout.user_id === window.CURRENT_USERID) {
+        return (
+          <EditWorkoutDetail
+            show={this.state.showModal}
+            onHide={this.toggleModal}
+            workout={workout} />
+          );
+      } else {
+        return (
+          <ViewWorkoutDetail
+            show={this.state.showModal}
+            onHide={this.toggleModal}
+            workout={workout} />
+        );
+      }
+    }
+  },
   render: function() {
     return (
       <td className={this.monthClass()}>
         {this.multiWorkoutHeader()}
         {this.workoutItem()}
+        {this.workoutModal()}
       </td>
     );
   }

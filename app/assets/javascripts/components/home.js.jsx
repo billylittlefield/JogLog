@@ -5,8 +5,8 @@ window.Home = React.createClass({
         <div className="workout-feed">
           <p>WORKOUT FEED HERE</p>
         </div>
-        <div className="workout-form">
-          <WorkoutForm />
+        <div className="workout-form-container">
+          <WorkoutForm mode="new" workout={WorkoutConstants.BLANK_WORKOUT}/>
         </div>
         <div className="leaderboards">
           <p>LEADERBOARDS HERE</p>

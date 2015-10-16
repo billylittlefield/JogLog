@@ -10,7 +10,7 @@ window.Navbar = React.createClass({
   },
   render: function () {
     return (
-      <nav className="navbar navbar-custom">
+      <nav className="no-selection navbar navbar-custom">
         <ul className="nav navbar-nav navbar-left left-list">
           <li className="logo">JoggerLogger</li>
           <li><a href="#/">Home</a></li>

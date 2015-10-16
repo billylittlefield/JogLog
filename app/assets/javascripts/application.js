@@ -13,13 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require turbolinks
 //= require flux
 //= require eventemitter
 //= require react
 //= require react_ujs
 //= require reactrouter.min
 //= require underscore.min
+//= require react_bootstrap
 //= require moment
 //= require moment-duration-format
 //= require components
