@@ -6,12 +6,14 @@
   <%= javascript_include_tag 'application' %>
   <link href='https://fonts.googleapis.com/css?family=Racing+Sans+One|Muli' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
+
   <% if current_user %>
     <script>
       window.CURRENT_USERID = <%= current_user.id %>;
-      window.CURRENT_USERNAME = "<%= current_user.username %>";
+      window.CURRENT_USERNAME = <%= current_user.username %>;
     </script>
   <% end %>
+
 </head>
 <body>
 

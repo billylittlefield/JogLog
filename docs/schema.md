@@ -16,8 +16,8 @@ user_id     | integer   | not null, foreign key (references users), indexed
 title       | string    | not null
 activity    | string    | not null
 date        | datetime  | not null
-miles       | float     | not null
-time        | time      | not null
+distance    | float     |
+duration    | time      |
 notes       | text      |
 
 ## teams
