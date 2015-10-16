@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 6, allow_nil: true}
 
   has_many :workouts
+  has_many :owned_teams, class_name: "Team", foreign_key: :admin_id
+  has_many :memberships, foreign_key: :member_id
+  has_many :teams, through: :memberships
 
   after_initialize :ensure_session_token
 

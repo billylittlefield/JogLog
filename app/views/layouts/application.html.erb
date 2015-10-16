@@ -9,8 +9,8 @@
 
   <% if current_user %>
     <script>
-      window.CURRENT_USERID = <%= current_user.id %>;
-      window.CURRENT_USERNAME = <%= current_user.username %>;
+      window.CURRENT_USERID = <%= current_user.id.to_i %>;
+      window.CURRENT_USERNAME = "<%= current_user.username %>";
     </script>
   <% end %>
 

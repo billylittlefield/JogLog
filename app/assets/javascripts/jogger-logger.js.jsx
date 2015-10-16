@@ -9,6 +9,7 @@ $(function () {
     <Route path="/" component={App}>
       <IndexRoute component={Home}/>
       <Route path="calendar" component={PersonalCalendar}/>
+      <Route path="teams/:teamid" component={TeamCalendar}/>
     </Route>
   );
 

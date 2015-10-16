@@ -1,4 +1,3 @@
-$.fn.editable.defaults.mode = 'inline';
 window.Home = React.createClass({
   render: function() {
     return (
@@ -10,7 +9,7 @@ window.Home = React.createClass({
           <WorkoutForm mode="new" workout={WorkoutConstants.BLANK_WORKOUT}/>
         </div>
         <div className="leaderboards">
-          <a href="#" id="username" data-type="text" data-pk="1" data-url="/post" data-title="Enter username">superuser</a>
+          <p>Leaderboards here</p>
         </div>
       </div>
     );
