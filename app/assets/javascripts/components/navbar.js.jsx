@@ -1,4 +1,7 @@
 window.Navbar = React.createClass({
+  getInitialState: function() {
+    return { teams: [] };
+  },
   handleLogout: function () {
     $.ajax({
       url: "/session",
@@ -7,6 +10,24 @@ window.Navbar = React.createClass({
         window.location = "/";
       }
     });
+  },
+  componentWillMount: function() {
+    UserStore.addUserTeamsChangeEventListener(this.updateTeams);
+    ApiUtil.getTeamsForUser(window.CURRENT_USERID);
+  },
+  componentWillUnmount: function() {
+    UserStore.removeUserTeamsChangeEventListener(this.updateTeams);
+  },
+  updateTeams: function() {
+    this.setState({ teams: UserStore.teams() });
+  },
+  teamsList: function() {
+    return _.map(this.state.teams, function(team) {
+      return (
+        <li key={"user" + window.CURRENT_USERID + "team" + team.id}>
+          <a href={"#/teams/" + team.id}>{team.name}</a>
+        </li>);
+    }.bind(this));
   },
   render: function () {
     return (
@@ -21,9 +42,7 @@ window.Navbar = React.createClass({
               Teams
             </a>
             <ul className="dropdown-menu">
-              <li><a href="#">Sample Team 1</a></li>
-              <li><a href="#">Sample Team 2</a></li>
-              <li><a href="#">Sample Team 3</a></li>
+              {this.teamsList()}
               <li role="separator" className="divider"></li>
               <li><a href="#">Create New Team</a></li>
             </ul>

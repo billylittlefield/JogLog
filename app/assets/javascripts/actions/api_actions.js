@@ -27,5 +27,11 @@ window.ApiActions = {
       actionType: TeamConstants.TEAM_MEMBRS_RECEIVED,
       teamMembers: teamMembers
     });
+  },
+  receiveUserData: function(userData) {
+    AppDispatcher.dispatch({
+      actionType: UserConstants.TEAMS_RECEIVED,
+      teams: userData.teams
+    });
   }
 };

@@ -4,6 +4,7 @@ window.ApiUtil = {
     $.ajax({
       url: "api/workouts",
       method: "POST",
+      dataType: "json",
       data: { workout: workout },
       success: function(workout) {
         ApiActions.receiveWorkout(workout);
@@ -14,6 +15,7 @@ window.ApiUtil = {
     $.ajax({
       url: "api/workouts",
       method: "GET",
+      dataType: "json",
       data: { month: month, user_id: userId, year: year },
       success: function(workouts) {
         ApiActions.receivePersonalWorkouts(workouts);
@@ -28,6 +30,16 @@ window.ApiUtil = {
       dataType: "json",
       success: function(workoutsForTeam){
         ApiActions.receiveTeamWorkouts(workoutsForTeam);
+      }
+    });
+  },
+  getTeamsForUser: function(userId) {
+    $.ajax({
+      url: "api/users/" + userId,
+      type: "GET",
+      dataType: "json",
+      success: function(userData){
+        ApiActions.receiveUserData(userData);
       }
     });
   }
