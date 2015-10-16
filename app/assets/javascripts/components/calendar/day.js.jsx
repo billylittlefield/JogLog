@@ -5,14 +5,15 @@ window.Day = React.createClass({
              showModal: false };
   },
   componentWillMount: function() {
-    WorkoutStore.AddCalendarChangeListener(this.fetchWorkouts);
+    WorkoutStore.addCalendarChangeListener(this.fetchWorkouts);
   },
   componentWillUnmount: function() {
     WorkoutStore.removeCalendarChangeListener(this.fetchWorkouts);
   },
   fetchWorkouts: function() {
     this.setState({
-      dayWorkouts: WorkoutStore.workoutsForDay(this.props.date)
+      dayWorkouts: WorkoutStore.workoutsForDay(this.props.date,
+                                               this.props.userId)
     });
   },
   monthClass: function() {

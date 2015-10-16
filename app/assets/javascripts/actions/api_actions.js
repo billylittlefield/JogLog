@@ -6,15 +6,15 @@ window.ApiActions = {
     });
     window.location = "#/calendar";
   },
-  receiveFilteredWorkouts: function(workouts) {
+  receivePersonalWorkouts: function(workouts) {
     AppDispatcher.dispatch({
-      actionType: WorkoutConstants.FILTERED_WORKOUTS_RECEIVED,
+      actionType: WorkoutConstants.PERSONAL_WORKOUTS_RECEIVED,
       workouts: workouts
     });
   },
   receiveTeamWorkouts: function(workoutsForTeam) {
     AppDispatcher.dispatch({
-      actionType: TeamConstants.TEAM_WORKOUTS_RECEIVED,
+      actionType: WorkoutConstants.TEAM_WORKOUTS_RECEIVED,
       workoutsForTeam: workoutsForTeam
     });
   }

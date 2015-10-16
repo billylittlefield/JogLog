@@ -1,3 +1,0 @@
-window.TeamConstants = {
-  TEAM_WORKOUTS_RECEIVED: "TEAM_WORKOUTS_RECEIVED"
-};

@@ -1,7 +1,8 @@
 window.WeekTotals = React.createClass({
   getInitialState: function() {
     return {
-      weekWorkouts: WorkoutStore.workoutsForWeek(this.props.weekStart),
+      weekWorkouts: WorkoutStore.workoutsForWeek(this.props.weekStart,
+                                                 this.props.userId),
       displayIdx: 0
     };
   },
@@ -22,14 +23,15 @@ window.WeekTotals = React.createClass({
     return sortedTotals;
   },
   componentWillMount: function() {
-    WorkoutStore.AddCalendarChangeListener(this.updateWeekTotals);
+    WorkoutStore.addCalendarChangeListener(this.updateWeekTotals);
   },
   componentWillUnmount: function() {
     WorkoutStore.removeCalendarChangeListener(this.updateWeekTotals);
   },
   updateWeekTotals: function() {
     this.setState({
-      weekWorkouts: WorkoutStore.workoutsForWeek(this.props.weekStart),
+      weekWorkouts: WorkoutStore.workoutsForWeek(this.props.weekStart,
+                                                 this.props.userId),
     });
   },
   prevActivity: function() {

@@ -16,7 +16,7 @@ window.ApiUtil = {
       method: "GET",
       data: { month: month, user_id: userId, year: year },
       success: function(workouts) {
-        ApiActions.receiveFilteredWorkouts(workouts);
+        ApiActions.receivePersonalWorkouts(workouts);
       }
     });
   },

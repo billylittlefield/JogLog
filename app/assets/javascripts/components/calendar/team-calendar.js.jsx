@@ -6,11 +6,7 @@ window.TeamCalendar = React.createClass({
     };
   },
   componentWillMount: function() {
-    TeamStore.addTeamWorkoutsChangeListener(this.updateTeamWorkouts);
     this.retrieveTeamWorkoutsForWeek();
-  },
-  updateTeamWorkouts: function() {
-    this.setState({ workoutsForTeam: TeamStore.workoutsForTeam() });
   },
   retrieveTeamWorkoutsForWeek: function() {
     ApiUtil.getWeeksWorkoutsByTeam(this.props.params.teamid,

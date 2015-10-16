@@ -5,14 +5,14 @@ window.Week = React.createClass({
 
     for (var i = 0; i < 7; i++) {
       days.push( <Day key={currentDay.clone().toString()}
-                      user_id={this.props.user_id}
+                      userId={this.props.userId}
                       date={currentDay.clone()}
                       displayMonth={this.props.displayMonth} /> );
       currentDay.add(1, "day");
     }
 
     days.push( <WeekTotals key={this.props.key + "_total"}
-                           user_id={this.props.user_id}
+                           userId={this.props.userId}
                            weekStart={this.props.weekStart.clone()} /> );
 
     return days;
