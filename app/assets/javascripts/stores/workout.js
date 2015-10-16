@@ -11,14 +11,9 @@
     WorkoutStore.emit(WORKOUT_ADDED_EVENT);
   };
 
-  var resetWorkoutsForPersonalCal = function(workouts) {
+  var resetWorkouts = function(workouts) {
     _workouts = workouts;
     WorkoutStore.emit(CALENDAR_CHANGED_EVENT);
-  };
-
-  var resetWorkoutsForTeamCal = function(workoutsForTeam) {
-    _workouts = workoutsForTeam;
-    WorkoutStore.emit(TEAM_WORKOUTS_CHANGED);
   };
 
   root.WorkoutStore = $.extend({}, EventEmitter.prototype, {
@@ -42,12 +37,6 @@
     removeNewWorkoutListener: function(callback) {
       this.removeListener(WORKOUT_ADDED_EVENT, callback);
     },
-    addTeamWorkoutsChangeListener: function(callback) {
-      this.on(TEAM_WORKOUTS_CHANGED, callback);
-    },
-    removeTeamWorkoutsChangeListener: function(callback) {
-      this.removeListener(TEAM_WORKOUTS_CHANGED);
-    },
     addCalendarChangeListener: function(callback) {
       this.on(CALENDAR_CHANGED_EVENT, callback);
     },
@@ -59,11 +48,8 @@
         case WorkoutConstants.WORKOUT_RECEIVED:
           addWorkout(payload.workout);
           break;
-        case WorkoutConstants.PERSONAL_WORKOUTS_RECEIVED:
-          resetWorkoutsForPersonalCal(payload.workouts);
-          break;
-        case WorkoutConstants.TEAM_WORKOUTS_RECEIVED:
-          resetWorkoutsForTeamCal(payload.workoutsForTeam);
+        case WorkoutConstants.WORKOUTS_RECEIVED:
+          resetWorkouts(payload.workouts);
           break;
       }
     })

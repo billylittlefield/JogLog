@@ -9,7 +9,7 @@ window.DayHeaders = React.createClass({
   render: function() {
     return (
       <tr className="week">
-        {this.userHeader}
+        {this.userHeader()}
         <th className="day-header-item">Sunday</th>
         <th className="day-header-item">Monday</th>
         <th className="day-header-item">Tuesday</th>

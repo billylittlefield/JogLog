@@ -26,8 +26,14 @@ window.TeamCalendar = React.createClass({
   },
   renderWeeks: function() {
     var weeks = [];
-
-
+    _.each(this.state.teamMembers, function(member) {
+      weeks.push( <Week key={"user" + member.id +
+                             "team" + this.props.params.teamid}
+                        user={member}
+                        weekStart={this.state.weekStart.clone()}
+                        type="team" /> );
+    }.bind(this));
+    return weeks;
   },
   render: function() {
     var weekStart = this.state.weekStart;

@@ -17,11 +17,11 @@ window.ApiActions = {
     teamMembers = [];
     _.each(workoutsForTeam.members, function(member) {
       workouts = workouts.concat(member.workouts);
-      teamMembers.push(member.user_id);
+      teamMembers.push({ id: member.id, username: member.username });
     });
     AppDispatcher.dispatch({
-      actionType: WorkoutConstants.TEAM_WORKOUTS_RECEIVED,
-      workoutsForTeam: workouts
+      actionType: WorkoutConstants.WORKOUTS_RECEIVED,
+      workouts: workouts
     });
     AppDispatcher.dispatch({
       actionType: TeamConstants.TEAM_MEMBRS_RECEIVED,

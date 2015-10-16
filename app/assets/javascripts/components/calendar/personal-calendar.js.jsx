@@ -28,7 +28,7 @@ window.PersonalCalendar = React.createClass({
 
     while (firstDayOfWeek.month() !== nextMonth) {
       weeks.push( <Week key={firstDayOfWeek.toString()}
-                        userId={window.CURRENT_USERID}
+                        user={{id: window.CURRENT_USERID}}
                         weekStart={firstDayOfWeek.clone()}
                         displayMonth={displayMonth}
                         type="personal" /> );
