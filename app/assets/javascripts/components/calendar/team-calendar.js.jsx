@@ -13,6 +13,7 @@ window.TeamCalendar = React.createClass({
     TeamStore.removeTeamMemberChangeListener(this.updateTeamMembers);
   },
   updateTeamMembers: function() {
+    console.log("calendar updated");
     this.setState({ teamMembers: TeamStore.teamMembers() });
   },
   retrieveTeamWorkoutsForWeek: function() {
@@ -27,9 +28,9 @@ window.TeamCalendar = React.createClass({
     this.setState({ weekStart: this.state.weekStart.add(1, "week") });
     this.retrieveTeamWorkoutsForWeek();
   },
-  componentWillReceiveProps: function(newProps) {
-    ApiUtil.getWeeksWorkoutsByTeam(newProps.params.teamid,
-                                  this.state.weekStart.format("YYYY-MM-DD"));
+  componentWillReceiveProps: function(nextProps) {
+    ApiUtil.getWeeksWorkoutsByTeam(nextProps.params.teamid,
+                                   this.state.weekStart.format("YYYY-MM-DD"));
   },
   renderWeeks: function() {
     var weeks = [];

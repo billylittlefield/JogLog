@@ -2,18 +2,17 @@
   'use strict';
 
   var _workouts = [];
-  var WORKOUT_ADDED_EVENT = "WORKOUT_ADDED_EVENT";
-  var CALENDAR_CHANGED_EVENT = "CALENDAR_CHANGED_EVENT";
-  var TEAM_WORKOUTS_CHANGED = "TEAM_WORKOUTS_CHANGED";
+  var WORKOUT_ADDED = "WORKOUT_ADDED";
+  var CALENDAR_CHANGED = "CALENDAR_CHANGED";
 
   var addWorkout = function(workout) {
     _workouts.push(workout);
-    WorkoutStore.emit(WORKOUT_ADDED_EVENT);
+    WorkoutStore.emit(WORKOUT_ADDED);
   };
 
   var resetWorkouts = function(workouts) {
     _workouts = workouts;
-    WorkoutStore.emit(CALENDAR_CHANGED_EVENT);
+    WorkoutStore.emit(CALENDAR_CHANGED);
   };
 
   root.WorkoutStore = $.extend({}, EventEmitter.prototype, {
@@ -32,16 +31,16 @@
       });
     },
     addNewWorkoutListener: function(callback) {
-      this.on(WORKOUT_ADDED_EVENT, callback);
+      this.on(WORKOUT_ADDED, callback);
     },
     removeNewWorkoutListener: function(callback) {
-      this.removeListener(WORKOUT_ADDED_EVENT, callback);
+      this.removeListener(WORKOUT_ADDED, callback);
     },
     addCalendarChangeListener: function(callback) {
-      this.on(CALENDAR_CHANGED_EVENT, callback);
+      this.on(CALENDAR_CHANGED, callback);
     },
     removeCalendarChangeListener: function(callback) {
-      this.removeListener(CALENDAR_CHANGED_EVENT, callback);
+      this.removeListener(CALENDAR_CHANGED, callback);
     },
     dispatcherID: AppDispatcher.register(function(payload) {
       switch (payload.actionType) {

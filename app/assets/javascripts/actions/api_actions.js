@@ -24,7 +24,7 @@ window.ApiActions = {
       workouts: workouts
     });
     AppDispatcher.dispatch({
-      actionType: TeamConstants.TEAM_MEMBRS_RECEIVED,
+      actionType: TeamConstants.TEAM_MEMBERS_RECEIVED,
       teamMembers: teamMembers
     });
   },

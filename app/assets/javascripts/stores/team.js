@@ -21,7 +21,7 @@
     },
     dispatcherID: AppDispatcher.register(function(payload) {
       switch (payload.actionType) {
-        case TeamConstants.TEAM_MEMBRS_RECEIVED:
+        case TeamConstants.TEAM_MEMBERS_RECEIVED:
           resetTeamMembers(payload.teamMembers);
           break;
       }
