@@ -1,6 +1,6 @@
 window.Navbar = React.createClass({
   getInitialState: function() {
-    return { teams: [] };
+    return { teams: [], showTeamForm: false };
   },
   handleLogout: function () {
     $.ajax({
@@ -29,6 +29,13 @@ window.Navbar = React.createClass({
         </li>);
     }.bind(this));
   },
+  toggleTeamForm: function() {
+    if (this.state.showTeamForm) {
+      this.setState({ showTeamForm: false });
+    } else {
+      this.setState({ showTeamForm: true });
+    }
+  },
   render: function () {
     return (
       <nav className="no-selection navbar navbar-custom">
@@ -44,7 +51,11 @@ window.Navbar = React.createClass({
             <ul className="dropdown-menu">
               {this.teamsList()}
               <li role="separator" className="divider"></li>
-              <li><a href="#">Create New Team</a></li>
+              <li onClick={this.toggleTeamForm}>
+                <a href="javascript:void(0)">Create New Team</a>
+              </li>
+              <TeamForm show={this.state.showTeamForm}
+                        onHide={this.toggleTeamForm} />
             </ul>
           </li>
         </ul>
