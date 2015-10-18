@@ -1,6 +1,6 @@
 window.ApiUtil = {
+  mixins: [ReactRouter.History],
   createWorkout: function(workout) {
-    workout.duration = parseTime(workout.hours,workout.minutes,workout.seconds);
     $.ajax({
       url: "api/workouts",
       method: "POST",
@@ -8,6 +8,30 @@ window.ApiUtil = {
       data: { workout: workout },
       success: function(workout) {
         ApiActions.receiveWorkout(workout);
+      }
+    });
+  },
+  createTeam: function(team) {
+    $.ajax({
+      url: "api/teams",
+      method: "POST",
+      dataType: "json",
+      data: { team: team },
+      success: function(team) {
+        ApiUtil.createMembership({ team_id: team.id,
+                                   member_id: team.admin_id });
+        window.location = "#/teams/" + team.id;
+      }
+    });
+  },
+  createMembership: function(membership) {
+    $.ajax({
+      url: "api/memberships",
+      method: "POST",
+      dataType: "json",
+      data: { membership: membership },
+      success: function(membership) {
+        ApiUtil.getTeamsForUser(membership.member_id);
       }
     });
   },

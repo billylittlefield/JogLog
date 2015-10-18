@@ -1,4 +1,4 @@
-window.Navbar = React.createClass({
+  window.Navbar = React.createClass({
   getInitialState: function() {
     return { teams: [], showTeamForm: false };
   },
