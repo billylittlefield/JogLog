@@ -55,8 +55,8 @@ window.TeamCalendar = React.createClass({
             <th colSpan="3">
               <span className="left-arrow" onClick={this.previousWeek}>&#9654;</span>
               <span>{weekStart.format("MMM DD") + " - " +
-               weekStart.clone().add(7, "days").format("MMM DD")}</span>
-              <span className="right-arrow" onClick={this.previousWeek}>&#9654;</span>
+               weekStart.clone().add(6, "days").format("MMM DD")}</span>
+              <span className="right-arrow" onClick={this.nextWeek}>&#9654;</span>
             </th>
             <th className="join-button" colSpan="3">
               <JoinTeamButton weekStart={this.state.weekStart.clone()}
