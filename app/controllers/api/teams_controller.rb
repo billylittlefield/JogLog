@@ -7,7 +7,6 @@ class Api::TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     @team.admin_id = current_user.id
-    p @team
     if @team.save
       render json: @team
     else

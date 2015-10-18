@@ -40,7 +40,7 @@
     return (
       <nav className="no-selection navbar navbar-custom">
         <ul className="nav navbar-nav navbar-left left-list">
-          <li className="logo">JoggerLogger</li>
+          <li className="logo">JogLog</li>
           <li><a href="#/">Home</a></li>
           <li><a href="#/calendar">Calendar</a></li>
           <li className="doprdown">

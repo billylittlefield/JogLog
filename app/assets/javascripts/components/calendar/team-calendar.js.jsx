@@ -2,7 +2,8 @@ window.TeamCalendar = React.createClass({
   getInitialState: function() {
     return {
       weekStart: moment().startOf("week"),
-      teamMembers: []
+      teamMembers: [],
+      teamName: ""
     };
   },
   componentWillMount: function() {
@@ -13,12 +14,12 @@ window.TeamCalendar = React.createClass({
     TeamStore.removeTeamMemberChangeListener(this.updateTeamMembers);
   },
   updateTeamMembers: function() {
-    console.log("calendar updated");
-    this.setState({ teamMembers: TeamStore.teamMembers() });
+    this.setState({ teamMembers: TeamStore.teamMembers(),
+                    teamName: TeamStore.teamName() });
   },
   retrieveTeamWorkoutsForWeek: function() {
-    ApiUtil.getWeeksWorkoutsByTeam(this.props.params.teamid,
-                                   this.state.weekStart.format("YYYY-MM-DD"));
+    ApiUtil.getTeamWorkouts(this.props.params.teamid,
+                            this.state.weekStart.format("YYYY-MM-DD"));
   },
   previousWeek: function() {
     this.setState({ weekStart: this.state.weekStart.subtract(1, "week") });
@@ -29,8 +30,8 @@ window.TeamCalendar = React.createClass({
     this.retrieveTeamWorkoutsForWeek();
   },
   componentWillReceiveProps: function(nextProps) {
-    ApiUtil.getWeeksWorkoutsByTeam(nextProps.params.teamid,
-                                   this.state.weekStart.format("YYYY-MM-DD"));
+    ApiUtil.getTeamWorkouts(nextProps.params.teamid,
+                            this.state.weekStart.format("YYYY-MM-DD"));
   },
   renderWeeks: function() {
     var weeks = [];
@@ -50,12 +51,17 @@ window.TeamCalendar = React.createClass({
         <table className="table calendar-grid">
           <thead>
           <tr className="no-selection calendar-header">
-            <th colSpan="2" onClick={this.previousWeek}>&#9664;</th>
-            <th colSpan="5">
-              {weekStart.format("MMM DD") + " - " +
-               weekStart.clone().add(7, "days").format("MMM DD")}
+            <th className="team-name" colSpan="3">{this.state.teamName}</th>
+            <th colSpan="3">
+              <span className="left-arrow" onClick={this.previousWeek}>&#9654;</span>
+              <span>{weekStart.format("MMM DD") + " - " +
+               weekStart.clone().add(7, "days").format("MMM DD")}</span>
+              <span className="right-arrow" onClick={this.previousWeek}>&#9654;</span>
             </th>
-            <th colSpan="2" onClick={this.nextWeek}>&#9654;</th>
+            <th className="join-button" colSpan="3">
+              <JoinTeamButton weekStart={this.state.weekStart.clone()}
+                              teamId={parseInt(this.props.params.teamid)}/>
+            </th>
           </tr>
           <DayHeaders type="team"/>
           </thead>

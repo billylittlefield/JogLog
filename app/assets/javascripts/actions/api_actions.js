@@ -13,19 +13,22 @@ window.ApiActions = {
     });
   },
   receiveTeamWorkouts: function(workoutsForTeam) {
-    workouts = [];
-    teamMembers = [];
+    var teamName = workoutsForTeam.name;
+    var workouts = [];
+    var teamMembers = [];
     _.each(workoutsForTeam.members, function(member) {
       workouts = workouts.concat(member.workouts);
       teamMembers.push({ id: member.id, username: member.username });
     });
+
     AppDispatcher.dispatch({
       actionType: WorkoutConstants.WORKOUTS_RECEIVED,
       workouts: workouts
     });
     AppDispatcher.dispatch({
       actionType: TeamConstants.TEAM_MEMBERS_RECEIVED,
-      teamMembers: teamMembers
+      teamMembers: teamMembers,
+      teamName: teamName
     });
   },
   receiveUserData: function(userData) {

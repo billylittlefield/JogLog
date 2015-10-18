@@ -9,6 +9,9 @@
   };
 
   root.UserStore = $.extend({}, EventEmitter.prototype, {
+    isMember: function(teamId) {
+      return _.some(_teams, function(team) { return team.id === teamId; });
+    },
     teams: function() {
       return _teams.slice();
     },

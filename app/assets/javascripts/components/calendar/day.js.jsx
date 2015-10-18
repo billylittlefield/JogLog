@@ -6,7 +6,6 @@ window.Day = React.createClass({
              showModal: false };
   },
   componentWillMount: function() {
-    console.log("day mounted");
     WorkoutStore.addCalendarChangeListener(this.fetchWorkouts);
   },
   componentWillUnmount: function() {

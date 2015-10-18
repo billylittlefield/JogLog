@@ -6,8 +6,9 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     resources :workouts, only: [:create, :index, :update]
-    resources :teams, only: [:show, :create]
-    resources :memberships, only: [:create]
+    resources :teams, only: [:show, :create] do
+      resource :membership, only: [:create, :destroy]
+    end
     resources :users, only: [:show]
   end
 end

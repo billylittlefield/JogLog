@@ -18,20 +18,8 @@ window.ApiUtil = {
       dataType: "json",
       data: { team: team },
       success: function(team) {
-        ApiUtil.createMembership({ team_id: team.id,
-                                   member_id: team.admin_id });
+        ApiUtil.toggleMembership(team.id, "POST");
         window.location = "#/teams/" + team.id;
-      }
-    });
-  },
-  createMembership: function(membership) {
-    $.ajax({
-      url: "api/memberships",
-      method: "POST",
-      dataType: "json",
-      data: { membership: membership },
-      success: function(membership) {
-        ApiUtil.getTeamsForUser(membership.member_id);
       }
     });
   },
@@ -46,7 +34,7 @@ window.ApiUtil = {
       }
     });
   },
-  getWeeksWorkoutsByTeam: function(teamId, weekStart) {
+  getTeamWorkouts: function(teamId, weekStart) {
     $.ajax({
       url: "api/teams/" + teamId,
       type: "GET",
@@ -64,6 +52,18 @@ window.ApiUtil = {
       dataType: "json",
       success: function(userData){
         ApiActions.receiveUserData(userData);
+      }
+    });
+  },
+  toggleMembership: function(teamId, type, successCallback) {
+    $.ajax({
+      url: "api/teams/" + teamId + "/membership",
+      type: type,
+      dataType: "json",
+      data: { team_id: teamId },
+      success: function() {
+        successCallback();
+        ApiUtil.getTeamsForUser(window.CURRENT_USERID);
       }
     });
   }

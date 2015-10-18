@@ -203,21 +203,31 @@ tr > th.day-header-item, .table > tbody > tr > td {
   -ms-user-select: none; /* IE10+ */
 }
 
+.calendar-header {
+  border: 1px solid #fff;
+}
+
 .calendar-header > th {
   text-align: center;
   font-size: 36px;
-  // font-family: 'Muli', sans-serif;
   color: #183854;
-  &:hover {
-    cursor: pointer;
+  cursor: default;
+  span.left-arrow {
+    float: left;
+    -moz-transform: scaleX(-1);    /* Gecko */
+  -o-transform: scaleX(-1);      /* Opera */
+  -webkit-transform: scaleX(-1); /* Webkit */
+  transform: scaleX(-1);         /* Standard */
+  filter: FlipH;
+    &:hover {
+      cursor: pointer;
+    }
   }
-  &:first-child {
-    text-align: right;
-    border-left: 1px solid #fff;
-  }
-  &:last-child {
-    text-align: left;
-    border-right: 1px solid #fff;
+  span.right-arrow {
+    float: right;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
