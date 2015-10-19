@@ -11,11 +11,15 @@
   };
 
   var resetWorkouts = function(workouts) {
+    console.log("workouts_reset");
     _workouts = workouts;
     WorkoutStore.emit(CALENDAR_CHANGED);
   };
 
   root.WorkoutStore = $.extend({}, EventEmitter.prototype, {
+    all: function() {
+      return _workouts.slice();
+    },
     workoutsForDay: function(date, userId) {
       return _workouts.filter(function(workout){
         return moment(workout.date.substring(0,10)).isSame(date, 'day') &&

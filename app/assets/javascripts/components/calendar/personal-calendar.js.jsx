@@ -1,16 +1,25 @@
 window.PersonalCalendar = React.createClass({
+  updateUserId: function() {
+    return parseInt(_.isEmpty(this.props.params) ?
+      window.CURRENT_USERID : this.props.params.userid);
+  },
   getInitialState: function() {
     return {
+      userId: this.updateUserId(),
       date: moment()
     };
   },
-  retrieveWorkoutsForMonth: function() {
-    ApiUtil.getMonthsWorkoutsByUser(window.CURRENT_USERID,
+  retrieveWorkoutsForMonth: function(userId) {
+    ApiUtil.getMonthsWorkoutsByUser(userId,
                                     this.state.date.month(),
                                     this.state.date.year());
   },
   componentWillMount: function() {
-    this.retrieveWorkoutsForMonth();
+    this.retrieveWorkoutsForMonth(this.state.userId);
+  },
+  componentWillReceiveProps: function(nextProps) {
+    this.setState({ userId: parseInt(nextProps.params.userid) });
+    this.retrieveWorkoutsForMonth(nextProps.params.userid);
   },
   previousMonth: function() {
     this.setState({ date: this.state.date.subtract(1, "month") });
@@ -28,7 +37,7 @@ window.PersonalCalendar = React.createClass({
 
     while (firstDayOfWeek.month() !== nextMonth) {
       weeks.push( <Week key={firstDayOfWeek.toString()}
-                        user={{id: window.CURRENT_USERID}}
+                        user={{id: this.state.userId}}
                         weekStart={firstDayOfWeek.clone()}
                         displayMonth={displayMonth}
                         type="personal" /> );
@@ -42,11 +51,13 @@ window.PersonalCalendar = React.createClass({
         <table className="table calendar-grid">
           <thead>
           <tr className="no-selection calendar-header">
-            <th colSpan="2" onClick={this.previousMonth}>&#9664;</th>
-            <th colSpan="4">
+            <th colSpan="2">My Calendar</th>
+            <th colSpan="1" onClick={this.previousMonth}>&#9664;</th>
+            <th colSpan="2">
               {this.state.date.format("MMMM")+" "+this.state.date.format("YYYY")}
             </th>
-            <th colSpan="2" onClick={this.nextMonth}>&#9654;</th>
+            <th colSpan="1" onClick={this.nextMonth}>&#9654;</th>
+            <th colSpan="2"></th>
           </tr>
           <DayHeaders type="personal"/>
           </thead>

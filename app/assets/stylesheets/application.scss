@@ -212,18 +212,18 @@ tr > th.day-header-item, .table > tbody > tr > td {
   font-size: 36px;
   color: #183854;
   cursor: default;
-  span.left-arrow {
+  span.team-left-arrow {
     float: left;
     -moz-transform: scaleX(-1);    /* Gecko */
-  -o-transform: scaleX(-1);      /* Opera */
-  -webkit-transform: scaleX(-1); /* Webkit */
-  transform: scaleX(-1);         /* Standard */
-  filter: FlipH;
+    -o-transform: scaleX(-1);      /* Opera */
+    -webkit-transform: scaleX(-1); /* Webkit */
+    transform: scaleX(-1);         /* Standard */
+    filter: FlipH;
     &:hover {
       cursor: pointer;
     }
   }
-  span.right-arrow {
+  span.team-right-arrow {
     float: right;
     &:hover {
       cursor: pointer;

@@ -10,6 +10,7 @@ $(function () {
       <IndexRoute component={Home}/>
       <Route path="calendar" component={PersonalCalendar}/>
       <Route path="teams/:teamid" component={TeamCalendar}/>
+      <Route path="users/:userid" component={PersonalCalendar}/>
     </Route>
   );
 

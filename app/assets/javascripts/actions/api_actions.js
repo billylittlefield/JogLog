@@ -8,7 +8,7 @@ window.ApiActions = {
   },
   receivePersonalWorkouts: function(workouts) {
     AppDispatcher.dispatch({
-      actionType: WorkoutConstants.PERSONAL_WORKOUTS_RECEIVED,
+      actionType: WorkoutConstants.WORKOUTS_RECEIVED,
       workouts: workouts
     });
   },
@@ -20,7 +20,6 @@ window.ApiActions = {
       workouts = workouts.concat(member.workouts);
       teamMembers.push({ id: member.id, username: member.username });
     });
-
     AppDispatcher.dispatch({
       actionType: WorkoutConstants.WORKOUTS_RECEIVED,
       workouts: workouts
