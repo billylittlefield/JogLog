@@ -14,6 +14,7 @@ window.TeamCalendar = React.createClass({
     TeamStore.removeTeamMemberChangeListener(this.updateTeamMembers);
   },
   componentWillReceiveProps: function(nextProps) {
+    ApiUtil.getUserData();
     ApiUtil.getTeamWorkouts(nextProps.params.teamid,
                             this.state.weekStart.format("YYYY-MM-DD"));
   },
