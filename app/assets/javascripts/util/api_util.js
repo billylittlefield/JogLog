@@ -18,8 +18,8 @@ window.ApiUtil = {
       dataType: "json",
       data: { team: team },
       success: function(team) {
-        ApiUtil.toggleMembership(team.id, "POST");
         window.location = "#/teams/" + team.id;
+        ApiUtil.toggleMembership(team.id, "POST", ApiUtil.getTeamsForUser);
       }
     });
   },
@@ -46,6 +46,7 @@ window.ApiUtil = {
     });
   },
   getTeamsForUser: function(userId) {
+    userId = userId || window.CURRENT_USERID;
     $.ajax({
       url: "api/users/" + userId,
       type: "GET",
