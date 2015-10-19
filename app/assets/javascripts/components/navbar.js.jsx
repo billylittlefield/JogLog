@@ -13,7 +13,7 @@
   },
   componentWillMount: function() {
     UserStore.addUserTeamsChangeEventListener(this.updateTeams);
-    ApiUtil.getTeamsForUser(window.CURRENT_USERID);
+    ApiUtil.getUserData(window.CURRENT_USERID);
   },
   componentWillUnmount: function() {
     UserStore.removeUserTeamsChangeEventListener(this.updateTeams);

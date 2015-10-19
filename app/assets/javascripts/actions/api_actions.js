@@ -39,5 +39,9 @@ window.ApiActions = {
       actionType: UserConstants.TEAMS_RECEIVED,
       teams: userData.teams
     });
+    AppDispatcher.dispatch({
+      actionType: UserConstants.FOLLOWEES_RECEIVED,
+      followees: userData.followees
+    });
   }
 };

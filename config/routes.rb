@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :teams, only: [:show, :create] do
       resource :membership, only: [:create, :destroy]
     end
-    resources :users, only: [:show]
+    resources :users, only: [:show] do
+      resource :follow, only: [:create, :destroy]
+    end
   end
 end

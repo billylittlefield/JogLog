@@ -6,14 +6,12 @@ window.Day = React.createClass({
              showModal: false };
   },
   componentWillMount: function() {
-    console.log("day mounting");
     WorkoutStore.addCalendarChangeListener(this.fetchWorkouts);
   },
   componentWillUnmount: function() {
     WorkoutStore.removeCalendarChangeListener(this.fetchWorkouts);
   },
   fetchWorkouts: function() {
-    console.log("workouts_fetched");
     this.setState({
       dayWorkouts: WorkoutStore.workoutsForDay(this.props.date,
                                                this.props.userId)

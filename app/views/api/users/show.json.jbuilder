@@ -6,3 +6,7 @@ end
 json.memberships @user.memberships do |membership|
   json.merge! membership
 end
+
+json.followees @user.followees do |followee|
+  json.merge! followee
+end

@@ -19,7 +19,7 @@ window.ApiUtil = {
       data: { team: team },
       success: function(team) {
         window.location = "#/teams/" + team.id;
-        ApiUtil.toggleMembership(team.id, "POST", ApiUtil.getTeamsForUser);
+        ApiUtil.toggleMembership(team.id, "POST", ApiUtil.getUserData);
       }
     });
   },
@@ -45,7 +45,7 @@ window.ApiUtil = {
       }
     });
   },
-  getTeamsForUser: function(userId) {
+  getUserData: function(userId) {
     userId = userId || window.CURRENT_USERID;
     $.ajax({
       url: "api/users/" + userId,
@@ -64,7 +64,18 @@ window.ApiUtil = {
       data: { team_id: teamId },
       success: function() {
         successCallback();
-        ApiUtil.getTeamsForUser(window.CURRENT_USERID);
+        ApiUtil.getUserData(window.CURRENT_USERID);
+      }
+    });
+  },
+  toggleFollow: function(followeeId, type) {
+    $.ajax({
+      url: "api/users/" + followeeId + "/follow",
+      type: type,
+      dataType: "json",
+      data: { followee_id: followeeId },
+      success: function() {
+        ApiUtil.getUserData(window.CURRENT_USERID);
       }
     });
   }

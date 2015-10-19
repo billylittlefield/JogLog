@@ -11,7 +11,6 @@
   };
 
   var resetWorkouts = function(workouts) {
-    console.log("workouts_reset");
     _workouts = workouts;
     WorkoutStore.emit(CALENDAR_CHANGED);
   };
