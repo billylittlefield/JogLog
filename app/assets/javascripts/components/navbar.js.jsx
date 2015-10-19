@@ -26,7 +26,8 @@
       return (
         <li key={"user" + window.CURRENT_USERID + "team" + team.id}>
           <a href={"#/teams/" + team.id}>{team.name}</a>
-        </li>);
+        </li>
+      );
     }.bind(this));
   },
   toggleTeamForm: function() {
@@ -59,6 +60,7 @@
             </ul>
           </li>
         </ul>
+        <SearchForm />
         <ul className="nav navbar-nav navbar-right right-list">
           <li><a href="#">{window.CURRENT_USERNAME}</a></li>
           <li onClick={this.handleLogout}><a href="#">Logout</a></li>

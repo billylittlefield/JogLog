@@ -78,5 +78,16 @@ window.ApiUtil = {
         ApiUtil.getUserData(window.CURRENT_USERID);
       }
     });
+  },
+  getSearchData: function(queryText, searchGroup) {
+    $.ajax({
+      url: "/api/" + searchGroup + "/search",
+      type: "GET",
+      data: {query: queryText},
+      dataType: "json",
+      success: function (resultsList) {
+        ApiActions.receiveSearchResults(resultsList);
+      }
+    });
   }
 };

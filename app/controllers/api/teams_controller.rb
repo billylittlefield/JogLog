@@ -14,6 +14,15 @@ class Api::TeamsController < ApplicationController
     end
   end
 
+  def search
+    if params[:query].present?
+      @teams = Team.where("lower(name) ~ ?", params[:query].downcase)
+    else
+      @teams = Team.none
+    end
+    render json: @teams
+  end
+
   private
 
   def team_params

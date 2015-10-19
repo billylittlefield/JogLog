@@ -43,5 +43,11 @@ window.ApiActions = {
       actionType: UserConstants.FOLLOWEES_RECEIVED,
       followees: userData.followees
     });
+  },
+  receiveSearchResults: function(resultsList) {
+    AppDispatcher.dispatch({
+      actionType: UserConstants.SEARCH_RESULTS_RECEIVED,
+      resultsList: resultsList
+    });
   }
 };

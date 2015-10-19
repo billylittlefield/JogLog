@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resources :workouts, only: [:create, :index, :update]
     resources :teams, only: [:show, :create] do
+      get "search", on: :collection
       resource :membership, only: [:create, :destroy]
     end
     resources :users, only: [:show] do
+      get "search", on: :collection
       resource :follow, only: [:create, :destroy]
     end
   end
