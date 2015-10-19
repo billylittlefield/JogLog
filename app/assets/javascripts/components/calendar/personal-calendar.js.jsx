@@ -16,10 +16,17 @@ window.PersonalCalendar = React.createClass({
   },
   componentWillMount: function() {
     this.retrieveWorkoutsForMonth(this.state.userId);
+    CalendarStore.addUsernameChangeListener(this.updateUsername);
+  },
+  componentWillUnmount: function() {
+    CalendarStore.removeUsernameChangeListener(this.updateUsername);
   },
   componentWillReceiveProps: function(nextProps) {
     this.setState({ userId: parseInt(nextProps.params.userid) });
     this.retrieveWorkoutsForMonth(nextProps.params.userid);
+  },
+  updateUsername: function() {
+    this.setState({ username: CalendarStore.username() });
   },
   previousMonth: function() {
     this.setState({ date: this.state.date.subtract(1, "month") });
@@ -51,7 +58,7 @@ window.PersonalCalendar = React.createClass({
         <table className="table calendar-grid">
           <thead>
           <tr className="no-selection calendar-header">
-            <th colSpan="2">My Calendar</th>
+            <th colSpan="2">{this.state.username}</th>
             <th colSpan="1" onClick={this.previousMonth}>&#9664;</th>
             <th colSpan="2">
               {this.state.date.format("MMMM")+" "+this.state.date.format("YYYY")}

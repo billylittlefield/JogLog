@@ -6,10 +6,14 @@ window.ApiActions = {
     });
     window.location = "#/calendar";
   },
-  receivePersonalWorkouts: function(workouts) {
+  receivePersonalWorkouts: function(workoutsData) {
     AppDispatcher.dispatch({
       actionType: WorkoutConstants.WORKOUTS_RECEIVED,
-      workouts: workouts
+      workouts: workoutsData.workouts
+    });
+    AppDispatcher.dispatch({
+      actionType: CalendarConstants.USERNAME_RECIEVED,
+      username: workoutsData.username
     });
   },
   receiveTeamWorkouts: function(workoutsForTeam) {

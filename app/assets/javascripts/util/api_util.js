@@ -29,8 +29,8 @@ window.ApiUtil = {
       method: "GET",
       dataType: "json",
       data: { month: month, user_id: userId, year: year },
-      success: function(workouts) {
-        ApiActions.receivePersonalWorkouts(workouts);
+      success: function(workoutsData) {
+        ApiActions.receivePersonalWorkouts(workoutsData);
       }
     });
   },

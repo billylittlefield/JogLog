@@ -13,8 +13,8 @@ class Api::WorkoutsController < ApplicationController
 
   def index
     @workouts_by_month_and_user = Workout.find_by_month_and_user(params)
-    render json: @workouts_by_month_and_user
   end
+
   private
 
   def workout_params
