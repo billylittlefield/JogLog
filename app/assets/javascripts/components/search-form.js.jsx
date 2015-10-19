@@ -30,19 +30,20 @@ window.SearchForm = React.createClass({
       );
     }.bind(this));
   },
+  show: function() {
+    return this.state.searchResults.length === 0 ? " hide" : "";
+  },
   render: function() {
     return (
-      <div className="navbar-search">
-        <form className="navbar-form navbar-left" role="search">
+      <div>
+        <form className="navbar-form navbar-left navbar-search" role="search">
             <input onInput={this.sendQuery}
                    type="text"
                    className="form-control search-input"
                    placeholder="Search..."/>
-            <div className="results-list">
-              <ul>
+              <ul className={"results-list" + this.show()}>
                 {this.searchResults()}
               </ul>
-            </div>
             <select onChange={this.sendQuery}
                     className="form-control group-select">
               <option value="users">User</option>

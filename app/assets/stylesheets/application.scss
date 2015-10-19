@@ -86,6 +86,46 @@ a {
    2px 2px 0 #fff;
 }
 
+.results-list {
+  position: absolute;
+  top: 100%;
+  left: 15px;
+  z-index: 1000;
+  float: left;
+  min-width: 160px;
+  padding: 0px;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+  &.hide {
+    display: none;
+  }
+}
+
+.results-list > li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  white-space: nowrap;
+}
+
+.results-list > li {
+  padding: 5px 0px;
+}
+
+.navbar-search {
+  position: relative;
+}
+
 .dropdown-menu {
   border: 1px solid #ccc;
   // left: 10px;
