@@ -22,8 +22,9 @@ window.PersonalCalendar = React.createClass({
     CalendarStore.removeUsernameChangeListener(this.updateUsername);
   },
   componentWillReceiveProps: function(nextProps) {
-    this.setState({ userId: parseInt(nextProps.params.userid) });
-    this.retrieveWorkoutsForMonth(nextProps.params.userid);
+    var userId = nextProps.params.userid || window.CURRENT_USERID;
+    this.setState({ userId: parseInt(userId) });
+    this.retrieveWorkoutsForMonth(userId);
   },
   updateUsername: function() {
     this.setState({ username: CalendarStore.username() });
