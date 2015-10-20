@@ -1,8 +1,13 @@
 window.FeedItem = React.createClass({
+  getInitialState: function() {
+    return { showModal: false };
+  },
   renderHeader: function(workout) {
     return (
       <div>
-        <b>{workout.user_username}</b>: {workout.title}
+        <b>
+          <a href={"#/users/" + workout.user_id}>{workout.user_username}</a>
+        </b>: {workout.title}
       </div>
     );
   },
@@ -39,14 +44,46 @@ window.FeedItem = React.createClass({
       </div>
     );
   },
+  toggleModal: function() {
+    ApiUtil.getCommentsForWorkout(this.props.workout.id);
+    if (this.state.showModal) {
+      this.setState({ showModal: false });
+    } else {
+      this.setState({ showModal: true });
+    }
+  },
+  workoutModal: function() {
+    var workout = this.props.workout;
+    var adjustedWorkout = $.extend(true, {}, workout);
+    adjustedWorkout.date = moment(workout.date).format("YYYY-MM-DD");
+    adjustedWorkout.duration = moment.duration(workout.duration).format("h:mm:ss");
+    if (adjustedWorkout.user_id === window.CURRENT_USERID) {
+      var type = workout.id ? "PATCH" : "POST";
+      return (
+        <EditWorkoutDetail
+          show={this.state.showModal}
+          onHide={this.toggleModal}
+          type={type}
+          workout={adjustedWorkout} />
+        );
+    } else {
+      return (
+        <ViewWorkoutDetail
+          show={this.state.showModal}
+          onHide={this.toggleModal}
+          workout={adjustedWorkout} />
+      );
+    }
+  },
   render: function() {
     var workout = this.props.workout;
     return (
-      <li className="feed-item">
+      <li onClick={this.toggleModal} className="feed-item">
         <table className="table">
           <tbody>
             <tr>
-              <td colSpan="4">{this.renderHeader(workout)}</td>
+              <td className="feed-item-header"
+                  colSpan="4">{this.renderHeader(workout)}</td>
             </tr>
             <tr>
               <td>{this.renderDate(workout)}</td>
@@ -56,6 +93,7 @@ window.FeedItem = React.createClass({
             </tr>
           </tbody>
         </table>
+        {this.workoutModal()}
       </li>
     );
   }

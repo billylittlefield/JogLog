@@ -111,5 +111,15 @@ window.ApiUtil = {
         ApiActions.receiveNewComment(comment);
       }
     });
+  },
+  getLeaderboards: function() {
+    $.ajax({
+      url: "api/workouts/leaderboard",
+      type: "GET",
+      dataType: "json",
+      success: function (leaderboardData) {
+        ApiActions.receiveLeaderboardData(leaderboardData);
+      }
+    });
   }
 };

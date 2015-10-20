@@ -106,6 +106,9 @@ window.Day = React.createClass({
                   WorkoutConstants.BLANK_WORKOUT;
     var adjustedWorkout = $.extend(true, {}, workout);
     adjustedWorkout.date = this.props.date.format("YYYY-MM-DD");
+    if (adjustedWorkout.duration !== "0:00:00") {
+      adjustedWorkout.duration = moment.duration(workout.duration).format("h:mm:ss");
+    }
     if (this.props.userId === window.CURRENT_USERID) {
       var type = workout.id ? "PATCH" : "POST";
       return (

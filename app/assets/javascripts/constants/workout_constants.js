@@ -5,7 +5,7 @@ window.WorkoutConstants = {
 
   BLANK_WORKOUT: {
     title: "",
-    activity: "running",
+    activity: "Run",
     date: moment().format('YYYY-MM-DD'),
     distance: "0.00",
     duration: "0:00:00"

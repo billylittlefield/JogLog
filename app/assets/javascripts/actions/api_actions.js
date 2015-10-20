@@ -65,5 +65,11 @@ window.ApiActions = {
       actionType: CommentConstants.COMMENT_ADDED,
       comment: comment
     });
+  },
+  receiveLeaderboardData: function(leaderboardData) {
+    AppDispatcher.dispatch({
+      actionType: LeaderboardConstants.LEADERBOARDS_RECEIVED,
+      leaderboardData: leaderboardData
+    });
   }
 };

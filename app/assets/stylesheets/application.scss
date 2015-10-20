@@ -2,7 +2,7 @@
 @import "bootstrap";
 
 body {
-  background-image: image-url('tweed.png');
+  background-image: image-url('escheresque_ste.png');
   background-repeat: repeat;
 }
 
@@ -195,6 +195,7 @@ a {
   height: 98%;
   margin: 10px auto;
   background-color: #B8CAFD;
+  opacity: 0.9;
   border: 2px solid #fff;
   -webkit-box-shadow: 0px -8px 10px -6px #999;
   -moz-box-shadow: 0px -8px 10px -6px #999;
@@ -304,6 +305,10 @@ tr > th.day-header-item, .table > tbody > tr > td {
     background-color: #eaeffe;
     & > tbody > tr > td {
       border: 2px solid black;
+      cursor: pointer;
+      &.feed-item-header {
+        font-size: 22px;
+      }
     }
   }
 }

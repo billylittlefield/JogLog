@@ -25,6 +25,13 @@ class Api::WorkoutsController < ApplicationController
     end
   end
 
+  def leaderboard
+    @last_week = Workout.last_week_leaders
+    @last_month = Workout.last_month_leaders
+    @current_month = Workout.current_month_leaders
+    @current_year = Workout.current_year_leaders
+  end
+
   private
 
   def workout_params

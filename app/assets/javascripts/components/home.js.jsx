@@ -9,7 +9,7 @@ window.Home = React.createClass({
           <WorkoutForm type="POST" workout={WorkoutConstants.BLANK_WORKOUT}/>
         </div>
         <div className="leaderboards">
-          <p>Leaderboards here</p>
+          <Leaderboard />
         </div>
       </div>
     );

@@ -33,6 +33,7 @@ window.WorkoutForm = React.createClass({
           <option value="Exercise Bike">Exercise Bike</option>
           <option value="Nordic Skiing">Nordic Skiing</option>
           <option value="Rowing">Rowing</option>
+          <option value="Rowing">Hiking</option>
           <option value="Rollerblading">Rollerblading</option>
         </select>
         <br/>

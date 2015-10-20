@@ -46,4 +46,76 @@ class Workout < ActiveRecord::Base
   def self.find_feed_workouts(followee_ids)
     Workout.where(user_id: followee_ids).limit(10).order("date desc")
   end
+
+  def self.last_week_leaders
+    Workout.find_by_sql("
+      SELECT
+        users.username, SUM(workouts.distance) AS sum
+      FROM
+        workouts
+      JOIN
+        users ON users.id = workouts.user_id
+      WHERE
+        (workouts.date BETWEEN '#{Date.today - 6}' AND '#{Date.today}') AND
+        workouts.activity = 'Run'
+      GROUP BY
+        users.username
+      LIMIT
+        10
+    ")
+  end
+
+  def self.last_month_leaders
+    Workout.find_by_sql("
+      SELECT
+        users.username, SUM(workouts.distance) AS sum
+      FROM
+        workouts
+      JOIN
+        users ON users.id = workouts.user_id
+      WHERE
+        (workouts.date BETWEEN '#{Date.today - 30}' AND '#{Date.today}') AND
+        workouts.activity = 'Run'
+      GROUP BY
+        users.username
+      LIMIT
+        10
+    ")
+  end
+
+  def self.current_month_leaders
+    Workout.find_by_sql("
+      SELECT
+        users.username, SUM(workouts.distance) AS sum
+      FROM
+        workouts
+      JOIN
+        users ON users.id = workouts.user_id
+      WHERE
+        (workouts.date BETWEEN '#{Date.today.beginning_of_month}' AND '#{Date.today}') AND
+        workouts.activity = 'Run'
+      GROUP BY
+        users.username
+      LIMIT
+        10
+    ")
+  end
+
+  def self.current_year_leaders
+    Workout.find_by_sql("
+      SELECT
+        users.username, SUM(workouts.distance) AS sum
+      FROM
+        workouts
+      JOIN
+        users ON users.id = workouts.user_id
+      WHERE
+        (workouts.date BETWEEN '#{Date.today.beginning_of_year}' AND '#{Date.today}') AND
+        workouts.activity = 'Run'
+      GROUP BY
+        users.username
+      LIMIT
+        10
+    ")
+  end
 end
