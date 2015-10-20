@@ -25,6 +25,7 @@ window.PersonalCalendar = React.createClass({
     var userId = nextProps.params.userid || window.CURRENT_USERID;
     this.setState({ userId: parseInt(userId) });
     this.retrieveWorkoutsForMonth(userId);
+    ApiUtil.getUserData();
   },
   updateUsername: function() {
     this.setState({ username: CalendarStore.username() });

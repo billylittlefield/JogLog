@@ -4,6 +4,7 @@ window.WorkoutFeed = React.createClass({
   },
   componentWillMount: function() {
     UserStore.addFeedChangeListener(this.updateFeed);
+    this.updateFeed();
   },
   componentWillUnmount: function() {
     UserStore.removeFeedChangeListener(this.updateFeed);

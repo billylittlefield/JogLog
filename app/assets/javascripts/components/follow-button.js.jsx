@@ -8,6 +8,9 @@ window.FollowButton = React.createClass({
   componentWillUnmount: function() {
     UserStore.removeFolloweesChangeEventListener(this.updateFollow);
   },
+  componentWillReceiveProps: function() {
+    console.log("ok");
+  },
   updateFollow: function() {
     this.setState({ following: UserStore.isFollowing(this.props.followeeId) });
   },
