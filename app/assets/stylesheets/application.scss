@@ -312,3 +312,9 @@ tr > th.day-header-item, .table > tbody > tr > td {
     }
   }
 }
+
+.panel-body {
+  & > .table {
+    margin-bottom: 0px;
+  }
+}
