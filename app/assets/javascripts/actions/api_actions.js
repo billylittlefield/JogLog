@@ -49,5 +49,17 @@ window.ApiActions = {
       actionType: UserConstants.SEARCH_RESULTS_RECEIVED,
       resultsList: resultsList
     });
+  },
+  receiveCommentsForWorkout: function(comments) {
+    AppDispatcher.dispatch({
+      actionType: CommentConstants.COMMENTS_RECEIVED,
+      comments: comments
+    });
+  },
+  receiveNewComment: function(comment) {
+    AppDispatcher.dispatch({
+      actionType: CommentConstants.COMMENT_ADDED,
+      comment: comment
+    });
   }
 };

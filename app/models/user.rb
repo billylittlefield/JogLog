@@ -24,7 +24,8 @@ class User < ActiveRecord::Base
   has_many :followers, through: :in_follows
   has_many :out_follows, class_name: "Follow", foreign_key: :follower_id
   has_many :followees, through: :out_follows
-
+  has_many :authored_comments, class_name: "Comment", foreign_key: :author_id
+  
   after_initialize :ensure_session_token
 
   attr_reader :password

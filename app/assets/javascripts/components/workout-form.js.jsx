@@ -5,7 +5,16 @@ window.WorkoutForm = React.createClass({
   },
   submitWorkoutForm: function(e) {
     e.preventDefault();
-    ApiUtil.createWorkout(this.state);
+    ApiUtil.createWorkout(this.state, this.props.type);
+  },
+  submitButton: function() {
+    if (this.props.type === "PATCH") {
+      return <input type="submit" value="Update Workout"/>;
+    } else if (this.props.type === "POST") {
+      return <input type="submit" value="Create Workout"/>;
+    } else {
+      return;
+    }
   },
   render: function() {
     return (
@@ -48,7 +57,7 @@ window.WorkoutForm = React.createClass({
                   valueLink={this.linkState("notes")}
                   placeholder="Write any workout details here!"/>
         <br/>
-        <input type="submit" value="Log Workout"/>
+        {this.submitButton()}
       </form>
     );
   }

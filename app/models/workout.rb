@@ -18,6 +18,7 @@ class Workout < ActiveRecord::Base
   validates :user_id, :title, :activity, :date, presence: true
 
   belongs_to :user
+  has_many :comments
 
   def self.find_by_month_and_user(params)
     # Moment.js month is zero-indexed -- no adjustment needed to retrieve

@@ -1,9 +1,10 @@
 window.ApiUtil = {
   mixins: [ReactRouter.History],
-  createWorkout: function(workout) {
+  createWorkout: function(workout, type) {
+    var urlSuffix = type === "PATCH" ? "/" + workout.id : "";
     $.ajax({
-      url: "api/workouts",
-      method: "POST",
+      url: "api/workouts" + urlSuffix,
+      type: type,
       dataType: "json",
       data: { workout: workout },
       success: function(workout) {
@@ -14,7 +15,7 @@ window.ApiUtil = {
   createTeam: function(team) {
     $.ajax({
       url: "api/teams",
-      method: "POST",
+      type: "POST",
       dataType: "json",
       data: { team: team },
       success: function(team) {
@@ -26,7 +27,7 @@ window.ApiUtil = {
   getMonthsWorkoutsByUser: function(userId, month, year) {
     $.ajax({
       url: "api/workouts",
-      method: "GET",
+      type: "GET",
       dataType: "json",
       data: { month: month, user_id: userId, year: year },
       success: function(workoutsData) {
@@ -81,12 +82,33 @@ window.ApiUtil = {
   },
   getSearchData: function(queryText, searchGroup) {
     $.ajax({
-      url: "/api/" + searchGroup + "/search",
+      url: "api/" + searchGroup + "/search",
       type: "GET",
       data: {query: queryText},
       dataType: "json",
       success: function (resultsList) {
         ApiActions.receiveSearchResults(resultsList);
+      }
+    });
+  },
+  getCommentsForWorkout: function(workoutId) {
+    $.ajax({
+      url: "api/workouts/" + workoutId + "/comments",
+      type: "GET",
+      dataType: "json",
+      success: function(comments) {
+        ApiActions.receiveCommentsForWorkout(comments);
+      }
+    });
+  },
+  createComment: function(comment) {
+    $.ajax({
+      url: "api/workouts/" + comment.workout_id + "/comments",
+      type: "POST",
+      data: { comment: comment },
+      dataType: "json",
+      success: function(comment) {
+        ApiActions.receiveNewComment(comment);
       }
     });
   }

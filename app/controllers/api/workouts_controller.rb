@@ -15,6 +15,15 @@ class Api::WorkoutsController < ApplicationController
     @workouts_by_month_and_user = Workout.find_by_month_and_user(params)
   end
 
+  def update
+    @workout = Workout.find(params[:id])
+    if @workout.update(workout_params)
+      render json: @workout
+    else
+      fail
+    end
+  end
+
   private
 
   def workout_params

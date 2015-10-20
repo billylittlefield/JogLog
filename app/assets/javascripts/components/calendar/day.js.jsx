@@ -86,9 +86,15 @@ window.Day = React.createClass({
           {this.workoutItemTime(displayWorkout)}
         </div>
       );
+    } else {
+      return <div onClick={this.toggleModal} className="workout-item"/>;
     }
   },
   toggleModal: function() {
+    var workout = this.state.dayWorkouts[this.state.displayIdx];
+    if (workout) {
+      ApiUtil.getCommentsForWorkout(workout.id);
+    }
     if (this.state.showModal) {
       this.setState({ showModal: false });
     } else {
@@ -96,21 +102,26 @@ window.Day = React.createClass({
     }
   },
   workoutModal: function() {
-    var workout = this.state.dayWorkouts[this.state.displayIdx];
-    if (workout) {
-      if (workout.user_id === window.CURRENT_USERID) {
-        return (
-          <EditWorkoutDetail
-            show={this.state.showModal}
-            onHide={this.toggleModal}
-            workout={workout} />
-          );
-      } else {
+    var workout = this.state.dayWorkouts[this.state.displayIdx] ||
+                  WorkoutConstants.BLANK_WORKOUT;
+    var adjustedWorkout = $.extend(true, {}, workout);
+    adjustedWorkout.date = this.props.date.format("YYYY-MM-DD");
+    if (this.props.userId === window.CURRENT_USERID) {
+      var type = workout.id ? "PATCH" : "POST";
+      return (
+        <EditWorkoutDetail
+          show={this.state.showModal}
+          onHide={this.toggleModal}
+          type={type}
+          workout={adjustedWorkout} />
+        );
+    } else {
+      if (workout.id) {
         return (
           <ViewWorkoutDetail
             show={this.state.showModal}
             onHide={this.toggleModal}
-            workout={workout} />
+            workout={adjustedWorkout} />
         );
       }
     }

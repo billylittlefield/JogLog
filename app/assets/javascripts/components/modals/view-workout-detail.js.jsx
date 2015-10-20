@@ -14,6 +14,7 @@ window.ViewWorkoutDetail = React.createClass({
         View Workout Detail
         </Modal.Header>
         <WorkoutForm mode="view" workout={adjustedWorkout}/>
+        <Comments workoutId={this.props.workout.id}/>
       </Modal>
     );
   }
