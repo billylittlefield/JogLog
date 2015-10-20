@@ -2,9 +2,8 @@
 @import "bootstrap";
 
 body {
-  background-image: image-url('splash_background.jpg');
-  background-position: 50%;
-  background-attachment: fixed;
+  background-image: image-url('tweed.png');
+  background-repeat: repeat;
 }
 
 .sign-form {
@@ -55,7 +54,7 @@ body {
 }
 
 a {
-  color: #23527C;
+  color: black; // #23527C;
 }
 
 .nav > li > a {
@@ -150,11 +149,10 @@ a {
   margin: auto;
 }
 
-.workout-feed {
+.workout-feed-container {
   float: left;
   width: 48.5%;
   min-width: 300px;
-  height: 800px;
   margin: 1% 0.5% 1% 1%;
   padding: 10px;
   border-radius: 3px;
@@ -197,7 +195,6 @@ a {
   height: 98%;
   margin: 10px auto;
   background-color: #B8CAFD;
-  opacity: 0.9;
   border: 2px solid #fff;
   -webkit-box-shadow: 0px -8px 10px -6px #999;
   -moz-box-shadow: 0px -8px 10px -6px #999;
@@ -292,4 +289,23 @@ tr > th.day-header-item, .table > tbody > tr > td {
 
 .team-form-name {
   display: inline;
+}
+
+.feed-list {
+  list-style: none;
+  padding: 0;
+}
+
+.feed-item {
+  padding: 12px 12px;
+  & > .table {
+    margin-bottom: 0px;
+  }
+  & > table {
+    border: 2px solid black;
+    background-color: #eaeffe;
+    & > tbody > tr > td {
+      border: 2px solid black;
+    }
+  }
 }

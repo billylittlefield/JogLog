@@ -43,6 +43,10 @@ window.ApiActions = {
       actionType: UserConstants.FOLLOWEES_RECEIVED,
       followees: userData.followees
     });
+    AppDispatcher.dispatch({
+      actionType: UserConstants.WORKOUT_FEED_RECEIVED,
+      feedWorkouts: userData.feed_workouts
+    });
   },
   receiveSearchResults: function(resultsList) {
     AppDispatcher.dispatch({

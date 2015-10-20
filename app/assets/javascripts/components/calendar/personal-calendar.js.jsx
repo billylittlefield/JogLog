@@ -31,11 +31,11 @@ window.PersonalCalendar = React.createClass({
   },
   previousMonth: function() {
     this.setState({ date: this.state.date.subtract(1, "month") });
-    this.retrieveWorkoutsForMonth();
+    this.retrieveWorkoutsForMonth(this.updateUserId());
   },
   nextMonth: function() {
     this.setState({ date: this.state.date.add(1, "month") });
-    this.retrieveWorkoutsForMonth();
+    this.retrieveWorkoutsForMonth(this.updateUserId());
   },
   renderWeeks: function() {
     var weeks = [];

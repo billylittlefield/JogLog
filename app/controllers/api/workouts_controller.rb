@@ -13,6 +13,7 @@ class Api::WorkoutsController < ApplicationController
 
   def index
     @workouts_by_month_and_user = Workout.find_by_month_and_user(params)
+    @user = User.find(params[:user_id])
   end
 
   def update

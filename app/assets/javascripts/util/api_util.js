@@ -25,6 +25,7 @@ window.ApiUtil = {
     });
   },
   getMonthsWorkoutsByUser: function(userId, month, year) {
+    console.log(userId);
     $.ajax({
       url: "api/workouts",
       type: "GET",

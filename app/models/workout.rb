@@ -40,6 +40,10 @@ class Workout < ActiveRecord::Base
     end_date = start_date + 8
 
     Workout.where("(user_id = ?) AND (date BETWEEN ? AND ?)",
-                  user_id, start_date, end_date);
+                  user_id, start_date, end_date)
+  end
+
+  def self.find_feed_workouts(followee_ids)
+    Workout.where(user_id: followee_ids).limit(10).order("date desc")
   end
 end
