@@ -1,10 +1,13 @@
-<div class="page-background">
-  <div class="sign-form">
-    <div class="sign-form-header">
-      <%= image_tag "running_man.png" %>
-      <h1>JogLog</h1>
-    </div>
-    <%= render "shared/sign_form", user: @user, type: :new_user %>
-    <h3>Have an account? <a href="/session/new">Sign in!</a></h3>
+<div class="page-background"></div>
+<div class="login-container">
+  <div class="sign-form-header">
+    <%= image_tag "running_man.png" %>
+    <h1>JogLog</h1>
   </div>
+  <hr>
+  <div class="sign-form">
+    <%= render "shared/sign_form", user: @user, type: :new_user %>
+  </div>
+  <hr>
+  <h4>Have an account? <a href="/session/new">Log in!</a></h4>
 </div>
