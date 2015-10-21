@@ -15,7 +15,7 @@ window.FeedItem = React.createClass({
     return (
       <div>
         <h4>DATE</h4>
-        {moment(workout.date).format("MM/DD/YY")}
+        {moment(workout.date).add(12, "hours").format("MM/DD/YY")}
       </div>
     );
   },

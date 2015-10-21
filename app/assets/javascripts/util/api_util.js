@@ -8,6 +8,7 @@ window.ApiUtil = {
       dataType: "json",
       data: { workout: workout },
       success: function(workout) {
+        ApiUtil.getUserData();
         ApiActions.receiveWorkout(workout);
       }
     });

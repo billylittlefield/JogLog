@@ -20,6 +20,45 @@ window.WorkoutForm = React.createClass({
       return;
     }
   },
+  parseDuration: function() {
+    var duration = $(".duration-input").val().split(":");
+    var minutes = 0,
+        seconds = 0,
+        hours = 0;
+    if (duration.length === 1 && duration[0].length > 0) {
+      minutes = parseInt(duration[0]) % 60;
+      hours = Math.floor(parseInt(duration[0]) / 60);
+    } else if (duration.length === 2) {
+      seconds = parseInt(duration[1]) % 60;
+      minutes = parseInt(duration[0]) +
+                Math.floor(parseInt(duration[1]) / 60);
+      if (minutes > 59) {
+        hours = Math.floor(parseInt(minutes) / 60);
+        minutes = minutes % 60;
+      }
+    } else if (duration.length === 3) {
+      seconds = parseInt(duration[2]) % 60;
+      minutes = parseInt(duration[1]) +
+                Math.floor(parseInt(duration[2]) / 60);
+      hours = parseInt(duration[0]);
+      if (minutes > 59) {
+        hours += Math.floor(parseInt(minutes) / 60);
+        minutes = minutes % 60;
+      }
+    }
+    if (isNaN(hours) || isNaN(minutes) || isNaN(seconds)) {
+      this.setState({ duration: "0:00:00",
+                      humanizedDuration: "Invalid" });
+    } else {
+      this.setState({ duration: moment.duration({ seconds: seconds,
+                                                  minutes: minutes,
+                                                  hours: hours })
+                                      .format("h:mm:ss"),
+                      humanizedDuration: hours+"h, "+
+                                         minutes+"m, "+
+                                         seconds+"s"});
+    }
+  },
   render: function() {
     return (
       <div className="form-div">
@@ -60,14 +99,16 @@ window.WorkoutForm = React.createClass({
             <input className="form-control"
                    name="workout_distance"
                    type="number"
+                   min="0"
                    step="1"
                    valueLink={this.linkState("distance")}/>
           </div>
           <div className="form-group right-input">
             <label htmlFor="duration">Duration</label>
-            <input className="form-control"
+            <span>{this.state.humanizedDuration}</span>
+            <input className="form-control duration-input"
                    type="text"
-                   valueLink={this.linkState("duration")}/>
+                   onInput={this.parseDuration}/>
           </div>
           <div className="form-group">
             <label htmlFor="workout_notes">Notes</label>
