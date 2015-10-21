@@ -48,7 +48,7 @@
           <li className="logo">JogLog</li>
           <li><a href="#/">Home</a></li>
           <li><a href="#/calendar">Calendar</a></li>
-          <li className="doprdown">
+          <li className="dropdown">
             <a href="#" className="dropdown-toggle" data-toggle="dropdown"
             role="button" aria-haspopup="true" aria-expanded="false">
               Teams
