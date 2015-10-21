@@ -22,13 +22,17 @@
     this.setState({ teams: UserStore.teams() });
   },
   teamsList: function() {
-    return _.map(this.state.teams, function(team) {
-      return (
-        <li key={"user" + window.CURRENT_USERID + "team" + team.id}>
-          <a href={"#/teams/" + team.id}>{team.name}</a>
-        </li>
-      );
-    }.bind(this));
+    if (this.state.teams.length === 0) {
+      return (<li><p>You are not on any teams!</p></li>);
+    } else {
+      return _.map(this.state.teams, function(team) {
+        return (
+          <li key={"user" + window.CURRENT_USERID + "team" + team.id}>
+            <a href={"#/teams/" + team.id}>{team.name}</a>
+          </li>
+        );
+      }.bind(this));
+    }
   },
   toggleTeamForm: function() {
     if (this.state.showTeamForm) {

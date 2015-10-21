@@ -130,6 +130,9 @@ a {
   // left: 10px;
   top: 48px;
   background-color: #eaeffe;
+  & > li > p {
+    padding: 3px 20px;
+  }
 }
 
 .navbar-nav > li > .dropdown-menu {
@@ -159,6 +162,7 @@ a {
   border: 1px solid #8C9C82;
   background-color: #B8CAFD;
   opacity: 0.9;
+  border: 2px solid #fff;
 }
 
 .form-header {
@@ -170,24 +174,24 @@ a {
   float: right;
   width: 48.5%;
   margin: 1% 1% 0.5% 0.5%;
-  height: 390px;
   padding: 10px;
   border-radius: 3px;
   border: 1px solid #8C9C82;
   background-color: #B8CAFD;
   opacity: 0.9;
+  border: 2px solid #fff;
 }
 
-.leaderboards {
+.leaderboards-container {
   float: right;
   width: 48.5%;
-  height: 390px;
   margin: 0.5% 1% 1% 0.5%;
   padding: 10px;
   border-radius: 3px;
   border: 1px solid #8C9C82;
   background-color: #B8CAFD;
   opacity: 0.9;
+  border: 2px solid #fff;
 }
 
 .calendar-page-container {
@@ -197,9 +201,6 @@ a {
   background-color: #B8CAFD;
   opacity: 0.9;
   border: 2px solid #fff;
-  -webkit-box-shadow: 0px -8px 10px -6px #999;
-  -moz-box-shadow: 0px -8px 10px -6px #999;
-  box-shadow: 0px -8px 10px -6px #999;
 }
 
 .day {
@@ -315,6 +316,30 @@ tr > th.day-header-item, .table > tbody > tr > td {
 
 .panel-body {
   & > .table {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
+}
+
+.panel-group {
+  margin-bottom: 0;
+}
+
+.left-input {
+  width: 48%;
+  float: left;
+}
+
+.right-input {
+  width: 48%;
+  float: right;
+}
+
+.workout-form > input.btn {
+  margin: auto;
+  display: block;
+  width: 50%;
+}
+
+.form-div > h1 {
+  text-align: center;
 }

@@ -8,7 +8,7 @@ window.Home = React.createClass({
         <div className="workout-form-container">
           <WorkoutForm type="POST" workout={WorkoutConstants.BLANK_WORKOUT}/>
         </div>
-        <div className="leaderboards">
+        <div className="leaderboards-container">
           <Leaderboard />
         </div>
       </div>
