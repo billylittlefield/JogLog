@@ -60,7 +60,7 @@ window.WorkoutForm = React.createClass({
             <input className="form-control"
                    name="workout_distance"
                    type="number"
-                   step="0.01"
+                   step="1"
                    valueLink={this.linkState("distance")}/>
           </div>
           <div className="form-group right-input">

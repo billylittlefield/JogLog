@@ -46,9 +46,10 @@ body {
     }
     & > img {
       float: left;
-      height: 60px;
-      width: 60px;
-      padding-top: 10px;
+      height: 50px;
+      width: 50px;
+      position: relative;
+      top: 10px;
     }
   }
   & > .sign-form {
@@ -59,6 +60,13 @@ body {
         width: 80%;
         margin: auto;
         padding: 10px;
+        & > input:hover {
+          box-shadow:
+           -2px -2px 0 #fff,
+           2px -2px 0 #fff,
+           -2px 2px 0 #fff,
+           2px 2px 0 #fff;
+        }
       }
       & > .btn {
         -webkit-border-radius: 5;
@@ -66,12 +74,19 @@ body {
         border-radius: 5px;
         font-family: Arial;
         color: #333333;
-        font-size: 20px;
+        font-size: 16px;
         background: #f3e6ba;
         margin: 10px auto;
         padding: 10px 20px 10px 20px;
         text-decoration: none;
         display: block;
+        &:hover {
+          box-shadow:
+           -2px -2px 0 #fff,
+           2px -2px 0 #fff,
+           -2px 2px 0 #fff,
+           2px 2px 0 #fff;
+        }
       }
     }
   }

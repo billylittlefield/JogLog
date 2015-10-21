@@ -68,6 +68,7 @@ window.Day = React.createClass({
     }
   },
   workoutItemTime: function(displayWorkout) {
+    debugger;
     if (displayWorkout.duration.substring(11,19) !== "00:00:00") {
       return (<span>
                 <br/>
