@@ -41,6 +41,14 @@
       this.setState({ showTeamForm: true });
     }
   },
+  toggleTeamList: function() {
+    var $teamList = $(".team-list");
+    if ($teamList.hasClass("hide")) {
+      $teamList.removeClass("hide");
+    } else {
+      $teamList.addClass("hide");
+    }
+  },
   render: function () {
     return (
       <header className="header">
@@ -52,16 +60,13 @@
           <ul className="nav-list list-left group">
             <li><a href="#/">Home</a></li>
             <li><a href="#/calendar">Calendar</a></li>
-            <li className="dropdown">
-              <a href="#" className="dropdown-toggle" data-toggle="dropdown"
-              role="button" aria-haspopup="true" aria-expanded="false">
-                Teams
-              </a>
-              <ul className="team-list">
+            <li className="team-link"><a onClick={this.toggleTeamList} href="#">Teams</a>
+              <ul className="team-list hide">
                 {this.teamsList()}
-                <li role="separator" className="divider"></li>
+                <hr/>
                 <li onClick={this.toggleTeamForm}>
-                  <a href="javascript:void(0)">Create New Team</a>
+                  <a className="add-team"
+                     href="javascript:void(0)">Create New Team</a>
                 </li>
                 <TeamForm show={this.state.showTeamForm}
                           onHide={this.toggleTeamForm} />
@@ -77,4 +82,11 @@
       </header>
     );
   }
+});
+$(document).ready(function() {
+  $(document).click(function(e){
+    $(".search-input").val("");
+    $(".search-results-list").addClass("hide");
+    $(".team-list").addClass("hide");
+  });
 });
