@@ -1,0 +1,21 @@
+.leaderboards-container {
+  float: right;
+  width: 48.5%;
+  margin: 0.5% 1% 1% 0.5%;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #8C9C82;
+  background-color: #B8CAFD;
+  opacity: 0.9;
+  border: 2px solid #fff;
+}
+
+.panel-body {
+  & > .table {
+    margin-bottom: 0;
+  }
+}
+
+.panel-group {
+  margin-bottom: 0;
+}
