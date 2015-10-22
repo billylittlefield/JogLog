@@ -14,8 +14,9 @@ $(function () {
     </Route>
   );
 
-  if (window.location.pathname !== "/session/new" &&
-      window.location.pathname !== "/users/new") {
+  var path = window.location.pathname;
+  if (path !== "/session" && path !== "/session/new" &&
+      path !== "/users"   && path !== "/users/new") {
     React.render(<Router>{routes}</Router>, hook);
   }
 });
