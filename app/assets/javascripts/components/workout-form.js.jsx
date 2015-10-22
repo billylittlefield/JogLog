@@ -53,7 +53,7 @@ window.WorkoutForm = React.createClass({
       this.setState({ duration: moment.duration({ seconds: seconds,
                                                   minutes: minutes,
                                                   hours: hours })
-                                      .format("h:mm:ss"),
+                                      .format("h:mm:ss", { trim: false }),
                       humanizedDuration: hours+"h, "+
                                          minutes+"m, "+
                                          seconds+"s"});
@@ -100,7 +100,7 @@ window.WorkoutForm = React.createClass({
                    name="workout_distance"
                    type="number"
                    min="0"
-                   step="1"
+                   step="0.01"
                    valueLink={this.linkState("distance")}/>
           </div>
           <div className="form-group right-input">

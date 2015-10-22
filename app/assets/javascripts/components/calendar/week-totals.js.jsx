@@ -37,12 +37,12 @@ window.WeekTotals = React.createClass({
   prevActivity: function() {
     var currentIdx = this.state.displayIdx;
     var newIdx = currentIdx === 0 ?
-                      (_.keys(this.sortedTotals).length - 1) : (currentIdx - 1);
+                      (_.keys(this.sortedTotals()).length - 1) : (currentIdx - 1);
     this.setState({ displayIdx: newIdx });
   },
   nextActivity: function() {
     var currentIdx = this.state.displayIdx;
-    var newIdx = currentIdx === (_.keys(this.sortedTotals).length - 1) ?
+    var newIdx = currentIdx === (_.keys(this.sortedTotals()).length - 1) ?
                       0 : (currentIdx + 1);
     this.setState({ displayIdx: newIdx });
   },
