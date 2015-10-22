@@ -1,77 +1,129 @@
-.navbar-custom {
-  background-color: #ccccff;
-  border-bottom: 2px solid #fff;
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#eaeffe), to(#B8CAFD));
-  background-image: -webkit-linear-gradient(top, #eaeffe, 0%, #B8CAFD, 100%);
-  background-image: -moz-linear-gradient(top, #eaeffe 0%, #B8CAFD 100%);
-  background-image: linear-gradient(to bottom, #eaeffe 0%, #B8CAFD 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeaeffe', endColorstr='#ffB8CAFD', GradientType=0);
-  position: relative;
-  min-height: 58px;
-  font-family: 'Racing Sans One', cursive;
-  font-size: 28px;
-  text-shadow:
-   -1px -1px 0 #fff,
-   1px -1px 0 #fff,
-   -1px 1px 0 #fff,
-   1px 1px 0 #fff;
+/* cream: #F3E6BA
+   maroon #967331
+   white #fff */
+
+.header {
+  background-color: #000;
+  opacity: 1;
+  border-bottom: 2px solid #F3E6BA;
+}
+
+.navbar-content {
+  font-family: 'Montserrat', sans-serif;
+  width: 1200px;
+  margin: auto;
 }
 
 .logo {
-  font-size: 36px;
-  text-shadow:
-   -2px -2px 0 #fff,
-   2px -2px 0 #fff,
-   -2px 2px 0 #fff,
-   2px 2px 0 #fff;
-   padding: 18px 15px 18px 0px;
-   line-height: 20px;
-   color: #23527C;
-   top: -2px;
+  width: 178px;
+  height: auto;
+  padding: 10px;
+  margin: 0;
+  float: left;
+  & > h1 {
+    display: inline;
+    font-family: 'Racing Sans One', cursive;
+    font-size: 36px;
+    line-height: 40px;
+    position: relative;
+    color: #F3E6BA;
+    bottom: 3px;
+    &:hover {
+      color: #a9f073;
+      cursor: default;
+    }
+  }
+  & > img {
+    float: left;
+    height: 35px;
+    width: 35px;
+    position: relative;
+  }
 }
 
-.logo:hover {
-  cursor: default;
+.list-left {
+  float: left;
+  & > li > a {
+    float: left;
+  }
 }
 
-a {
-  color: black; // #23527C;
+.list-right {
+  float: right;
+  & > li > a {
+    float: left;
+  }
 }
 
-.nav > li > a {
-  padding: 18px 10px;
+.nav-list {
+  list-style: none;
+  padding: 15px 0px;
+  margin-bottom: 0px;
+  line-height: 30px;
+  font-size: 28px;
+  & > li {
+    display: inline;
+    & > a {
+      color: #fff;
+      padding: 0px 10px;
+      &:hover {
+        color: #a9f073;
+        text-decoration: none;
+      }
+      &:focus {
+        text-decoration: none;
+      }
+    }
+  }
 }
 
-.navbar {
-  -webkit-box-shadow: 0 8px 6px -6px #999;
-  -moz-box-shadow: 0 8px 6px -6px #999;
-  box-shadow: 0px 8px 6px -6px #999;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
+.navbar-search {
+  position: relative;
+  display: block;
+  float: left;
+  top: 13px;
+  padding: 0 15px;
+  & > form {
+    width: 200px;
+  }
 }
 
-.nav > li > a:hover, .nav > li > a:focus, .nav .open > a, .nav .open > a:hover,
-.nav .open > a:focus  {
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#eaeffe), to(#B8CAFD));
-  background-image: -webkit-linear-gradient(top, #eaeffe, 0%, #B8CAFD, 100%);
-  background-image: -moz-linear-gradient(top, #eaeffe 0%, #B8CAFD 100%);
-  background-image: linear-gradient(to bottom, #eaeffe 0%, #B8CAFD 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeaeffe', endColorstr='#ffB8CAFD', GradientType=0);
-  background-color: #B8CAFD;
-  text-shadow:
-   -2px -2px 0 #fff,
-   2px -2px 0 #fff,
-   -2px 2px 0 #fff,
-   2px 2px 0 #fff;
+.search-results-list {
+  position: absolute;
+  background-color: #000;
+  z-index: 1;
+  list-style: none;
+  top: 47px;
+  padding: 10px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  width: 200px;
+  border-left: 2px solid #f3e6ba;
+  border-right: 2px solid #f3e6ba;
+  border-bottom: 2px solid #f3e6ba;
+  & > li {
+    padding: 5px 0px;
+    &:hover {
+      cursor: default;
+    }
+    & > a {
+      color: #fff;
+      &:hover {
+        color: #a9f073;
+        text-decoration: none;
+      }
+    }
+  }
+  & > li.list-title {
+    color: #F3E6BA;
+  }
 }
 
-.results-list {
+.team-list {
+  display: none;
   position: absolute;
   top: 100%;
   left: 15px;
-  z-index: 1000;
   float: left;
   min-width: 160px;
   padding: 0px;
@@ -87,25 +139,23 @@ a {
   border-radius: 4px;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
           box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-  &.hide {
-    display: none;
-  }
 }
 
-.results-list > li > a {
+.hide {
+  display: none;
+}
+
+.team-list > li > a {
   display: block;
   padding: 3px 20px;
   clear: both;
   white-space: nowrap;
 }
 
-.results-list > li {
+.team-list > li {
   padding: 5px 0px;
 }
 
-.navbar-search {
-  position: relative;
-}
 
 .dropdown-menu {
   border: 1px solid #ccc;
@@ -115,8 +165,4 @@ a {
   & > li > p {
     padding: 3px 20px;
   }
-}
-
-.navbar-nav > li > .dropdown-menu {
-  margin-top: 7px;
 }

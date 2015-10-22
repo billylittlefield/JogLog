@@ -2,7 +2,9 @@
   'use strict';
   var _teams = [];
   var _followees = [];
-  var _searchResults = [];
+  var _userSearchResults = [];
+  var _teamSearchResults = [];
+  var _allSearchResults = [];
   var _feedWorkouts = [];
   var TEAMS_UPDATED = "TEAMS_UPDATED";
   var FOLLOWEES_UPDATED = "FOLLOWEES_UPDATED";
@@ -24,8 +26,13 @@
     UserStore.emit(FEED_WORKOUTS_UPDATED);
   };
 
-  var updateSearchResults = function(resultsList) {
-    _searchResults = resultsList;
+  var updateUserSearchResults = function(resultsList) {
+    _userSearchResults = resultsList;
+    UserStore.emit(SEARCH_RESULTS_UPDATED);
+  };
+
+  var updateTeamSearchResults = function(resultsList) {
+    _teamSearchResults = resultsList;
     UserStore.emit(SEARCH_RESULTS_UPDATED);
   };
 
@@ -42,8 +49,11 @@
     followees: function() {
       return _followees.slice();
     },
-    searchResults: function() {
-      return _searchResults.slice();
+    userSearchResults: function() {
+      return _userSearchResults.slice();
+    },
+    teamSearchResults: function() {
+      return _teamSearchResults.slice();
     },
     feedWorkouts: function() {
       return _feedWorkouts.slice();
@@ -80,8 +90,11 @@
         case UserConstants.FOLLOWEES_RECEIVED:
           updateFollowees(payload.followees);
           break;
-        case UserConstants.SEARCH_RESULTS_RECEIVED:
-          updateSearchResults(payload.resultsList);
+        case UserConstants.USER_SEARCH_RESULTS_RECEIVED:
+          updateUserSearchResults(payload.userResultsList);
+          break;
+        case UserConstants.TEAM_SEARCH_RESULTS_RECEIVED:
+          updateTeamSearchResults(payload.teamResultsList);
           break;
         case UserConstants.WORKOUT_FEED_RECEIVED:
           updateFeedWorkouts(payload.feedWorkouts);

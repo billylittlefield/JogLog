@@ -81,14 +81,23 @@ window.ApiUtil = {
       }
     });
   },
-  getSearchData: function(queryText, searchGroup) {
+  getSearchData: function(queryText) {
     $.ajax({
-      url: "api/" + searchGroup + "/search",
+      url: "api/users/search",
       type: "GET",
       data: {query: queryText},
       dataType: "json",
       success: function (resultsList) {
-        ApiActions.receiveSearchResults(resultsList);
+        ApiActions.receiveUserSearchResults(resultsList);
+      }
+    });
+    $.ajax({
+      url: "api/teams/search",
+      type: "GET",
+      data: {query: queryText},
+      dataType: "json",
+      success: function (resultsList) {
+        ApiActions.receiveTeamSearchResults(resultsList);
       }
     });
   },

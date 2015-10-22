@@ -48,10 +48,16 @@ window.ApiActions = {
       feedWorkouts: userData.feed_workouts
     });
   },
-  receiveSearchResults: function(resultsList) {
+  receiveUserSearchResults: function(resultsList) {
     AppDispatcher.dispatch({
-      actionType: UserConstants.SEARCH_RESULTS_RECEIVED,
-      resultsList: resultsList
+      actionType: UserConstants.USER_SEARCH_RESULTS_RECEIVED,
+      userResultsList: resultsList
+    });
+  },
+  receiveTeamSearchResults: function(resultsList) {
+    AppDispatcher.dispatch({
+      actionType: UserConstants.TEAM_SEARCH_RESULTS_RECEIVED,
+      teamResultsList: resultsList
     });
   },
   receiveCommentsForWorkout: function(comments) {

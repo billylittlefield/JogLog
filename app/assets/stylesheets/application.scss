@@ -35,3 +35,18 @@ body {
 .team-form-name {
   display: inline;
 }
+
+/* Clearfix */
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/*
+  FONTS
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Lato', sans-serif;
+  font-family: 'Racing Sans One', cursive;
+*/

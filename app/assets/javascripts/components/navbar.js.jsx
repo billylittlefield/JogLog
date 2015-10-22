@@ -43,33 +43,38 @@
   },
   render: function () {
     return (
-      <nav className="no-selection navbar navbar-custom">
-        <ul className="nav navbar-nav navbar-left left-list">
-          <li className="logo">JogLog</li>
-          <li><a href="#/">Home</a></li>
-          <li><a href="#/calendar">Calendar</a></li>
-          <li className="dropdown">
-            <a href="#" className="dropdown-toggle" data-toggle="dropdown"
-            role="button" aria-haspopup="true" aria-expanded="false">
-              Teams
-            </a>
-            <ul className="dropdown-menu">
-              {this.teamsList()}
-              <li role="separator" className="divider"></li>
-              <li onClick={this.toggleTeamForm}>
-                <a href="javascript:void(0)">Create New Team</a>
-              </li>
-              <TeamForm show={this.state.showTeamForm}
-                        onHide={this.toggleTeamForm} />
-            </ul>
-          </li>
-        </ul>
-        <SearchForm />
-        <ul className="nav navbar-nav navbar-right right-list">
-          <li><a href="#">{window.CURRENT_USERNAME}</a></li>
-          <li onClick={this.handleLogout}><a href="#">Logout</a></li>
-        </ul>
-      </nav>
+      <header className="header">
+        <nav className="navbar-content group">
+          <div className="logo">
+              <img src="assets/running_man.png"/>
+              <h1>JogLog</h1>
+          </div>
+          <ul className="nav-list list-left group">
+            <li><a href="#/">Home</a></li>
+            <li><a href="#/calendar">Calendar</a></li>
+            <li className="dropdown">
+              <a href="#" className="dropdown-toggle" data-toggle="dropdown"
+              role="button" aria-haspopup="true" aria-expanded="false">
+                Teams
+              </a>
+              <ul className="team-list">
+                {this.teamsList()}
+                <li role="separator" className="divider"></li>
+                <li onClick={this.toggleTeamForm}>
+                  <a href="javascript:void(0)">Create New Team</a>
+                </li>
+                <TeamForm show={this.state.showTeamForm}
+                          onHide={this.toggleTeamForm} />
+              </ul>
+            </li>
+          </ul>
+          <SearchForm />
+          <ul className="nav-list list-right">
+            <li><a href="#">{window.CURRENT_USERNAME}</a></li>
+            <li onClick={this.handleLogout}><a href="#">Logout</a></li>
+          </ul>
+        </nav>
+      </header>
     );
   }
 });
