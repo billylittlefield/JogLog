@@ -57,15 +57,27 @@
       max-height:0;
       overflow:hidden;
       -webkit-transform:perspective(400) rotate3d(1,0,0,-90deg);
-      -webkit-transform-origin:50% 0;
-      -webkit-transition:350ms;
-      -moz-transition:350ms;
-      -o-transition:350ms;
-      transition:350ms;
+      -webkit-transform-origin: 50% 0;
+      -webkit-transition: all 350ms;
+      -moz-transition: all 350ms;
+      -o-transition: all 350ms;
+      transition: all 350ms;
     }
     &:hover ul {
       max-height:1000px;
       -webkit-transform:perspective(400) rotate3d(0,0,0,0);
+    }
+    span.glyphicon-chevron-left {
+      -webkit-transition: transform 350ms ease;
+      -moz-transition: transform 350ms ease;
+      -o-transition: transform 350ms ease;
+      transition: transform 350ms ease;
+    }
+    &:hover span.glyphicon-chevron-left {
+      -webkit-transform: rotate(-90deg);
+      -moz-transform: rotate(-90deg);
+      -o-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
     }
     & > a {
       color: #fff;
@@ -81,13 +93,20 @@
   }
 }
 
+.glyphicon-chevron-left {
+  position: absolute;
+  top: 23px;
+  padding-left: 7px;
+  font-size:15px;
+}
+
 .team-list {
    position: absolute;
    list-style: none;
    background-color: #333;
    padding: 0 10px;
    top: 100%;
-   left: -37px;
+   left: -28px;
    z-index: 5;
    width: 209px;
    border: 2px solid #fff;

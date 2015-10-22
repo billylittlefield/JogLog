@@ -55,6 +55,12 @@ window.WorkoutForm = React.createClass({
                                          seconds+" seconds"});
     }
   },
+  colorTitle: function(e) {
+    $(e.target.parentElement).css("color", "#a9f073");
+  },
+  decolorTitle: function(e) {
+    $(e.target.parentElement).css("color", "#fff");
+  },
   render: function() {
     return (
       <div className="form-wrapper">
@@ -65,21 +71,25 @@ window.WorkoutForm = React.createClass({
               onSubmit={this.submitWorkoutForm}>
           <div className="full-input">
             <label htmlFor="workout-title">Workout Title</label>
-            <input type="text"
+            <input onFocus={this.colorTitle} onBlur={this.decolorTitle}
+                   type="text"
                    className="workout-input"
                    id="workout-title"
                    valueLink={this.linkState("title")}/>
           </div>
           <div className="left-input">
             <label htmlFor="workout_date">Date</label>
-            <input className="workout-input"
+            <input onFocus={this.colorTitle} onBlur={this.decolorTitle}
+                   className="workout-input"
                    name="workout_date"
                    type="date"
                    valueLink={this.linkState("date")}/>
           </div>
           <div className="right-input">
             <label htmlFor="workout_activity">Activity</label>
-            <select className="workout-input" name="workout_activity" valueLink={this.linkState("activity")}>
+            <select onFocus={this.colorTitle} onBlur={this.decolorTitle}
+                    className="workout-input" name="workout_activity"
+                    valueLink={this.linkState("activity")}>
               <option value="Run">Run</option>
               <option value="Bike">Bike</option>
               <option value="Swim">Swim</option>
@@ -94,7 +104,8 @@ window.WorkoutForm = React.createClass({
           </div>
           <div className="left-input">
             <label htmlFor="distance">Distance</label>
-            <input className="workout-input"
+            <input onFocus={this.colorTitle} onBlur={this.decolorTitle}
+                   className="workout-input"
                    name="workout_distance"
                    type="number"
                    min="0"
@@ -104,7 +115,8 @@ window.WorkoutForm = React.createClass({
           </div>
           <div className="right-input">
             <label htmlFor="duration">Duration</label>
-            <input className="workout-input duration-input"
+            <input onFocus={this.colorTitle} onBlur={this.decolorTitle}
+                   className="workout-input duration-input"
                    type="text"
                    placeholder="0:00:00"
                    onInput={this.parseDuration}/>
@@ -114,7 +126,8 @@ window.WorkoutForm = React.createClass({
           </div>
           <div className="full-input">
             <label htmlFor="workout_notes">Notes</label>
-            <textarea className="workout-input workout-notes"
+            <textarea onFocus={this.colorTitle} onBlur={this.decolorTitle}
+                      className="workout-input workout-notes"
                       name="workout_notes"
                       valueLink={this.linkState("notes")}
                       placeholder="Write any workout details here"/>

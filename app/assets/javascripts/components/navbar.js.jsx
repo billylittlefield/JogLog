@@ -58,7 +58,8 @@
           <ul className="nav-list list-left group">
             <li><a href="#/">Home</a></li>
             <li><a href="#/calendar">Calendar</a></li>
-            <li className="team-link"><a href="#">Teams</a>
+            <li className="team-link"><a href="#">Teams
+              <span className="glyphicon glyphicon-chevron-left"></span></a>
               <ul className="team-list">
                 {this.teamsList()}
                 <hr/>
