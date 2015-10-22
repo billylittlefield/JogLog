@@ -23,7 +23,7 @@
   },
   teamsList: function() {
     if (this.state.teams.length === 0) {
-      return (<li><p>You are not on any teams!</p></li>);
+      return (<li><span>You are not on any teams!</span></li>);
     } else {
       return _.map(this.state.teams, function(team) {
         return (
@@ -41,13 +41,11 @@
       this.setState({ showTeamForm: true });
     }
   },
-  toggleTeamList: function() {
-    var $teamList = $(".team-list");
-    if ($teamList.hasClass("hide")) {
-      $teamList.removeClass("hide");
-    } else {
-      $teamList.addClass("hide");
-    }
+  showTeamList: function() {
+    $(".team-list").removeClass("hide");
+  },
+  hideTeamList: function(e) {
+    $(".team-list").addClass("hide");
   },
   render: function () {
     return (
@@ -60,8 +58,8 @@
           <ul className="nav-list list-left group">
             <li><a href="#/">Home</a></li>
             <li><a href="#/calendar">Calendar</a></li>
-            <li className="team-link"><a onClick={this.toggleTeamList} href="#">Teams</a>
-              <ul className="team-list hide">
+            <li className="team-link"><a href="#">Teams</a>
+              <ul className="team-list">
                 {this.teamsList()}
                 <hr/>
                 <li onClick={this.toggleTeamForm}>
@@ -87,6 +85,5 @@ $(document).ready(function() {
   $(document).click(function(e){
     $(".search-input").val("");
     $(".search-results-list").addClass("hide");
-    $(".team-list").addClass("hide");
   });
 });
