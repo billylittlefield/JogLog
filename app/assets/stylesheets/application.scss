@@ -3,11 +3,12 @@
 @import "login.scss";
 @import "navbar.scss";
 @import "workout_form.scss";
+@import "navbar-search.scss";
 @import "calendar.scss";
 @import "workout_feed.scss";
 
 body {
-  background-image: image-url('triangular.png');
+  background-image: image-url('marble.png');
   background-repeat: repeat;
 }
 

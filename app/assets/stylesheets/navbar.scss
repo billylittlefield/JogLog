@@ -1,10 +1,6 @@
-/* cream: #F3E6BA
-   maroon #967331
-   white #fff */
-
 .header {
   background-color: #333;
-  border-bottom: 2px solid #F3E6BA;
+  border-bottom: 2px solid #fff;
 }
 
 .navbar-content {
@@ -94,7 +90,7 @@
    left: -37px;
    z-index: 5;
    width: 209px;
-   border: 2px solid #F3E6BA;
+   border: 2px solid #fff;
    border-bottom-left-radius: 5px;
    border-bottom-right-radius: 5px;
   & > li {
@@ -126,53 +122,6 @@
   }
 }
 
-.navbar-search {
-  position: relative;
-  display: block;
-  float: left;
-  top: 13px;
-  padding: 0 15px;
-  & > form {
-    width: 200px;
-  }
-}
-
-.search-results-list {
-  position: absolute;
-  background-color: #333;
-  z-index: 1;
-  list-style: none;
-  top: 49px;
-  padding: 0 10px 5px 10px;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-  width: 200px;
-  border-left: 2px solid #f3e6ba;
-  border-right: 2px solid #f3e6ba;
-  border-bottom: 2px solid #f3e6ba;
-  & > li {
-    padding: 5px 0px;
-    &:hover {
-      cursor: default;
-    }
-    & > a {
-      color: #fff;
-      &:hover {
-        color: #a9f073;
-        text-decoration: none;
-      }
-    }
-  }
-  & > li.list-title {
-    color: #F3E6BA;
-  }
-}
-
 .team-link {
   position: relative;
-}
-
-
-.hide {
-  // display: none;
 }

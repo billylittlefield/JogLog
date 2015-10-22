@@ -15,13 +15,13 @@ window.SearchForm = React.createClass({
   },
   sendQuery: function(e) {
     e.preventDefault();
-    if ($(".search-input").val() === "" && !$(".search-results-list").hasClass("hide")) {
-      $(".search-results-list").addClass("hide");
+    if ($(".search-input").val() === "") {
+      $(".search-results-list").removeClass("active");
     } else {
-      $(".search-results-list").removeClass("hide");
+      $(".search-results-list").addClass("active");
+      var queryText = $(".search-input").val();
+      ApiUtil.getSearchData(queryText);
     }
-    var queryText = $(".search-input").val();
-    ApiUtil.getSearchData(queryText);
   },
   userSearchHeader: function() {
     if (this.state.userSearchResults.length > 0) {
@@ -34,7 +34,7 @@ window.SearchForm = React.createClass({
     if (this.state.userSearchResults.length > 0) {
       return _.map(this.state.userSearchResults, function(user) {
         return (
-          <li key={"user" + user.id}>
+          <li className="search-result-item" key={"user" + user.id}>
             <a href={"#/users/" + user.id}>
               {user.username}
             </a>
@@ -54,7 +54,7 @@ window.SearchForm = React.createClass({
     if (this.state.teamSearchResults.length > 0) {
       return _.map(this.state.teamSearchResults, function(team) {
         return (
-          <li key={"team" + team.id}>
+          <li className="search-result-item" key={"team" + team.id}>
             <a href={"#/teams/" + team.id}>
               {team.name}
             </a>
@@ -67,7 +67,7 @@ window.SearchForm = React.createClass({
     if (this.state.teamSearchResults.length === 0 &&
         this.state.userSearchResults.length === 0) {
       return (
-        <li key="no-result" className="list-title">No results found</li>
+        <li key="no-result" className="no-result">No results found</li>
       );
     }
   },
@@ -79,21 +79,21 @@ window.SearchForm = React.createClass({
                  type="text"
                  className="form-control search-input"
                  placeholder="Search..."/>
-            <ul className="search-results-list hide">
-              {this.userSearchHeader()}
-              {this.userSearchResults()}
-              {this.teamSearchHeader()}
-              {this.teamSearchResults()}
-              {this.noResults()}
-            </ul>
         </form>
+          <ul className="search-results-list">
+            {this.userSearchHeader()}
+            {this.userSearchResults()}
+            {this.teamSearchHeader()}
+            {this.teamSearchResults()}
+            {this.noResults()}
+          </ul>
       </div>
     );
   }
 });
 $(document).ready(function() {
   $(document).click(function(e){
+    $(".search-results-list").removeClass("active");
     $(".search-input").val("");
-    $(".search-results-list").addClass("hide");
   });
 });

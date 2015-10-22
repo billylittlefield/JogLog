@@ -8,14 +8,10 @@ window.WorkoutForm = React.createClass({
     ApiUtil.createWorkout(this.state, this.props.type);
   },
   submitButton: function() {
-    if (this.props.type === "PATCH") {
+    if (this.props.type === "PATCH" || this.props.type === "POST") {
       return <input type="submit"
-                    className="btn btn-primary"
-                    value="Update Workout"/>;
-    } else if (this.props.type === "POST") {
-      return <input type="submit"
-                    className="btn btn-primary"
-                    value="Create Workout"/>;
+                    className="workout-submit"
+                    value="Submit"/>;
     } else {
       return;
     }
@@ -54,34 +50,36 @@ window.WorkoutForm = React.createClass({
                                                   minutes: minutes,
                                                   hours: hours })
                                       .format("h:mm:ss", { trim: false }),
-                      humanizedDuration: hours+"h, "+
-                                         minutes+"m, "+
-                                         seconds+"s"});
+                      humanizedDuration: hours+" hours, "+
+                                         minutes+" minutes, "+
+                                         seconds+" seconds"});
     }
   },
   render: function() {
     return (
-      <div className="form-div">
+      <div className="form-wrapper">
+        <h1>Log Workout</h1>
+        <hr/>
         <form className="workout-form"
               data-mode={this.props.mode}
               onSubmit={this.submitWorkoutForm}>
-          <div className="form-group">
+          <div className="full-input">
             <label htmlFor="workout-title">Workout Title</label>
             <input type="text"
-                   className="form-control"
+                   className="workout-input"
                    id="workout-title"
                    valueLink={this.linkState("title")}/>
           </div>
-          <div className="form-group left-input">
+          <div className="left-input">
             <label htmlFor="workout_date">Date</label>
-            <input className="form-control"
+            <input className="workout-input"
                    name="workout_date"
                    type="date"
                    valueLink={this.linkState("date")}/>
           </div>
-          <div className="form-group right-input">
+          <div className="right-input">
             <label htmlFor="workout_activity">Activity</label>
-            <select className="form-control" name="workout_activity" valueLink={this.linkState("activity")}>
+            <select className="workout-input" name="workout_activity" valueLink={this.linkState("activity")}>
               <option value="Run">Run</option>
               <option value="Bike">Bike</option>
               <option value="Swim">Swim</option>
@@ -94,29 +92,34 @@ window.WorkoutForm = React.createClass({
               <option value="Rollerblading">Rollerblading</option>
             </select>
           </div>
-          <div className="form-group left-input">
+          <div className="left-input">
             <label htmlFor="distance">Distance</label>
-            <input className="form-control"
+            <input className="workout-input"
                    name="workout_distance"
                    type="number"
                    min="0"
+                   placeholder="0.00"
                    step="0.01"
                    valueLink={this.linkState("distance")}/>
           </div>
-          <div className="form-group right-input">
+          <div className="right-input">
             <label htmlFor="duration">Duration</label>
-            <span>{this.state.humanizedDuration}</span>
-            <input className="form-control duration-input"
+            <input className="workout-input duration-input"
                    type="text"
+                   placeholder="0:00:00"
                    onInput={this.parseDuration}/>
+            <span className="duration-string">
+              {this.state.humanizedDuration}
+            </span>
           </div>
-          <div className="form-group">
+          <div className="full-input">
             <label htmlFor="workout_notes">Notes</label>
-            <textarea className="form-control"
+            <textarea className="workout-input workout-notes"
                       name="workout_notes"
                       valueLink={this.linkState("notes")}
-                      placeholder="Write any workout details here!"/>
+                      placeholder="Write any workout details here"/>
           </div>
+          <hr id="bottom-hr"/>
           {this.submitButton()}
         </form>
       </div>

@@ -81,9 +81,3 @@
     );
   }
 });
-$(document).ready(function() {
-  $(document).click(function(e){
-    $(".search-input").val("");
-    $(".search-results-list").addClass("hide");
-  });
-});
