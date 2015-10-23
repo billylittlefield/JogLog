@@ -9,7 +9,9 @@ window.ActivitySelect = React.createClass({
     this.setState({ showList: !this.state.showList });
   },
   changeSelected: function(e) {
-    this.setState({ activity: e.target.innerText });
+    var newActivity = e.target.innerText;
+    this.setState({ activity: newActivity });
+    this.props.bubbleState(newActivity);
   },
   renderList: function() {
     if (this.state.showList) {
@@ -20,7 +22,8 @@ window.ActivitySelect = React.createClass({
             if (activity === currentActivity) {
               return (<li key={"activity-select_"+activity}
                           onClick={this.changeSelected}
-                          className="activity-item selected-activity">
+                          className="activity-item">
+                        <span className="glyphicon glyphicon-ok"></span>
                         {activity}
                       </li>);
             } else {
@@ -38,7 +41,7 @@ window.ActivitySelect = React.createClass({
   render: function() {
     return (
       <div onClick={this.toggleList} className="activity-select-container">
-        <div className="activity-select">
+        <div className="activity-select workout-input">
           {this.state.activity}
           <span className="glyphicon glyphicon-chevron-left"></span>
         </div>

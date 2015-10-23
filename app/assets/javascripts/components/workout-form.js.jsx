@@ -61,6 +61,9 @@ window.WorkoutForm = React.createClass({
   decolorTitle: function(e) {
     $(e.target.parentElement).css("color", "#fff");
   },
+  updateActivityState: function(activity) {
+    this.setState({ activity: activity });
+  },
   render: function() {
     return (
       <div className="form-wrapper">
@@ -87,10 +90,7 @@ window.WorkoutForm = React.createClass({
           </div>
           <div className="right-input">
             <label htmlFor="workout_activity">Activity</label>
-
-            <ActivitySelect />
-
-            
+            <ActivitySelect bubbleState={this.updateActivityState.bind(this)}/>
           </div>
           <div className="left-input">
             <label htmlFor="distance">Distance</label>
