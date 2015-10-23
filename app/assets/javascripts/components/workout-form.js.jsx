@@ -87,20 +87,10 @@ window.WorkoutForm = React.createClass({
           </div>
           <div className="right-input">
             <label htmlFor="workout_activity">Activity</label>
-            <select onFocus={this.colorTitle} onBlur={this.decolorTitle}
-                    className="workout-input" name="workout_activity"
-                    valueLink={this.linkState("activity")}>
-              <option value="Run">Run</option>
-              <option value="Bike">Bike</option>
-              <option value="Swim">Swim</option>
-              <option value="Walk">Walk</option>
-              <option value="Elliptical">Elliptical</option>
-              <option value="Exercise Bike">Exercise Bike</option>
-              <option value="Nordic Skiing">Nordic Skiing</option>
-              <option value="Rowing">Rowing</option>
-              <option value="Rowing">Hiking</option>
-              <option value="Rollerblading">Rollerblading</option>
-            </select>
+
+            <ActivitySelect />
+
+            
           </div>
           <div className="left-input">
             <label htmlFor="distance">Distance</label>
