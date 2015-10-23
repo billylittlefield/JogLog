@@ -13,13 +13,13 @@
 
 .search-results-list {
   position: absolute;
-  transition: max-height 200ms ease, opacity 200ms ease;
+  transition: opacity 200ms ease-in;
   opacity: 0;
   overflow: hidden;
-  max-height: 0;
   width: 200px;
   padding: 5px 10px;
   top: 49px;
+  max-height: 600px;
   background-color: #333;
   list-style: none;
   border-bottom-right-radius: 5px;
@@ -31,7 +31,6 @@
   font-family: 'Lato', sans-serif;
   &.active {
     opacity: 1;
-    max-height: 500px;
   }
   & > li.search-result-item {
     & > a {
@@ -48,15 +47,18 @@
     }
   }
   & > li.list-title {
+    font-family: 'Bitter', serif;
     padding: 5px 0px;
     color: #F3E6BA;
-    font-size: 24px;
+    font-size: 20px;
     &:hover {
       cursor: default;
     }
   }
   & > li.no-result {
     padding: 5px 0px;
+    font-size: 20px;
+    font-family: 'Bitter', serif;
     color: #F3E6BA;
   }
 }

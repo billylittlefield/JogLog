@@ -34,13 +34,15 @@
   h1 {
     color: #F3E6BA;
     text-align: center;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Bitter', serif;
     font-size: 48px;
   }
   & > form > div {
     font-family: 'Lato', sans-serif;
     margin-bottom: 20px;
     label {
+      font-family: 'Bitter', serif;
+
       font-size: 24px;
     }
   }
@@ -80,6 +82,12 @@
         left: 180px;
       }
     }
+    &.expanded > span.glyphicon {
+      -webkit-transform: rotate(-90deg);
+      -moz-transform: rotate(-90deg);
+      -o-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+    }
   }
   & > ul.activity-list {
     position: absolute;
@@ -106,6 +114,10 @@
         top: 3px;
         left: 160px;
         font-size: 20px;
+        -webkit-transition: transform 350ms ease;
+        -moz-transition: transform 350ms ease;
+        -o-transition: transform 350ms ease;
+        transition: transform 350ms ease;
       }
     }
   }
@@ -123,7 +135,8 @@
   background-color: #F3E6BA;
   border: none;
   color: #333;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Bitter', serif;
+
   font-size: 24px;
   &:hover {
     background-color: #a9f073;

@@ -1,0 +1,4 @@
+window.CommentConstants = {
+  COMMENTS_RECEIVED: "COMMENTS_RECEIVED",
+  COMMENT_ADDED: "COMMENT_ADDED"
+};

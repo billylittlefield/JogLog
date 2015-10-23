@@ -90,7 +90,10 @@ window.WorkoutForm = React.createClass({
           </div>
           <div className="right-input">
             <label htmlFor="workout_activity">Activity</label>
-            <ActivitySelect bubbleState={this.updateActivityState.bind(this)}/>
+            <div onClick={this.colorTitle}>
+              <ActivitySelect
+                            bubbleState={this.updateActivityState}/>
+            </div>
           </div>
           <div className="left-input">
             <label htmlFor="distance">Distance</label>

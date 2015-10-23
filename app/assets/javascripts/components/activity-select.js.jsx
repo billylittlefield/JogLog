@@ -6,6 +6,11 @@ window.ActivitySelect = React.createClass({
   activities: ["Run", "Bike", "Swim", "Walk", "Elliptical", "Exercise Bike",
                "Nordic Skiing", "Rowing", "Hiking", "Rollerblading"],
   toggleList: function() {
+    if (this.state.showList) {
+      $(".activity-select").removeClass("expanded");
+    } else {
+      $(".activity-select").addClass("expanded");
+    }
     this.setState({ showList: !this.state.showList });
   },
   changeSelected: function(e) {
