@@ -1,6 +1,12 @@
 window.FeedItem = React.createClass({
-  getInitialState: function() {
-    return { showModal: false };
+  numCols: function() {
+    var duration = moment.duration(this.props.workout.duration).format("h:mm:ss");
+    var distance = this.props.workout.distance;
+    if (duration !== "0" && distance !== 0) {
+      return 4;
+    } else {
+      return 2;
+    }
   },
   renderHeader: function(workout) {
     return (
@@ -99,41 +105,10 @@ window.FeedItem = React.createClass({
       );
     }
   },
-  toggleModal: function() {
-    ApiUtil.getCommentsForWorkout(this.props.workout.id);
-    if (this.state.showModal) {
-      this.setState({ showModal: false });
-    } else {
-      this.setState({ showModal: true });
-    }
-  },
-  workoutModal: function() {
-    var workout = this.props.workout;
-    var adjustedWorkout = $.extend(true, {}, workout);
-    adjustedWorkout.date = moment(workout.date).format("YYYY-MM-DD");
-    adjustedWorkout.duration = moment.duration(workout.duration).format("h:mm:ss");
-    if (adjustedWorkout.user_id === window.CURRENT_USERID) {
-      var type = workout.id ? "PATCH" : "POST";
-      return (
-        <EditWorkoutDetail
-          show={this.state.showModal}
-          onHide={this.toggleModal}
-          type={type}
-          workout={adjustedWorkout} />
-        );
-    } else {
-      return (
-        <ViewWorkoutDetail
-          show={this.state.showModal}
-          onHide={this.toggleModal}
-          workout={adjustedWorkout} />
-      );
-    }
-  },
   render: function() {
     var workout = this.props.workout;
     return (
-      <li onClick={this.toggleModal} className="feed-item">
+      <li className="feed-item">
         {this.renderHeader(workout)}
         <table className="feed-item-table title-notes-table">
           <tbody>
@@ -157,9 +132,13 @@ window.FeedItem = React.createClass({
               {this.renderPace(workout)}
               {this.renderDefault(workout)}
             </tr>
+            <tr>
+              <td colSpan={this.numCols()}>
+                <FeedItemComments comments={workout.comments}/>
+              </td>
+            </tr>
           </tbody>
         </table>
-        {this.workoutModal()}
       </li>
     );
   }

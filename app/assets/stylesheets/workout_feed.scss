@@ -9,7 +9,7 @@
 }
 
 .feed-wrapper {
-  width: 800px;
+  width: 600px;
   color: #fff;
 }
 
@@ -122,5 +122,21 @@
       font-size: 20px;
       padding: 10px;
     }
+  }
+}
+
+.feed-item-comments {
+  position: relative;
+  & > img {
+    position: relative;
+    display: block;
+    float: left;
+    padding: 5px 10px 5px 15px;
+  }
+  & > div > span {
+    font-size: 16px;
+    position: relative;
+    display: block;
+    padding: 5px;
   }
 }

@@ -20,5 +20,10 @@ json.feed_workouts @feed_workouts do |workout|
   json.distance workout.distance
   json.duration workout.duration
   json.activity workout.activity
+  json.comments workout.comments do |comment|
+    json.author comment.author.username
+    json.body comment.body
+    json.created_at comment.created_at
+  end
   json.date workout.date
 end
