@@ -4,7 +4,6 @@
 
 .workout-form-container {
   float: right;
-  width: 48.5%;
   margin: 1% 1% 0.5% 0.5%;
 }
 
@@ -63,6 +62,17 @@
   }
 }
 
+.activity-select-wrapper {
+  &:focus {
+    outline: none;
+    & > div > div {
+      outline-color: #a9f073;
+      outline-style: auto;
+      outline-width: 5px;
+    }
+  }
+}
+
 .activity-select-container {
   cursor: pointer;
   position: relative;
@@ -95,6 +105,7 @@
     margin-left: 0px;
     padding: 5px;
     font-size: 18px;
+    z-index: 2;
     top: 95%;
     left: -6px;
     li {
@@ -121,6 +132,16 @@
       }
     }
   }
+}
+
+.input-group {
+  & > label {
+    font-weight: normal;
+  }
+}
+
+.duration-string {
+  display:block;
 }
 
 #bottom-hr {

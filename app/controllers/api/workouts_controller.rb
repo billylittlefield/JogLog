@@ -2,7 +2,6 @@ class Api::WorkoutsController < ApplicationController
   before_action :require_login
 
   def create
-    p "DURATION IS #{params[:workout][:duration]}"
     @workout = Workout.new(workout_params)
     @workout.user_id = current_user.id
     if @workout.save

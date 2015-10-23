@@ -8,6 +8,6 @@ window.WorkoutConstants = {
     activity: "Run",
     date: moment().format('YYYY-MM-DD'),
     distance: "0.00",
-    duration: "0:00:00"
+    duration: "0:00:00",
   }
 };

@@ -72,7 +72,7 @@ window.WorkoutForm = React.createClass({
         <form className="workout-form"
               data-mode={this.props.mode}
               onSubmit={this.submitWorkoutForm}>
-          <div className="full-input">
+          <div className="full-input input-group">
             <label htmlFor="workout-title">Workout Title</label>
             <input onFocus={this.colorTitle} onBlur={this.decolorTitle}
                    type="text"
@@ -80,7 +80,7 @@ window.WorkoutForm = React.createClass({
                    id="workout-title"
                    valueLink={this.linkState("title")}/>
           </div>
-          <div className="left-input">
+          <div className="left-input input-group">
             <label htmlFor="workout_date">Date</label>
             <input onFocus={this.colorTitle} onBlur={this.decolorTitle}
                    className="workout-input"
@@ -88,14 +88,14 @@ window.WorkoutForm = React.createClass({
                    type="date"
                    valueLink={this.linkState("date")}/>
           </div>
-          <div className="right-input">
+          <div className="right-input input-group">
             <label htmlFor="workout_activity">Activity</label>
-            <div onClick={this.colorTitle}>
-              <ActivitySelect
-                            bubbleState={this.updateActivityState}/>
+            <div tabIndex="0" className="activity-select-wrapper"
+                 onFocus={this.colorTitle} onBlur={this.decolorTitle}>
+              <ActivitySelect bubbleState={this.updateActivityState}/>
             </div>
           </div>
-          <div className="left-input">
+          <div className="left-input input-group">
             <label htmlFor="distance">Distance</label>
             <input onFocus={this.colorTitle} onBlur={this.decolorTitle}
                    className="workout-input"
@@ -106,7 +106,7 @@ window.WorkoutForm = React.createClass({
                    step="0.01"
                    valueLink={this.linkState("distance")}/>
           </div>
-          <div className="right-input">
+          <div className="right-input input-group group">
             <label htmlFor="duration">Duration</label>
             <input onFocus={this.colorTitle} onBlur={this.decolorTitle}
                    className="workout-input duration-input"
@@ -117,7 +117,7 @@ window.WorkoutForm = React.createClass({
               {this.state.humanizedDuration}
             </span>
           </div>
-          <div className="full-input">
+          <div className="full-input input-group">
             <label htmlFor="workout_notes">Notes</label>
             <textarea onFocus={this.colorTitle} onBlur={this.decolorTitle}
                       className="workout-input workout-notes"
