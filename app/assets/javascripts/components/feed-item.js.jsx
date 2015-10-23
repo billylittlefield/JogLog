@@ -2,24 +2,6 @@ window.FeedItem = React.createClass({
   getInitialState: function() {
     return { showModal: false };
   },
-  numCols: function() {
-    var notes = this.props.workout.notes === null ? false : true;
-    var distance = this.props.workout.distance === 0 ? false : true;
-    var duration = moment.duration(this.props.workout.duration)
-                    .format("h:mm:ss") === "0" ? false : true;
-    if (distance && duration && notes) {
-      return 4;
-    } else if (distance && duration) {
-      return 3;
-    } else if ((distance || duration) && notes) {
-      return 2;
-    } else {
-      return 1;
-    }
-  },
-  width: function() {
-    return 720 / this.numCols();
-  },
   renderHeader: function(workout) {
     return (
       <div className="feed-item-header group">
@@ -32,27 +14,36 @@ window.FeedItem = React.createClass({
       </div>
     );
   },
-  renderNotes: function(workout) {
-    if (workout.notes !== null) {
+  renderNotes: function(notes) {
+    if (notes !== null ){
       return (
-        <td className="detail">
-          <div className="detail-header">
-            <span>Notes</span>
-            <img src="assets/glyphicons-40-notes2.png" className="glyphicon"/>
-          </div>
-          <div className="detail-content">
-            {workout.notes}
+        <td className="feed-item-title">
+          <img src="assets/glyphicons-40-notes2.png" className="glyphicon"/>
+          <div>
+            <span className="notes">{notes}</span>
           </div>
         </td>
       );
     }
+  },
+  renderActivity: function(workout) {
+    var imageUrl = "assets/" + workout.activity + ".png";
+    return (
+      <td className="detail">
+        <div className="detail-header">
+          <img src={imageUrl} className="glyphicon"/>
+        </div>
+        <div className="detail-content">
+          {workout.activity}
+        </div>
+      </td>
+    );
   },
   renderDistance: function(workout) {
     if (workout.distance !== 0) {
       return (
         <td className="detail">
           <div className="detail-header">
-            <span>Distance</span>
             <img src="assets/glyphicons-27-road2.png" className="glyphicon"/>
           </div>
           <div className="detail-content">
@@ -68,7 +59,6 @@ window.FeedItem = React.createClass({
       return (
         <td className="detail">
           <div className="detail-header">
-            <span>Duration</span>
             <img src="assets/glyphicons-541-hourglass2.png" className="glyphicon"/>
           </div>
           <div className="detail-content">
@@ -85,7 +75,6 @@ window.FeedItem = React.createClass({
       return (
         <td className="detail">
           <div className="detail-header">
-            <span>Pace</span>
             <img src="assets/glyphicons-598-watch2.png" className="glyphicon"/>
           </div>
           <div className="detail-content">
@@ -98,13 +87,12 @@ window.FeedItem = React.createClass({
   },
   renderDefault: function(workout) {
     if (workout.distance === 0 &&
-        moment.duration(workout.duration).format("h:mm:ss") === "0" &&
-        workout.notes === null) {
+        moment.duration(workout.duration).format("h:mm:ss") === "0") {
       return (
         <td className="detail">
           <div className="detail-header">
-            <span>No workout details logged</span>
             <img src="assets/glyphicons-195-circle-question-mark2.png" className="glyphicon"/>
+            <span>No workout details logged</span>
           </div>
           <br/>
         </td>
@@ -147,16 +135,23 @@ window.FeedItem = React.createClass({
     return (
       <li onClick={this.toggleModal} className="feed-item">
         {this.renderHeader(workout)}
+        <table className="feed-item-table title-notes-table">
+          <tbody>
+            <tr>
+              <td className="feed-item-title">
+                <img src="assets/glyphicons-88-log-book2.png" className="glyphicon"/>
+                <div>
+                  <span className="title">{workout.title}</span>
+                </div>
+              </td>
+              {this.renderNotes(workout.notes)}
+            </tr>
+          </tbody>
+        </table>
         <table className="feed-item-table">
           <tbody>
             <tr>
-              <td className="feed-item-title"
-                  colSpan={this.numCols()}>
-                Title:&nbsp;&nbsp;{workout.title}
-              </td>
-            </tr>
-            <tr>
-              {this.renderNotes(workout)}
+              {this.renderActivity(workout)}
               {this.renderDistance(workout)}
               {this.renderDuration(workout)}
               {this.renderPace(workout)}

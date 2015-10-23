@@ -1,10 +1,11 @@
 window.ActivitySelect = React.createClass({
   getInitialState: function() {
-    return { activity: "Run",
+    return { activity: "Running",
              showList: false };
   },
-  activities: ["Run", "Bike", "Swim", "Walk", "Elliptical", "Exercise Bike",
-               "Nordic Skiing", "Rowing", "Hiking", "Rollerblading"],
+  activities: ["Running", "Biking", "Swiming", "Walking", "Hiking",
+               "Treadmill", "Exercise Bike", "Elliptical",
+               "Nordic Skiing", "Rowing", "Rollerblading"],
   toggleList: function() {
     if (this.state.showList) {
       $(".activity-select").removeClass("expanded");
