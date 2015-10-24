@@ -23,9 +23,9 @@ window.FeedItem = React.createClass({
   renderNotes: function(notes) {
     if (notes !== null ){
       return (
-        <td className="feed-item-title">
-          <img src="assets/glyphicons-40-notes2.png" className="glyphicon"/>
-          <div>
+        <td className="feed-item-title notes">
+          <div className="notes-wrapper group">
+            <img src="assets/glyphicons-40-notes2.png" className="glyphicon"/>
             <span className="notes">{notes}</span>
           </div>
         </td>
@@ -114,8 +114,8 @@ window.FeedItem = React.createClass({
           <tbody>
             <tr>
               <td className="feed-item-title">
-                <img src="assets/glyphicons-88-log-book2.png" className="glyphicon"/>
-                <div>
+                <div className="title-container group">
+                  <img src="assets/glyphicons-88-log-book2.png" className="glyphicon"/>
                   <span className="title">{workout.title}</span>
                 </div>
               </td>
