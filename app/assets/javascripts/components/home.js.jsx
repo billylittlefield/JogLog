@@ -18,3 +18,14 @@ window.Home = React.createClass({
     );
   }
 });
+$(document).ready(function() {
+  $(".notes-wrapper").on("transitionEnd webkitTransitionEnd mozTransitionEnd", function() {
+    $el = $(this);
+    debugger;
+    if ($el.css("overflow") == " hidden") {
+      $el.css("overflow", "auto");
+    } else {
+      $el.css("overflow, hidden");
+    }
+  });
+});

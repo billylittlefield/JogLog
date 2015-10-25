@@ -14,16 +14,18 @@ window.FeedItemComments = React.createClass({
     this.setState({ comments: CommentStore.comments(this.props.workoutId) });
   },
   toggleComments: function() {
-    $commentsHeader = $(".feed-item-comments-header");
-    if ($commentsHeader.hasClass("expanded")) {
-      $commentsHeader.removeClass("expanded");
+    footerId = "workout-" + this.props.workoutId;
+    $commentsFooter = $("#" + footerId);
+    if ($commentsFooter.hasClass("expanded")) {
+      $commentsFooter.removeClass("expanded");
     } else {
-      $commentsHeader.addClass("expanded");
+      $commentsFooter.addClass("expanded");
     }
-    this.setState({ showComments: !this.state.showComments });
+    this.forceUpdate();
   },
   comments: function() {
-    if (this.state.showComments) {
+    footerId = "workout-" + this.props.workoutId;
+    if ($("#" + footerId).hasClass("expanded")) {
       return (
         <div className="comments-container">
           <ul>
@@ -69,8 +71,9 @@ window.FeedItemComments = React.createClass({
     return this.props.comments.length === 1 ? "" : "s";
   },
   render: function() {
+    var id = "workout-" + this.props.workoutId;
     return (
-      <div className="feed-item-footer group">
+      <div className="feed-item-footer group" id={id}>
         <div onClick={this.toggleComments} className="feed-item-comments-header">
           <img src="assets/glyphicons-310-comments2.png" className="glyphicon"/>
           <span>{this.props.comments.length + " Comment" + this.plural()}</span>
