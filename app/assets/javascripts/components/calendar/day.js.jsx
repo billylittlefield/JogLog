@@ -40,40 +40,42 @@ window.Day = React.createClass({
   multiWorkoutHeader: function() {
     if (this.state.dayWorkouts.length > 1) {
       return (
-        <div className="multi-workout-header">
+        <div className="multi-workout-header group">
           <span className="day-number"><b>{this.props.date.date()}</b></span>
           <div className="workout-toggle">
-            <span onClick={this.prevWorkout}>&#9664;</span>
+            <span className="arrow" onClick={this.prevWorkout}>&#9664;</span>
              <span>
-              {" " + (this.state.displayIdx + 1) + " of " +
-                      this.state.dayWorkouts.length + " "}
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              {(this.state.displayIdx + 1) + " of " +
+                      this.state.dayWorkouts.length}
+              &nbsp;&nbsp;&nbsp;&nbsp;
              </span>
-             <span onClick={this.nextWorkout}>&#9654;</span>
+             <span className="arrow" onClick={this.nextWorkout}>&#9654;</span>
            </div>
         </div>
      );
    } else {
      return (
-       <span className="day-number"><b>{this.props.date.date()}</b></span>
+       <div>
+         <span className="day-number"><b>{this.props.date.date()}</b></span>
+       </div>
      );
    }
   },
   workoutItemDistance: function(displayWorkout) {
     if (displayWorkout.distance !== 0) {
-      return (<span>
-                <br/>
+      return (<div>
                 {displayWorkout.activity + ": " +
                  displayWorkout.distance + " miles"}
-              </span>);
+              </div>);
     }
   },
   workoutItemTime: function(displayWorkout) {
     if (displayWorkout.duration.substring(11,19) !== "00:00:00") {
-      return (<span>
-                <br/>
-                {displayWorkout.activity + " time: " +
+      return (<div>
+                {"Time: " +
                  moment.duration(displayWorkout.duration).format("h:mm:ss")}
-              </span>);
+              </div>);
     }
   },
   workoutItem: function() {
@@ -81,7 +83,7 @@ window.Day = React.createClass({
       var displayWorkout = this.state.dayWorkouts[this.state.displayIdx];
       return (
         <div onClick={this.toggleModal} className="workout-item">
-          <span><b>{displayWorkout.title}</b></span>
+          <div className="workout-title">{displayWorkout.title}</div>
           {this.workoutItemDistance(displayWorkout)}
           {this.workoutItemTime(displayWorkout)}
         </div>
@@ -129,12 +131,21 @@ window.Day = React.createClass({
       }
     }
   },
+  dayClass: function() {
+    var klass = "day-details";
+    if (this.state.dayWorkouts[this.state.displayIdx]) {
+      klass += " day-container";
+    }
+    return klass;
+  },
   render: function() {
     return (
       <td className={this.monthClass()}>
         {this.multiWorkoutHeader()}
-        {this.workoutItem()}
-        {this.workoutModal()}
+        <div className={this.dayClass()}>
+          {this.workoutItem()}
+          {this.workoutModal()}
+        </div>
       </td>
     );
   }

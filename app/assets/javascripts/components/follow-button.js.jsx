@@ -17,21 +17,37 @@ window.FollowButton = React.createClass({
     ApiUtil.toggleFollow(followeeId, type);
   },
   buttonText: function() {
-    return this.state.following ? <span className="unfollow">Unfollow</span> :
-                                  <span className="follow">Follow</span>;
+    if (this.state.following) {
+      return (
+        <div>
+          <span className="glyphicon glyphicon-minus"></span>
+          <span className="unfollow">&nbsp;Unfollow</span>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <span className="glyphicon glyphicon-plus"></span>
+          <span className="follow">&nbsp;Follow</span>
+        </div>
+      );
+    }
   },
-  bsStyle: function() {
-    return this.state.following ? "danger" : "success";
+  buttonClass: function() {
+    var klass = "follow-button";
+    if (this.state.following) {
+      klass += " following";
+    }
+    return klass;
   },
   button: function() {
     if (this.props.followeeId === window.CURRENT_USERID) {
       return <div/>;
     } else {
       return (
-        <ReactBootstrap.Button bsStyle={this.bsStyle()}
-                              onClick={this.toggleFollow}>
+        <div className={this.buttonClass()} onClick={this.toggleFollow}>
           {this.buttonText()}
-        </ReactBootstrap.Button>
+        </div>
       );
     }
   },

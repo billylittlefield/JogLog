@@ -54,19 +54,30 @@ window.PersonalCalendar = React.createClass({
     }
     return weeks;
   },
+  calendarName: function() {
+    if (this.state.userId === window.CURRENT_USERID) {
+      return "My Calendar";
+    } else {
+      return this.state.username;
+    }
+  },
   render: function() {
     return (
       <div className="calendar-page-container">
         <table className="table calendar-grid">
           <thead>
             <tr className="no-selection calendar-header">
-              <th colSpan="2">{this.state.username}</th>
-              <th colSpan="1" onClick={this.previousMonth}>&#9664;</th>
+              <th className="user-name" colSpan="2">{this.calendarName()}</th>
+              <th className="arrow"
+                  colSpan="1"
+                  onClick={this.previousMonth}>&#9664;</th>
               <th colSpan="2">
                 {this.state.date.format("MMMM")+" "+this.state.date.format("YYYY")}
               </th>
-              <th colSpan="1" onClick={this.nextMonth}>&#9654;</th>
-              <th className="follow-button" colSpan="2">
+              <th className="arrow"
+                  colSpan="1"
+                  onClick={this.nextMonth}>&#9654;</th>
+              <th className="follow-button-container" colSpan="2">
                 <FollowButton followeeId={this.state.userId}/>
               </th>
             </tr>

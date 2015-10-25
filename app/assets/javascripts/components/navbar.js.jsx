@@ -47,18 +47,21 @@
   hideTeamList: function(e) {
     $(".team-list").addClass("hide");
   },
+  returnHome: function() {
+    window.location = "#";
+  },
   render: function () {
     return (
       <header className="header">
         <nav className="navbar-content group">
-          <div className="logo">
+          <div onClick={this.returnHome} className="logo">
               <img src="assets/running_man.png"/>
               <h1>JogLog</h1>
           </div>
           <ul className="nav-list list-left group">
             <li><a href="#/">Home</a></li>
             <li><a href="#/calendar">Calendar</a></li>
-            <li className="team-link"><a href="#">Teams
+            <li className="team-link"><a href="javascript:void(0)">Teams
               <span className="glyphicon glyphicon-chevron-left"></span></a>
               <ul className="team-list">
                 {this.teamsList()}

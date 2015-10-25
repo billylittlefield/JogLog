@@ -46,36 +46,55 @@ window.WeekTotals = React.createClass({
                       0 : (currentIdx + 1);
     this.setState({ displayIdx: newIdx });
   },
+  activityHeader: function() {
+    var activity = _.keys(this.sortedTotals())[this.state.displayIdx];
+    if (activity === "Rollerblading") {
+      activity = "Blading";
+    } else if (activity === "Nordic Skiing") {
+      activity = "Nordic";
+    } else if (activity === "Exercise Bike") {
+      activity = "Ex. Bike";
+    }
+    return activity;
+  },
   multiActivityHeader: function() {
     var allTotals = this.sortedTotals();
     if (_.keys(allTotals).length > 1) {
       return (
         <div className="multi-workout-header">
-          <span className="workout-toggle">
-            <span onClick={this.prevActivity}>&#9664;</span>
-            <span><b>
-              {" " + _.keys(allTotals)[this.state.displayIdx] + " "}
-            </b></span>
-            <span onClick={this.nextActivity}>&#9654;</span>
-          </span>
+          <div className="workout-toggle week-totals">
+            <span className="arrow totals-arrow-left"
+                  onClick={this.prevActivity}>&#9664;</span>
+            <span>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              {this.activityHeader()}
+              &nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+            <span className="arrow totals-arrow-right"
+                  onClick={this.nextActivity}>&#9654;</span>
+          </div>
         </div>
       );
     } else {
       return (
         <div className="multi-workout-header">
-          <b>{_.keys(this.sortedTotals())[0]}</b>
+          <div className="workout-toggle week-totals">
+            <span>
+              {this.activityHeader()}
+            </span>
+          </div>
         </div>
       );
     }
   },
   distanceTotal: function(distanceTotal) {
     if (distanceTotal !== 0) {
-      return (<span><br/>{"Distance: " + distanceTotal}</span>);
+      return (<div>{distanceTotal + " miles"}</div>);
     }
   },
   durationTotal: function(durationTotal) {
     if (durationTotal !== "0") {
-      return (<span><br/>{"Time: " + durationTotal}</span>);
+      return (<div>{"Time: " + durationTotal}</div>);
     }
   },
   activityTotals: function() {
