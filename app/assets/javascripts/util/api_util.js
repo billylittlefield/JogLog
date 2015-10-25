@@ -107,7 +107,7 @@ window.ApiUtil = {
       type: "GET",
       dataType: "json",
       success: function(comments) {
-        ApiActions.receiveCommentsForWorkout(comments);
+        ApiActions.receiveCommentsForWorkout(workoutId, comments.comments);
       }
     });
   },

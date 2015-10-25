@@ -22,6 +22,8 @@ json.feed_workouts @feed_workouts do |workout|
   json.activity workout.activity
   json.comments workout.comments do |comment|
     json.author comment.author.username
+    json.author_id comment.author_id
+    json.workout_id comment.workout_id
     json.body comment.body
     json.created_at comment.created_at
   end

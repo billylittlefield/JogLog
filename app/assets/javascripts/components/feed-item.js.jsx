@@ -132,13 +132,9 @@ window.FeedItem = React.createClass({
               {this.renderPace(workout)}
               {this.renderDefault(workout)}
             </tr>
-            <tr>
-              <td colSpan={this.numCols()}>
-                <FeedItemComments comments={workout.comments}/>
-              </td>
-            </tr>
           </tbody>
         </table>
+        <FeedItemComments workoutId={workout.id} comments={workout.comments}/>
       </li>
     );
   }

@@ -60,10 +60,11 @@ window.ApiActions = {
       teamResultsList: resultsList
     });
   },
-  receiveCommentsForWorkout: function(comments) {
+  receiveCommentsForWorkout: function(workoutId, comments) {
     AppDispatcher.dispatch({
       actionType: CommentConstants.COMMENTS_RECEIVED,
-      comments: comments
+      comments: comments,
+      workoutId: workoutId
     });
   },
   receiveNewComment: function(comment) {

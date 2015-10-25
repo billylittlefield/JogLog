@@ -10,7 +10,7 @@ window.Comments = React.createClass({
     CommentStore.removeCommentsChangeListener(this.updateComments);
   },
   updateComments: function() {
-    this.setState({ comments: CommentStore.comments() });
+    this.setState({ comments: CommentStore.comments(this.props.workoutId) });
   },
   createComment: function(e) {
     e.preventDefault();

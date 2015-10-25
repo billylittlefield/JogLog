@@ -1,8 +1,5 @@
 json.(@team, :id, :admin_id, :name, :created_at, :updated_at)
 
-json.admin do
-  json.username
-end
 
 json.members @team.members do |member|
   json.id member.id
