@@ -56,7 +56,7 @@ window.WorkoutForm = React.createClass({
     }
   },
   colorTitle: function(e) {
-    $(e.target.parentElement).css("color", "#a9f073");
+    $(e.target.parentElement).css("color", "#B6F086");
   },
   decolorTitle: function(e) {
     $(e.target.parentElement).css("color", "#fff");
@@ -64,6 +64,9 @@ window.WorkoutForm = React.createClass({
   updateActivityState: function(activity) {
     this.setState({ activity: activity });
   },
+  activities: ["Running", "Biking", "Swiming", "Walking", "Hiking",
+               "Treadmill", "Exercise Bike", "Elliptical",
+               "Nordic Skiing", "Rowing", "Rollerblading"],
   render: function() {
     return (
       <div className="form-wrapper">
@@ -92,7 +95,9 @@ window.WorkoutForm = React.createClass({
             <label htmlFor="workout_activity">Activity</label>
             <div tabIndex="0" className="activity-select-wrapper"
                  onFocus={this.colorTitle} onBlur={this.decolorTitle}>
-              <ActivitySelect bubbleState={this.updateActivityState}/>
+              <CustomSelect choices={this.activities}
+                            default="Running"
+                            bubbleState={this.updateActivityState}/>
             </div>
           </div>
           <div className="left-input input-group">
@@ -113,9 +118,9 @@ window.WorkoutForm = React.createClass({
                    type="text"
                    placeholder="0:00:00"
                    onInput={this.parseDuration}/>
-            <span className="duration-string">
+            <div className="duration-string">
               {this.state.humanizedDuration}
-            </span>
+            </div>
           </div>
           <div className="full-input input-group">
             <label htmlFor="workout_notes">Notes</label>

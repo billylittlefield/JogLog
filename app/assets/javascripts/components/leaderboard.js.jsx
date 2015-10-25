@@ -1,10 +1,10 @@
 window.Leaderboard = React.createClass({
   getInitialState: function() {
     return {
-      // last_week: LeaderboardStore.last_week(),
-      // last_month: LeaderboardStore.last_month(),
-      // current_month: LeaderboardStore.current_month(),
-      // current_year: LeaderboardStore.current_year()
+      last_week: LeaderboardStore.last_week(),
+      last_month: LeaderboardStore.last_month(),
+      current_month: LeaderboardStore.current_month(),
+      current_year: LeaderboardStore.current_year()
     };
   },
   componentWillMount: function() {
@@ -38,8 +38,9 @@ window.Leaderboard = React.createClass({
   },
   render: function() {
     return (
-      <div>
+      <div className="leaderboard-wrapper">
         <h1>Leaderboards</h1>
+        <LeaderboardFilter />
         <ReactBootstrap.PanelGroup defaultActiveKey="1" accordion>
           <ReactBootstrap.Panel className="leader-panel" header="Most Miles in last 7 Days" eventKey="1">
             {this.renderTable(this.state.last_week)}

@@ -7,8 +7,15 @@
   width: 400px;;
   height: 405px;
   border: 1px solid #ccc;
-  opacity: 0.85;
+  opacity: 0.9;
   background-color: #333;
+  -webkit-box-shadow: 1px -1px 5px 0px #333;
+  -moz-box-shadow: 1px -1px 5px 0px #333;
+  box-shadow: 1px -1px 5px 0px #333;
+  &.sign-up {
+    height: 510px;
+    margin: -256px 0 0 -200px;
+  }
   & > .sign-form-header {
     padding-top: 20px;
     width: 277px;
@@ -30,28 +37,45 @@
   }
   & > .sign-form {
     position: relative;
+    font-family: 'Lato', sans-serif;
     margin: 20px auto;
     & > form {
       & > div.input-group {
         width: 80%;
         margin: auto;
         padding: 10px;
-        & input:focus, .btn:focus, .btn:hover {
-          border-color: #a9f073;
-          outline: 0;
-          outline: thin dotted \9;
-          /* IE6-9 */
-
-          -webkit-box-shadow: inset 0 1px 1px #a9f073, 0 0 5px #a9f073;
-          -moz-box-shadow: inset 0 1px 1px #a9f073, 0 0 5px #a9f073;
-          box-shadow: inset 0 1px 1px #a9f073, 0 0 5px #a9f073;
+        & > span {
+          border-radius: 0;
+        }
+        & > input {
+          color: #333;
+          border-radius: 0;
+        }
+        & > input:focus {
+          border-color: #B6F086
+        }
+        &.gender-radio {
+          padding: 0;
+          text-align: center;
+          & > .radio {
+            display: inline-block;
+            color: #fff;
+            font-size: 16px;
+            padding: 0px 10px;
+            &:hover {
+              cursor: pointer;
+            }
+            & > label > input {
+              cursor: pointer;
+              &:focus {
+                outline-color: #B6F086;
+              }
+            }
+          }
         }
       }
       & > .btn {
-        -webkit-border-radius: 5;
-        -moz-border-radius: 5;
-        border-radius: 5px;
-        font-family: Arial;
+        font-family: 'Lato', sans-serif;
         color: #333333;
         font-size: 16px;
         background: #f3e6ba;
@@ -59,8 +83,11 @@
         padding: 10px 20px 10px 20px;
         text-decoration: none;
         display: block;
-        &:focus, &:hover {
-          background-color: #a9f073;
+        &:hover {
+          background-color: #B6F086;
+        }
+        &:focus {
+          outline-color: #B6F086
         }
       }
     }
@@ -70,6 +97,9 @@
     text-align: center;
     & > a {
       color: #fff;
+      &:focus {
+        outline-color: #B6F086
+      }
     }
   }
 }

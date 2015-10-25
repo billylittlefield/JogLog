@@ -74,7 +74,7 @@ window.FeedItemComments = React.createClass({
     var id = "workout-" + this.props.workoutId;
     return (
       <div className="feed-item-footer group" id={id}>
-        <div onClick={this.toggleComments} className="feed-item-comments-header">
+        <div onClick={this.toggleComments} className="feed-item-comments-header no-selection">
           <img src="assets/glyphicons-310-comments2.png" className="glyphicon"/>
           <span>{this.props.comments.length + " Comment" + this.plural()}</span>
           <span className="glyphicon glyphicon-chevron-left"></span>

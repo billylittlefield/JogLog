@@ -1,0 +1,24 @@
+.modal-header {
+  background-color: #333;
+  border-top-left-radius: 5px;
+  color: #fff;
+  border: 1px solid #fff;
+  border-bottom: none;
+  border-top-right-radius: 5px;
+  padding: 5px;
+  & > button.close {
+    opacity: 1;
+    font-weight: normal;
+    text-shadow: none;
+    & > span {
+      color: #fff;
+      opacity: 1;
+      &:hover {
+        color: #f06060;
+      }
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}

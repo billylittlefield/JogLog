@@ -1,6 +1,9 @@
 .header {
   background-color: #333;
   border-bottom: 2px solid #fff;
+  -webkit-box-shadow: 0px 1px 1px 0px #333;
+  -moz-box-shadow: 0px 1px 1px 0px #333;
+  box-shadow: 0px 1px 1px 0px #333;
 }
 
 .navbar-content {
@@ -12,7 +15,7 @@
 .logo {
   width: 178px;
   height: auto;
-  padding: 10px;
+  padding: 5px;
   margin: 0;
   float: left;
   & > h1 {
@@ -24,7 +27,7 @@
     color: #F3E6BA;
     bottom: 3px;
     &:hover {
-      color: #a9f073;
+      color: #B6F086;
       cursor: pointer;
     }
   }
@@ -47,12 +50,12 @@
   padding: 0;
   margin-bottom: 0px;
   line-height: 30px;
-  font-size: 28px;
+  font-size: 22px;
   & > li {
     float: left;
     position: relative;
     display: inline;
-    padding: 15px 5px;
+    padding: 10px 5px;
     ul {
       max-height:0;
       font-family: 'Lato', sans-serif;
@@ -88,7 +91,7 @@
       }
     }
     &:hover > a {
-      color: #a9f073;
+      color: #B6F086;
       text-decoration: none;
     }
   }
@@ -96,9 +99,9 @@
 
 .glyphicon-chevron-left {
   position: absolute;
-  top: 23px;
+  top: 18px;
   padding-left: 2px;
-  font-size:15px;
+  font-size:12px;
 }
 
 .team-list {
@@ -122,7 +125,7 @@
       font-family: 'Bitter', serif;
       color: #F3E6BA;
       &:hover {
-        color: #a9f073;
+        color: #B6F086;
         text-decoration: none;
       }
     }
@@ -131,7 +134,7 @@
       padding: 10px 0;
       font-size: 22px;
       &:hover {
-        color: #a9f073;
+        color: #B6F086;
         text-decoration: none;
       }
       &:focus {

@@ -24,5 +24,29 @@
            placeholder="Password"
            name="user[password]">
   </div>
+  <% if type == :new_user %>
+  <div class="input-group input-group-lg">
+    <span class="input-group-addon">
+      <span class="glyphicon glyphicon-lock"></span>
+    </span>
+    <input class="form-control"
+           id="password"
+           type="password"
+           placeholder="Confirm password"
+           name="user[password_confirmation]">
+  </div>
+  <div class="input-group gender-radio">
+    <div class="radio">
+      <label>
+        <input type="radio" name="user[gender]">Male
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="user[gender]">Female
+      </label>
+    </div>
+  </div>
+  <% end %>
   <input class="btn" type="submit" value="<%= submit_text %>">
 </form>

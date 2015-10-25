@@ -10,7 +10,7 @@ window.EditWorkoutDetail = React.createClass({
         onHide={this.props.onHide}
         workout={this.props.workout}>
         <Modal.Header closeButton>
-        {headerText + " Workout Detail"}
+        {headerText + " Workout"}
         </Modal.Header>
         <WorkoutForm type={this.props.type} workout={this.props.workout}/>
         <Comments workoutId={this.props.workout.id}/>

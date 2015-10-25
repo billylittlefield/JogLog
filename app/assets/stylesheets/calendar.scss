@@ -1,13 +1,12 @@
-/* cream: #F3E6BA
-   green: #a9f073
-   maroon #967331
-   white #fff */
 
 .calendar-page-container {
   width: 98%;
   height: 98%;
   margin: 20px auto;
   font-family: 'Lato', sans-serif;
+  -webkit-box-shadow: 2px -2px 5px 0px #333;
+  -moz-box-shadow: 2px -2px 5px 0px #333;
+  box-shadow: 2px -2px 5px 0px #333;
 }
 
 .calendar-grid {
@@ -22,6 +21,7 @@
 }
 .calendar-header {
   border: 1px solid #999;
+  font-family: 'Bitter', serif;
   & > th {
     overflow: hidden;
     text-align: center;
@@ -29,12 +29,15 @@
     color: #fff;
     cursor: default;
     border: none;
+    &.user-name {
+      color: #F3E6BA;
+    }
     &.arrow {
       display: block;
       color: #F3E6BA;
       &:hover {
         cursor: pointer;
-        color: #a9f073;
+        color: #B6F086;
       }
     }
     .arrow {
@@ -49,12 +52,11 @@
       }
       &:hover {
         cursor: pointer;
-        color: #a9f073;
+        color: #B6F086;
       }
     }
   }
 }
-
 
 .table > thead > tr > th {
   border-bottom: none;
@@ -82,7 +84,7 @@ tr > th.day-header-item, .table > tbody > tr > td {
       border-radius: 2px;
       margin-top: 2px;
       border: 1px solid #999;
-      background-color: #a9f073;
+      background-color: #B6F086;
       padding: 4px;
       color: #333;
     }
@@ -130,13 +132,6 @@ tr > th.day-header-item, .table > tbody > tr > td {
   background-color: #666;
 }
 
-.no-selection {
-  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-  -moz-user-select: none; /* mozilla browsers */
-  -khtml-user-select: none; /* webkit (konqueror) browsers */
-  -ms-user-select: none; /* IE10+ */
-}
-
 .table > thead > tr > th.follow-button-container {
   padding: 13px;
   & > .follow-button {
@@ -150,7 +145,7 @@ tr > th.day-header-item, .table > tbody > tr > td {
     font-size: 18px;
     color: #333;
     &:hover {
-      background-color: #a9f073;
+      background-color: #B6F086;
     }
     &.following:hover {
       background-color: #f06060;

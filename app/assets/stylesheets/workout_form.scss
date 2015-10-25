@@ -1,11 +1,11 @@
-/* cream: #F3E6BA
-   maroon #967331
-   white #fff */
-
 .workout-form-container {
-  float: right;
-  width: 550px;
-  margin: 1% 1% 0.5% 0.5%;
+  float: left;
+  width: 100%;
+  max-width: 600px;
+  margin: 4% 2%;
+  -webkit-box-shadow: 1px -1px 5px 0px #333;
+  -moz-box-shadow: 1px -1px 5px 0px #333;
+  box-shadow: 1px -1px 5px 0px #333;
 }
 
 .left-input {
@@ -28,7 +28,7 @@
 .form-wrapper {
   padding: 20px 40px;
   background-color: #333;
-  border: 2px solid #fff;
+  border: 1px solid #fff;
   color: #fff;
   width: 100%;
   h1 {
@@ -59,7 +59,7 @@
     height: 100px;
   }
   &:focus {
-    outline-color: #a9f073
+    outline-color: #B6F086
   }
 }
 
@@ -67,19 +67,19 @@
   &:focus {
     outline: none;
     & > div > div {
-      outline-color: #a9f073;
+      outline-color: #B6F086;
       outline-style: auto;
       outline-width: 5px;
     }
   }
 }
 
-.activity-select-container {
+.choice-select-container {
   cursor: pointer;
   position: relative;
   background-color: #fff;
   height: 40px;
-  & > .activity-select {
+  & > .choice-select {
     position: relative;
     & > span {
       &:first-child {
@@ -100,7 +100,7 @@
       -ms-transform: rotate(-90deg);
     }
   }
-  & > ul.activity-list {
+  & > ul.choice-list {
     position: absolute;
     list-style: none;
     margin-left: 0px;
@@ -119,7 +119,7 @@
       color: #333;
       font-size: 16px;
       &:hover {
-        background-color: #a9f073;
+        background-color: #B6F086;
       }
       & > span.glyphicon {
         position: absolute;
@@ -143,6 +143,7 @@
 
 .duration-string {
   display:block;
+  position: absolute;
 }
 
 #bottom-hr {
@@ -161,6 +162,9 @@
 
   font-size: 24px;
   &:hover {
-    background-color: #a9f073;
+    background-color: #B6F086;
+  }
+  &:focus {
+    outline-color: #B6F086
   }
 }

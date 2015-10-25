@@ -28,13 +28,12 @@ window.JoinTeamButton = React.createClass({
     return this.state.membership ? <span className="leave">Leave Team</span> :
                                    <span className="join">Join Team</span>;
   },
-  bsStyle: function() {
-    return this.state.membership ? "danger" : "success";
+  buttonClass: function() {
+    return this.state.membership ? "join-team-button member" : "join-team-button";
   },
   render: function() {
     return (
-      <ReactBootstrap.Button bsStyle={this.bsStyle()}
-                             onClick={this.toggleMembership}>
+      <ReactBootstrap.Button className={this.buttonClass()} onClick={this.toggleMembership}>
         {this.buttonText()}
       </ReactBootstrap.Button>
     );

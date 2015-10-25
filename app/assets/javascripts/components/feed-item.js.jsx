@@ -21,6 +21,7 @@ window.FeedItem = React.createClass({
     );
   },
   renderNotes: function(notes) {
+    if (notes )
     if (notes !== null ){
       return (
         <td className="feed-item-title notes">
@@ -98,9 +99,10 @@ window.FeedItem = React.createClass({
         <td className="detail">
           <div className="detail-header">
             <img src="assets/glyphicons-195-circle-question-mark2.png" className="glyphicon"/>
+          </div>
+          <div className="detail-content">
             <span>No workout details logged</span>
           </div>
-          <br/>
         </td>
       );
     }

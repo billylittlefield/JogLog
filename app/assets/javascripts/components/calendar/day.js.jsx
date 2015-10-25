@@ -71,7 +71,8 @@ window.Day = React.createClass({
     }
   },
   workoutItemTime: function(displayWorkout) {
-    if (displayWorkout.duration.substring(11,19) !== "00:00:00") {
+    if (displayWorkout.duration &&
+        displayWorkout.duration.substring(11,19) !== "00:00:00") {
       return (<div>
                 {"Time: " +
                  moment.duration(displayWorkout.duration).format("h:mm:ss")}

@@ -8892,7 +8892,7 @@ button.close {
 }
 /* line 26, /Users/billylittlefield/Documents/appacademy/JoggerLogger/app/assets/stylesheets/navbar.scss */
 .logo > h1:hover {
-  color: #a9f073;
+  color: #B6F086;
   cursor: default;
 }
 /* line 31, /Users/billylittlefield/Documents/appacademy/JoggerLogger/app/assets/stylesheets/navbar.scss */
@@ -8968,7 +8968,7 @@ button.close {
 }
 /* line 90, /Users/billylittlefield/Documents/appacademy/JoggerLogger/app/assets/stylesheets/navbar.scss */
 .nav-list > li:hover > a {
-  color: #a9f073;
+  color: #B6F086;
   text-decoration: none;
 }
 
@@ -9008,7 +9008,7 @@ button.close {
 }
 /* line 124, /Users/billylittlefield/Documents/appacademy/JoggerLogger/app/assets/stylesheets/navbar.scss */
 .team-list > li > a:hover {
-  color: #a9f073;
+  color: #B6F086;
   text-decoration: none;
 }
 /* line 129, /Users/billylittlefield/Documents/appacademy/JoggerLogger/app/assets/stylesheets/navbar.scss */
@@ -9019,7 +9019,7 @@ button.close {
 }
 /* line 133, /Users/billylittlefield/Documents/appacademy/JoggerLogger/app/assets/stylesheets/navbar.scss */
 .team-list > li > a.add-team:hover {
-  color: #a9f073;
+  color: #B6F086;
   text-decoration: none;
 }
 /* line 137, /Users/billylittlefield/Documents/appacademy/JoggerLogger/app/assets/stylesheets/navbar.scss */
@@ -9108,7 +9108,7 @@ button.close {
 }
 /* line 61, /Users/billylittlefield/Documents/appacademy/JoggerLogger/app/assets/stylesheets/workout_form.scss */
 .workout-input:focus {
-  outline-color: #a9f073;
+  outline-color: #B6F086;
 }
 
 /* line 66, /Users/billylittlefield/Documents/appacademy/JoggerLogger/app/assets/stylesheets/workout_form.scss */
@@ -9164,7 +9164,7 @@ button.close {
 }
 /* line 109, /Users/billylittlefield/Documents/appacademy/JoggerLogger/app/assets/stylesheets/workout_form.scss */
 .activity-select-container > ul.activity-list li:hover {
-  background-color: #a9f073;
+  background-color: #B6F086;
 }
 /* line 112, /Users/billylittlefield/Documents/appacademy/JoggerLogger/app/assets/stylesheets/workout_form.scss */
 .activity-select-container > ul.activity-list li > span.glyphicon {
@@ -9197,7 +9197,7 @@ button.close {
 }
 /* line 141, /Users/billylittlefield/Documents/appacademy/JoggerLogger/app/assets/stylesheets/workout_form.scss */
 .workout-submit:hover {
-  background-color: #a9f073;
+  background-color: #B6F086;
 }
 
 /* line 2, /Users/billylittlefield/Documents/appacademy/JoggerLogger/app/assets/stylesheets/navbar-search.scss */
@@ -9249,7 +9249,7 @@ button.close {
 }
 /* line 44, /Users/billylittlefield/Documents/appacademy/JoggerLogger/app/assets/stylesheets/navbar-search.scss */
 .search-results-list > li.search-result-item:hover > a {
-  color: #a9f073;
+  color: #B6F086;
   text-decoration: none;
 }
 /* line 49, /Users/billylittlefield/Documents/appacademy/JoggerLogger/app/assets/stylesheets/navbar-search.scss */

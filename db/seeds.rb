@@ -1,6 +1,6 @@
-User.create(username: "billylitt", password: "password")
-User.create(username: "GShorr", password: "password")
-User.create(username: "TallRob42", password: "password")
+User.create(username: "billylitt", password: "password", gender: "m")
+User.create(username: "GShorr", password: "password", gender: "m")
+User.create(username: "TallRob42", password: "password", gender: "m")
 
 Workout.create(user_id: 1, title: "Short run through Schenley", activity: "Running", date: Date.new(2015,10,15), distance: 5.32, duration: "00:35:00", notes: "Feeling good today!")
 Workout.create(user_id: 1, title: "Quick thru Frick", activity: "Running", date: Date.new(2015,10,16), distance: 8, duration: "00:56:00", notes: "Saw Mac Miller!")
