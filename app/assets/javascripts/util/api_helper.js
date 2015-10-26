@@ -2,9 +2,9 @@ window.ApiHelper = {
   parseGender: function(filters) {
     var parsedFilters = { activity: filters.activity, group: filters.group };
     if (filters.gender == "Male" || filters.gender == "m") {
-      parsedFilters.gender = "m";
+      parsedFilters.gender = "mm";
     } else if (filters.gender == "Female" || this.gender == "f") {
-      parsedFilters.gender = "f";
+      parsedFilters.gender = "ff";
     } else {
       parsedFilters.gender = "mf";
     }
@@ -13,7 +13,6 @@ window.ApiHelper = {
     } else if (filters.group == "All Users") {
       parsedFilters.group = "All";
     }
-    debugger;
     return parsedFilters;
   }
 };

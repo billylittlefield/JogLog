@@ -47,11 +47,11 @@ class Workout < ActiveRecord::Base
     Workout.where(user_id: followee_ids).limit(10).order("date desc")
   end
 
-  def self.get_leaders_since(start_date, filters)
+  def self.get_leaders_since(start_date, filters, current_user)
     if (filters['group'] == 'Following')
-      group_filter = Workout.find_by_sql("
+      Workout.find_by_sql("
         SELECT
-          *
+          users.username, SUM(workouts.distance) AS sum
         FROM
           workouts
         JOIN
@@ -63,7 +63,8 @@ class Workout < ActiveRecord::Base
           workouts.user_id = '#{current_user.id}') AND
           (workouts.date BETWEEN '#{start_date}' AND '#{Date.today}') AND
           workouts.activity = '#{filters['activity']}' AND
-          users.gender LIKE '#{filters['gender']}'
+          (users.gender = '#{filters['gender'][0]}' OR
+          users.gender = '#{filters['gender'][1]}')
         GROUP BY
           users.username
         ORDER BY
@@ -72,7 +73,7 @@ class Workout < ActiveRecord::Base
           10
       ")
     elsif (filters['group'] == 'Teammates')
-      group_filter = Workout.find_by_sql("
+      Workout.find_by_sql("
         SELECT
           users.username, SUM(workouts.distance) AS sum
         FROM
@@ -82,7 +83,7 @@ class Workout < ActiveRecord::Base
         JOIN
           users ON users.id = workouts.user_id
         WHERE
-          membershsips.team_id IN (
+          memberships.team_id IN (
             SELECT
               teams.id
             FROM
@@ -94,9 +95,10 @@ class Workout < ActiveRecord::Base
           ) AND
           (workouts.date BETWEEN '#{start_date}' AND '#{Date.today}') AND
           workouts.activity = '#{filters['activity']}' AND
-          users.gender LIKE '#{filters['gender']}'
+          (users.gender = '#{filters['gender'][0]}' OR
+          users.gender = '#{filters['gender'][1]}')
         GROUP BY
-          user.username
+          users.username
         ORDER BY
           SUM(workouts.distance) desc
         LIMIT
@@ -113,7 +115,8 @@ class Workout < ActiveRecord::Base
         WHERE
           (workouts.date BETWEEN '#{start_date}' AND '#{Date.today}') AND
           workouts.activity = '#{filters['activity']}' AND
-          users.gender LIKE '#{filters['gender']}'
+          (users.gender = '#{filters['gender'][0]}' OR
+          users.gender = '#{filters['gender'][1]}')
         GROUP BY
           users.username
         ORDER BY

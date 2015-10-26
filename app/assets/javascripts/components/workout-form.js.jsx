@@ -64,7 +64,7 @@ window.WorkoutForm = React.createClass({
   updateActivityState: function(activity) {
     this.setState({ activity: activity });
   },
-  activities: ["Running", "Biking", "Swiming", "Walking", "Hiking",
+  activities: ["Running", "Biking", "Swimming", "Walking", "Hiking",
                "Treadmill", "Exercise Bike", "Elliptical",
                "Nordic Skiing", "Rowing", "Rollerblading"],
   render: function() {
@@ -96,7 +96,7 @@ window.WorkoutForm = React.createClass({
             <div tabIndex="0" className="activity-select-wrapper"
                  onFocus={this.colorTitle} onBlur={this.decolorTitle}>
               <CustomSelect choices={this.activities}
-                            default="Running"
+                            default={this.state.activity}
                             bubbleState={this.updateActivityState}/>
             </div>
           </div>

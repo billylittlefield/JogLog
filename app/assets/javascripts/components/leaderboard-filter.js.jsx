@@ -1,10 +1,10 @@
 window.LeaderboardFilter = React.createClass({
   getInitialState: function() {
     return { gender: this.parseGender(window.CURRENT_USER_GENDER),
-             activitiy: "Running",
+             activity: "Running",
              group: "All Users" };
   },
-  activities: ["Running", "Biking", "Swiming", "Walking", "Hiking",
+  activities: ["Running", "Biking", "Swimming", "Walking", "Hiking",
                "Treadmill", "Exercise Bike", "Elliptical",
                "Nordic Skiing", "Rowing", "Rollerblading"],
   genders: ["Male", "Female", "All"],

@@ -26,10 +26,10 @@ class Api::WorkoutsController < ApplicationController
   end
 
   def leaderboard
-    @last_week = Workout.get_leaders_since((Date.today - 6), params)
-    @last_month = Workout.get_leaders_since((Date.today - 30), params)
-    @current_month = Workout.get_leaders_since(Date.today.beginning_of_month, params)
-    @current_year = Workout.get_leaders_since(Date.today.beginning_of_year, params)
+    @last_week = Workout.get_leaders_since((Date.today - 6), params, current_user)
+    @last_month = Workout.get_leaders_since((Date.today - 30), params, current_user)
+    @current_month = Workout.get_leaders_since(Date.today.beginning_of_month, params, current_user)
+    @current_year = Workout.get_leaders_since(Date.today.beginning_of_year, params, current_user)
   end
 
   private
