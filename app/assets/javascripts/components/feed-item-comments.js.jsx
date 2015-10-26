@@ -68,7 +68,7 @@ window.FeedItemComments = React.createClass({
     });
   },
   plural: function() {
-    return this.props.comments.length === 1 ? "" : "s";
+    return this.state.comments.length === 1 ? "" : "s";
   },
   render: function() {
     var id = "workout-" + this.props.workoutId;
@@ -76,7 +76,7 @@ window.FeedItemComments = React.createClass({
       <div className="feed-item-footer group" id={id}>
         <div onClick={this.toggleComments} className="feed-item-comments-header no-selection">
           <img src="assets/glyphicons-310-comments2.png" className="glyphicon"/>
-          <span>{this.props.comments.length + " Comment" + this.plural()}</span>
+          <span>{this.state.comments.length + " Comment" + this.plural()}</span>
           <span className="glyphicon glyphicon-chevron-left"></span>
         </div>
         {this.comments()}

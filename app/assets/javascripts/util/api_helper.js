@@ -3,7 +3,7 @@ window.ApiHelper = {
     var parsedFilters = { activity: filters.activity, group: filters.group };
     if (filters.gender == "Male" || filters.gender == "m") {
       parsedFilters.gender = "mm";
-    } else if (filters.gender == "Female" || this.gender == "f") {
+    } else if (filters.gender == "Female" || filters.gender == "f") {
       parsedFilters.gender = "ff";
     } else {
       parsedFilters.gender = "mf";

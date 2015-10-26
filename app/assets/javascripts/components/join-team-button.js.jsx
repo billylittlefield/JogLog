@@ -25,17 +25,34 @@ window.JoinTeamButton = React.createClass({
     ApiUtil.toggleMembership(teamId, type, success);
   },
   buttonText: function() {
-    return this.state.membership ? <span className="leave">Leave Team</span> :
-                                   <span className="join">Join Team</span>;
+    if (this.state.membership) {
+      return (
+        <div>
+          <span className="glyphicon glyphicon-minus"></span>
+          <span className="leave">&nbsp;Leave Team</span>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <span className="glyphicon glyphicon-plus"></span>
+          <span className="join">&nbsp;Join Team</span>
+        </div>
+      );
+    }
   },
   buttonClass: function() {
-    return this.state.membership ? "join-team-button member" : "join-team-button";
+    var klass = "team-button";
+    if (this.state.membership) {
+      klass += " member";
+    }
+    return klass;
   },
   render: function() {
     return (
-      <ReactBootstrap.Button className={this.buttonClass()} onClick={this.toggleMembership}>
+      <div className={this.buttonClass()} onClick={this.toggleMembership}>
         {this.buttonText()}
-      </ReactBootstrap.Button>
+      </div>
     );
   }
 });
