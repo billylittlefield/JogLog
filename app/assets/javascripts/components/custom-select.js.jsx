@@ -3,12 +3,22 @@ window.CustomSelect = React.createClass({
     return { choice: this.props.default,
              showList: false };
   },
-
+  componentWillMount: function() {
+    UserStore.addDropdownCloseListener(this.close);
+  },
+  componentWillUnmount: function() {
+    UserStore.removeDropdownCloseListener(this.close);
+  },
+  close: function() {
+    this.setState({ showList: false });
+  },
   toggleList: function() {
     if (this.state.showList) {
-      $(".choice-select").removeClass("expanded");
+      $("#" + this.props.id).removeClass("dropdown-expanded");
     } else {
-      $(".choice-select").addClass("expanded");
+      $(".dropdown-expanded").removeClass("dropdown-expanded");
+      UserStore.closeDropdowns();
+      $("#" + this.props.id).addClass("dropdown-expanded");
     }
     this.setState({ showList: !this.state.showList });
   },
@@ -45,7 +55,8 @@ window.CustomSelect = React.createClass({
   render: function() {
     return (
       <div onClick={this.toggleList} className="choice-select-container">
-        <div className="choice-select workout-input no-selection">
+        <div id={this.props.id}
+             className="choice-select workout-input no-selection">
           {this.state.choice}
           <span className="glyphicon glyphicon-chevron-left"></span>
         </div>
@@ -53,4 +64,12 @@ window.CustomSelect = React.createClass({
       </div>
     );
   }
+});
+$(document).ready(function() {
+  $(document).click(function(e){
+    if ($(e.target).parents(".choice-select-container").length === 0) {
+      UserStore.closeDropdowns();
+      $(".dropdown-expanded").removeClass("dropdown-expanded");
+    }
+  });
 });

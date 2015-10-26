@@ -10,6 +10,7 @@
   var FOLLOWEES_UPDATED = "FOLLOWEES_UPDATED";
   var SEARCH_RESULTS_UPDATED = "SEARCH_RESULTS_UPDATED";
   var FEED_WORKOUTS_UPDATED = "FEED_WORKOUTS_UPDATED";
+  var DROPDOWN_CLOSED = "DROPDOWN_CLOSED";
 
   var updateTeams = function(teams) {
     _teams = teams;
@@ -58,6 +59,9 @@
     feedWorkouts: function() {
       return _feedWorkouts.slice();
     },
+    closeDropdowns: function() {
+      this.emit(DROPDOWN_CLOSED);
+    },
     addUserTeamsChangeEventListener: function(callback) {
       this.on(TEAMS_UPDATED, callback);
     },
@@ -81,6 +85,12 @@
     },
     removeFeedChangeListener: function(callback) {
       this.removeListener(FEED_WORKOUTS_UPDATED, callback);
+    },
+    addDropdownCloseListener: function(callback) {
+      this.on(DROPDOWN_CLOSED, callback);
+    },
+    removeDropdownCloseListener: function(callback) {
+      this.removeListener(DROPDOWN_CLOSED, callback);
     },
     dispatcherId: AppDispatcher.register(function(payload) {
       switch (payload.actionType) {

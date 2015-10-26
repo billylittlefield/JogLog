@@ -95,7 +95,8 @@ window.WorkoutForm = React.createClass({
             <label htmlFor="workout_activity">Activity</label>
             <div tabIndex="0" className="activity-select-wrapper"
                  onFocus={this.colorTitle} onBlur={this.decolorTitle}>
-              <CustomSelect choices={this.activities}
+              <CustomSelect id="workout-form-activity"
+                            choices={this.activities}
                             default={this.state.activity}
                             bubbleState={this.updateActivityState}/>
             </div>
