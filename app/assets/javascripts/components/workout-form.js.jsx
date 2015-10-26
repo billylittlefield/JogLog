@@ -143,8 +143,8 @@ window.WorkoutForm = React.createClass({
                       valueLink={this.linkState("notes")}
                       placeholder="Write any workout details here"/>
           </div>
-          <hr id="bottom-hr"/>
           {this.submitButton()}
+          <hr/>
         </form>
       </div>
     );

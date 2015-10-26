@@ -12,7 +12,10 @@ window.EditWorkoutDetail = React.createClass({
           <span aria-hidden="true" >×</span>
         </button>
         <WorkoutForm type={this.props.type} workout={this.props.workout}/>
-        <Comments workoutId={this.props.workout.id}/>
+        <div className="view-comments-wrapper">
+          <FeedItemComments workoutId={this.props.workout.id}
+                            comments={this.props.workout.comments}/>
+        </div>
       </Modal>
     );
   }

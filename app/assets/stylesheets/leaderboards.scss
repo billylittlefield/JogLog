@@ -21,8 +21,11 @@
   }
   & > div.panel-group {
     margin-bottom: 0px;
+    & > div.leader-panel {
+      border-radius: 0;
+    }
     & > div > div.panel-heading {
-      background-color: #eee;
+      background-color: #F3E6BA;
       font-family: 'Bitter', serif;
       color: #333;
       padding: 5px;

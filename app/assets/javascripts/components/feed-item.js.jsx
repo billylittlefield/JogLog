@@ -66,7 +66,7 @@ window.FeedItem = React.createClass({
       return (
         <td className="detail">
           <div className="detail-header">
-            <img src="assets/glyphicons-541-hourglass2.png" className="glyphicon"/>
+            <img src="assets/glyphicons-56-stopwatch2.png" className="glyphicon"/>
           </div>
           <div className="detail-content">
             {duration}
