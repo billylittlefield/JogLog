@@ -41,7 +41,7 @@
     & > a {
       color: #F3E6Ba;
       font-family: 'Bitter', serif;
-      font-size: 30px;
+      font-size: 24px;
       &:hover {
         color: #B6F086;
         text-decoration: none;
@@ -58,24 +58,24 @@
     }
     & > span {
       font-family: 'Lato', sans-serif;
-      font-size: 20px;
+      font-size: 16px;
       color: #fff;
     }
   }
 }
 
 .feed-item-title {
-  height: 30px;
-  font-size: 20px;
+  height: 24px;
+  font-size: 18px;
   position: relative;
   padding: 0;
+  font-weight: 700;
   &:hover > div {
     height: initial;
     max-height: 192px;
     position: absolute;
     background-color: #333;
     border: 1px solid #777;
-    border-right: none;
     z-index: 3;
     top: -1px;
     left: -1px;
@@ -86,27 +86,31 @@
     transition: max-height 350ms linear;
   }
   & > div {
-    padding: 5px 15px;
-    height: 40px;
+    padding: 5px 7px;
+    height: 32px;
     max-height: 50px;
     overflow: hidden;
-    width:100%;
     float: left;
-    line-height: 28px;
+    line-height: 21px;
     &.title-container {
-      line-height: 30px;
+      line-height: 22px;
     }
     & > img {
       position: relative;
       display: block;
       float: left;
-      top: 2px;
-      padding-right: 10px;
+      top: 1px;
+      padding-right: 7px;
+      height: 20px;
     }
     & > span {
       position: relative;
+      &.title {
+        top: 1px;
+      }
       &.notes {
-        font-size: 16px;
+        font-size: 14px;
+        font-weight: normal;
       }
     }
   }
@@ -119,12 +123,12 @@
   width: 100%;
   font-family: 'Lato', sans-serif;
   &.title-notes-table {
-    height: 41px;
+    height: 32px;
     border-bottom: none;
     & tbody > tr > td {
       border-bottom: none;
       &:first-child {
-        width: 49.9%;
+        width: 50%;
       }
     }
   }
@@ -134,21 +138,21 @@
       min-height: 20px;
       & > span {
         display: block;
-        font-size: 20px;
+        font-size: 16px;
         text-align: center;
         padding: 5px;
       }
       & > img {
-        padding-top: 15px;
+        height: 20px;
         display: block;
-        margin: auto;
+        margin: 10px auto;
       }
     }
     &.detail > div.detail-content {
       display: block;
       text-align: center;
-      font-size: 20px;
-      padding: 10px;
+      font-size: 16px;
+      padding: 0 10px 10px 10px;
     }
   }
 }
@@ -159,26 +163,28 @@
   border-top: none;
   background-color: #333;
   & > div.feed-item-comments-header {
-    padding: 9px 15px;
+    padding: 5px 15px;
     cursor: pointer;
     &:hover {
       color: #B6F086;
     }
     & > img {
       position: relative;
+      height: 18px;
       display: block;
       float: left;
+      top: 2px;
     }
     & > span {
-      font-size: 16px;
+      font-size: 14px;
       position: relative;
       display: inline-block;
       left: 10px;
     }
     & > span.glyphicon-chevron-left {
       top: 0;
-      font-size: 12px;
-      padding-left: 5px;
+      font-size: 8px;
+      padding-left: 3px;
       -webkit-transition: transform 350ms ease;
       -moz-transition: transform 350ms ease;
       -o-transition: transform 350ms ease;
@@ -259,7 +265,7 @@
       background-color: #F3E6BA;
       color: #333;
       border: none;
-      font-size: 24px;
+      font-size: 20px;
       &:hover {
         background-color: #B6F086;
       }
