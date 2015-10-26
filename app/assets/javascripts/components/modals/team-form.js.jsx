@@ -15,9 +15,9 @@ window.TeamForm = React.createClass({
   render: function() {
     return (
       <Modal show={this.props.show} onHide={this.props.onHide}>
-        <Modal.Header closeButton>
-        Create New Team
-        </Modal.Header>
+        <button className="close" aria-label="Close">
+          <span aria-hidden="true" >×</span>
+        </button>
         <div className="team-form">
           <h1 className="team-form-name">Team Name: </h1>
           <input type="text" valueLink={this.linkState("name")}/>

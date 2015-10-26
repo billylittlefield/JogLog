@@ -8,7 +8,11 @@ window.WorkoutForm = React.createClass({
     ApiUtil.createWorkout(this.state, this.props.type);
   },
   submitButton: function() {
-    if (this.props.type === "PATCH" || this.props.type === "POST") {
+    if (this.props.type === "PATCH") {
+      return <input type="submit"
+                    className="workout-submit"
+                    value="Update"/>;
+    } else if (this.props.type === "POST") {
       return <input type="submit"
                     className="workout-submit"
                     value="Submit"/>;
@@ -67,10 +71,17 @@ window.WorkoutForm = React.createClass({
   activities: ["Running", "Biking", "Swimming", "Walking", "Hiking",
                "Treadmill", "Exercise Bike", "Elliptical",
                "Nordic Skiing", "Rowing", "Rollerblading"],
+  headerText: function() {
+    if (this.props.type == "POST") {
+      return "Log a Workout";
+    } else if (this.props.type == "PATCH") {
+      return "Edit Workout Details";
+    }
+  },
   render: function() {
     return (
       <div className="form-wrapper">
-        <h1>Log Workout</h1>
+        <h1>{this.headerText()}</h1>
         <hr/>
         <form className="workout-form"
               data-mode={this.props.mode}
@@ -111,6 +122,7 @@ window.WorkoutForm = React.createClass({
                    placeholder="0.00"
                    step="0.01"
                    valueLink={this.linkState("distance")}/>
+            <div className="miles">Miles</div>
           </div>
           <div className="right-input input-group group">
             <label htmlFor="duration">Duration</label>

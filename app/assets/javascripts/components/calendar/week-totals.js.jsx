@@ -66,9 +66,9 @@ window.WeekTotals = React.createClass({
             <span className="arrow totals-arrow-left"
                   onClick={this.prevActivity}>&#9664;</span>
             <span>
-              &nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;
               {this.activityHeader()}
-              &nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;
             </span>
             <span className="arrow totals-arrow-right"
                   onClick={this.nextActivity}>&#9654;</span>

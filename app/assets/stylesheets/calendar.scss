@@ -98,7 +98,7 @@ tr > th.day-header-item, .table > tbody > tr > td {
   & > div.workout-toggle {
     text-align: center;
     &.week-totals {
-      font-size: 20px;
+      font-size: 18px;
     }
     &:hover {
       cursor: default;
@@ -123,7 +123,7 @@ tr > th.day-header-item, .table > tbody > tr > td {
     cursor: pointer;
   }
   & > div.workout-title {
-    text-decoration: underline;
+    font-weight: 900;
   }
 }
 

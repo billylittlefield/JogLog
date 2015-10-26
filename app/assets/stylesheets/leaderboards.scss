@@ -2,7 +2,7 @@
   float: left;
   margin: 0 2% 4% 2%;
   width: 100%;
-  max-width: 600px;
+  max-width: 500px;
   -webkit-box-shadow: 1px -1px 5px 0px #333;
   -moz-box-shadow: 1px -1px 5px 0px #333;
   box-shadow: 1px -1px 5px 0px #333;
@@ -11,6 +11,7 @@
 .leaderboard-wrapper {
   background-color: #333;
   padding: 10px;
+  border: 1px solid #fff;
   & > h1 {
     color: #F3E6BA;
     font-family: 'Bitter', serif;
@@ -22,6 +23,7 @@
     margin-bottom: 0px;
     & > div > div.panel-heading {
       background-color: #eee;
+      font-family: 'Bitter', serif;
       color: #333;
       padding: 5px;
       font-size: 18px;
@@ -48,7 +50,7 @@
   padding-bottom:10px;
   height: 60px;
   margin: 0 auto;
-  width: 470px;
+  width: 460px;
   position: relative;
   font-family: 'Lato', sans-serif;
   & > .filter {

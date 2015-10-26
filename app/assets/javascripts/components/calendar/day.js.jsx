@@ -45,10 +45,10 @@ window.Day = React.createClass({
           <div className="workout-toggle">
             <span className="arrow" onClick={this.prevWorkout}>&#9664;</span>
              <span>
-              &nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;
               {(this.state.displayIdx + 1) + " of " +
                       this.state.dayWorkouts.length}
-              &nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;
              </span>
              <span className="arrow" onClick={this.nextWorkout}>&#9654;</span>
            </div>
