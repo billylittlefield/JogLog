@@ -25,6 +25,79 @@
   }
 }
 
+.filter-container {
+  padding-bottom:10px;
+  height: 60px;
+  margin: 0 auto;
+  width: 470px;
+  position: relative;
+  font-family: 'Lato', sans-serif;
+  & > .filter {
+    display: inline-block;
+    float: left;
+    height: 30px;
+    margin-left: 10px;
+    &:first-child {
+      margin-left: 0px;
+    }
+    &.activity-filter {
+      width: 150px;
+      & > div {
+        & > div > span.glyphicon-chevron-left {
+          left: 130px;
+        }
+        & > ul > li {
+          width: 152px;
+          & > span.glyphicon-ok {
+            left: 120px;
+          }
+        }
+      }
+    }
+    &.gender-filter {
+      width: 100px;
+      & > div {
+        & > div > span.glyphicon-chevron-left {
+          left: 80px;
+        }
+        & > ul > li {
+          width: 102px;
+          & > span.glyphicon-ok {
+            left: 70px;
+          }
+        }
+      }
+    }
+    &.group-filter {
+      width: 190px;
+      & > div {
+        & > div > span.glyphicon-chevron-left {
+          left: 170px;
+        }
+        & > ul > li {
+          width: 192px;
+          & > span.glyphicon-ok {
+            left: 160px;
+          }
+        }
+      }
+    }
+    & > div.filter-label {
+      color: #B6F086;
+      font-size: 12px;
+    }
+    & > .choice-select-container {
+      height: 100%;
+      & > div > span:first-child {
+        top: 3px;
+      }
+      & > div > span.glyphicon-chevron-left {
+        top: 10px;
+      }
+    }
+  }
+}
+
 .panel-group {
   margin-bottom: 0;
 }

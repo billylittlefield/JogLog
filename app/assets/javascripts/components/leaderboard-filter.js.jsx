@@ -35,20 +35,23 @@ window.LeaderboardFilter = React.createClass({
   },
   render: function() {
     return (
-      <div className="filter-container">
-        <div className="activity-filter">
+      <div className="filter-container group">
+        <div className="activity-filter filter">
+          <div className="filter-label">Activity</div>
           <CustomSelect id="leaderboard-activity"
                         choices={this.activities}
                         default="Running"
                         bubbleState={this.updateActivityState} />
         </div>
-        <div className="gender-filter">
+        <div className="gender-filter filter">
+          <div className="filter-label">Gender</div>
           <CustomSelect id="leaderboard-gender"
                         choices={this.genders}
                         default={this.parseGender(window.CURRENT_USER_GENDER)}
                         bubbleState={this.updateGenderState} />
         </div>
-        <div className="group-filter">
+        <div className="group-filter filter">
+          <div className="filter-label">User Group</div>
           <CustomSelect id="leaderboard-group"
                         choices={this.groups}
                         default="All Users"
