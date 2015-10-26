@@ -13,6 +13,7 @@ window.ApiHelper = {
     } else if (filters.group == "All Users") {
       parsedFilters.group = "All";
     }
+    debugger;
     return parsedFilters;
   }
 };

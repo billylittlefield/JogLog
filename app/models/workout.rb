@@ -90,7 +90,7 @@ class Workout < ActiveRecord::Base
             JOIN
               memberships ON memberships.team_id = teams.id
             WHERE
-              memberships.member_id = '#{current_user.id}'
+              memberships.member_id = #{current_user.id}
           ) AND
           (workouts.date BETWEEN '#{start_date}' AND '#{Date.today}') AND
           workouts.activity = '#{filters['activity']}' AND
