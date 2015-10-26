@@ -8,7 +8,9 @@ window.Leaderboard = React.createClass({
     };
   },
   componentWillMount: function() {
-    ApiUtil.getLeaderboards();
+    ApiUtil.getLeaderboards({ activity: "Running",
+                              gender: window.CURRENT_USER_GENDER,
+                              group: "All Users" });
     LeaderboardStore.addLeaderboardChangeEventListener(this.updateLeaderboards);
   },
   componentWillUnmount: function() {

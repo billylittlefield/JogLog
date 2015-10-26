@@ -47,23 +47,80 @@ class Workout < ActiveRecord::Base
     Workout.where(user_id: followee_ids).limit(10).order("date desc")
   end
 
-  def self.get_leaders_since(start_date)
-    Workout.find_by_sql("
-      SELECT
-        users.username, SUM(workouts.distance) AS sum
-      FROM
-        workouts
-      JOIN
-        users ON users.id = workouts.user_id
-      WHERE
-        (workouts.date BETWEEN '#{start_date}' AND '#{Date.today}') AND
-        workouts.activity = 'Run'
-      GROUP BY
-        users.username
-      ORDER BY
-        SUM(workouts.distance) desc
-      LIMIT
-        10
-    ")
+  def self.get_leaders_since(start_date, filters)
+    if (filters['group'] == 'Following')
+      group_filter = Workout.find_by_sql("
+        SELECT
+          *
+        FROM
+          workouts
+        JOIN
+          follows ON workouts.user_id = follows.followee_id
+        JOIN
+          users ON users.id = workouts.user_id
+        WHERE
+          (follows.follower_id = '#{current_user.id}' OR
+          workouts.user_id = '#{current_user.id}') AND
+          (workouts.date BETWEEN '#{start_date}' AND '#{Date.today}') AND
+          workouts.activity = '#{filters['activity']}' AND
+          users.gender LIKE '#{filters['gender']}'
+        GROUP BY
+          users.username
+        ORDER BY
+          SUM(workouts.distance) desc
+        LIMIT
+          10
+      ")
+    elsif (filters['group'] == 'Teammates')
+      group_filter = Workout.find_by_sql("
+        SELECT
+          users.username, SUM(workouts.distance) AS sum
+        FROM
+          workouts
+        JOIN
+          memberships ON workouts.user_id = memberships.member_id
+        JOIN
+          users ON users.id = workouts.user_id
+        WHERE
+          membershsips.team_id IN (
+            SELECT
+              teams.id
+            FROM
+              teams
+            JOIN
+              memberships ON memberships.team_id = teams.id
+            WHERE
+              memberships.member_id = '#{current_user.id}'
+          ) AND
+          (workouts.date BETWEEN '#{start_date}' AND '#{Date.today}') AND
+          workouts.activity = '#{filters['activity']}' AND
+          users.gender LIKE '#{filters['gender']}'
+        GROUP BY
+          user.username
+        ORDER BY
+          SUM(workouts.distance) desc
+        LIMIT
+          10
+      ")
+    else
+      Workout.find_by_sql("
+        SELECT
+          users.username, SUM(workouts.distance) AS sum
+        FROM
+          workouts
+        JOIN
+          users ON users.id = workouts.user_id
+        WHERE
+          (workouts.date BETWEEN '#{start_date}' AND '#{Date.today}') AND
+          workouts.activity = '#{filters['activity']}' AND
+          users.gender LIKE '#{filters['gender']}'
+        GROUP BY
+          users.username
+        ORDER BY
+          SUM(workouts.distance) desc
+        LIMIT
+          10
+      ")
+    end
   end
 end

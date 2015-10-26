@@ -1,22 +1,25 @@
 window.LeaderboardFilter = React.createClass({
-  getInitialStat: function() {
-    return { gender: this.props.gender,
+  getInitialState: function() {
+    return { gender: this.parseGender(window.CURRENT_USER_GENDER),
              activitiy: "Running",
              group: "All Users" };
   },
   activities: ["Running", "Biking", "Swiming", "Walking", "Hiking",
                "Treadmill", "Exercise Bike", "Elliptical",
                "Nordic Skiing", "Rowing", "Rollerblading"],
-  genders: ["Male", "Female", "All Users"],
-  groups: ["Teammates", "Following", "All Users"],
+  genders: ["Male", "Female", "All"],
+  groups: ["Teammates", "Users I'm Following", "All Users"],
   updateActivityState: function(activity) {
     this.setState({ activity: activity });
+    ApiUtil.getLeaderboards(this.state);
   },
   updateGenderState: function(gender) {
     this.setState({ gender: gender });
+    ApiUtil.getLeaderboards(this.state);
   },
   updateGroupState: function(group) {
     this.setState({ group: group });
+    ApiUtil.getLeaderboards(this.state);
   },
   parseGender: function(gender) {
     if (gender == "m") {
@@ -24,7 +27,7 @@ window.LeaderboardFilter = React.createClass({
     } else if (gender == "f") {
       return "Female";
     } else {
-      return "All Users";
+      return "All";
     }
   },
   render: function() {

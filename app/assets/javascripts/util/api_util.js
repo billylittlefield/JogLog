@@ -122,10 +122,12 @@ window.ApiUtil = {
       }
     });
   },
-  getLeaderboards: function() {
+  getLeaderboards: function(filters) {
+    var parsedFilters = ApiHelper.parseGender(filters);
     $.ajax({
       url: "api/workouts/leaderboard",
       type: "GET",
+      data: parsedFilters,
       dataType: "json",
       success: function (leaderboardData) {
         ApiActions.receiveLeaderboardData(leaderboardData);
