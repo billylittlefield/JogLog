@@ -125,6 +125,7 @@ window.Day = React.createClass({
       if (workout.id) {
         return (
           <ViewWorkoutDetail
+            userName={this.props.userName}
             show={this.state.showModal}
             onHide={this.toggleModal}
             workout={adjustedWorkout} />

@@ -5,12 +5,12 @@ window.Week = React.createClass({
 
     if (this.props.type === "team") {
       days.push( <UserCell key={this.props.key + "_user_" + this.props.user.id}
-                          user={this.props.user} />);
+                           user={this.props.user} />);
     }
-
     for (var i = 0; i < 7; i++) {
       days.push( <Day key={currentDay.clone().toString()}
                       userId={this.props.user.id}
+                      userName={this.props.user.username}
                       date={currentDay.clone()}
                       displayMonth={this.props.displayMonth}
                       type={this.props.type} /> );

@@ -16,10 +16,11 @@ json.feed_workouts @feed_workouts do |workout|
   json.user_id workout.user_id
   json.user_username workout.user.username
   json.title workout.title
-  json.notes workout.notes
+  json.date workout.date
   json.distance workout.distance
   json.duration workout.duration
   json.activity workout.activity
+  json.notes workout.notes
   json.comments workout.comments do |comment|
     json.author comment.author.username
     json.author_id comment.author_id
@@ -27,5 +28,4 @@ json.feed_workouts @feed_workouts do |workout|
     json.body comment.body
     json.created_at comment.created_at
   end
-  json.date workout.date
 end

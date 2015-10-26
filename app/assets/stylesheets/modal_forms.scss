@@ -104,3 +104,48 @@ div.team-form {
     }
   }
 }
+
+.view-label {
+  color: #B6F086;
+}
+
+.view-content {
+  font-size: 24px;
+  &.view-notes {
+    font-size: 18px;
+  }
+}
+
+div.form-wrapper.view-wrapper {
+  border-bottom: 0;
+  padding-bottom: 1px;
+}
+
+.view-workout {
+  & > div.input-group {
+    padding: 10px 0px;
+  }
+  & > div:first-child {
+    padding-top: 0px;
+  }
+  & > div:last-child {
+    padding-bottom: 0px;
+  }
+}
+
+div.view-comments-wrapper > .feed-item-footer {
+  border: 1px solid #fff;
+  border-top: 0;
+  & > div.comments-container > ul {
+    margin-bottom: 0;
+    & > li > div.comment-content > span {
+      color: #fff;
+    }
+  }
+  & > .feed-item-comments-header {
+    padding: 0 20px 15px 20px;
+    & > span {
+      color: #fff;
+    }
+  }
+}

@@ -57,6 +57,6 @@
     })
   });
 
-  WorkoutStore.setMaxListeners(50);
+  WorkoutStore.setMaxListeners(100);
 
 }(this));
