@@ -1,0 +1,105 @@
+/* cream: #F3E6BA
+   green: #B6F086
+   red: #f06060 */
+
+
+.modal.fade .modal-dialog {
+  transform: none;
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
+
+.modal.in .modal-dialog {
+  opacity: 1;
+}
+
+.modal-header {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #fff;
+  border-bottom: none;
+  padding: 5px;
+  font-family: 'Lato', sans-serif;
+  & > button.close {
+    opacity: 1;
+    font-weight: normal;
+    text-shadow: none;
+    & > span {
+      color: #fff;
+      opacity: 1;
+      &:hover {
+        color: #f06060;
+      }
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+div.team-form {
+  background-color: #333;
+  border: 1px solid #fff;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+  & > h1 {
+    font-size: 24px;
+    color: #F3E6BA;
+  }
+  & > input {
+    color: #333;
+    margin-left: 10px;
+    &:focus {
+      outline-color: #B6F086
+    }
+  }
+}
+
+.modal-footer {
+  background-color: #333;
+  border: 1px solid #fff;
+  border-top: 0;
+  padding: 10px;
+  & > div.team-form-footer {
+    width: 230px;
+    margin: auto;
+    & > div.cancel-button {
+      background-color: #fff;
+      width: 80px;
+      height: 40px;
+      display: inline-block;
+      border-radius: 5px;
+      text-align: center;
+      font-family: 'Lato', sans-serif;
+      font-size: 18px;
+      padding: 8px 10px;
+      &:hover {
+        cursor: pointer;
+        background-color: #f06060;
+      }
+      &:focus {
+        outline-color: #f06060
+      }
+    }
+    & > div.create-button {
+      display: inline-block;
+      background-color: #F3E6BA;
+      height: 40px;
+      width: 130px;
+      margin-left: 20px;
+      font-family: 'Lato', sans-serif;
+      font-size: 18px;
+      padding: 8px 10px;
+      border-radius: 5px;
+      &:hover {
+        cursor: pointer;
+        background-color: #B6F086;
+      }
+      &:focus {
+        outline-color: #B6F086
+      }
+    }
+  }
+}

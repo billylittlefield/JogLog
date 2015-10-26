@@ -18,15 +18,20 @@ window.TeamForm = React.createClass({
         <Modal.Header closeButton>
         Create New Team
         </Modal.Header>
-        <form onSubmit={this.createTeam}>
+        <div className="team-form">
           <h1 className="team-form-name">Team Name: </h1>
           <input type="text" valueLink={this.linkState("name")}/>
-          <br/>
-          <Modal.Footer>
-          <Button onClick={this.props.onHide}>Cancel</Button>
-          <Button type="submit">Create Team</Button>
-          </Modal.Footer>
-        </form>
+        </div>
+        <Modal.Footer>
+          <div className="team-form-footer">
+            <div tabIndex="0"
+                 className="cancel-button"
+                 onClick={this.props.onHide}>Cancel</div>
+            <div tabIndex="0"
+                 className="create-button"
+                 onClick={this.createTeam}>Create Team</div>
+          </div>
+        </Modal.Footer>
       </Modal>
     );
   }
