@@ -56,6 +56,7 @@ Team.create!([
   {admin_id: 10, name: "Brown Fox over Lazy Dog"}
 ])
 User.create!([
+  {username: "Prefontaine", password_digest: "$2a$10$VbF42V38XS9FWnDTx8F7E.TQxJuQaQo86ZTkLBto9eSg2Z/dethnS", session_token: "Ep0EB7gmxHAEbVvvd91Hjg", gender: "m"}
   {username: "The_Don", password_digest: "$2a$10$ypq1GzesLQsfC.V6dlfbe.fobXAg3nyhGZTP6Q6MMEmsVFQ5LVEFm", session_token: "dwKFvfDsF0qgzYUDvq-HKA", gender: "m"},
   {username: "Sarah301", password_digest: "$2a$10$JexTJtHjgnNbLpJRDZ9lJez1zMuQiH8LsQSBiTEDFo8bgTmtjWTFG", session_token: "EqaGtFE3J0UNNlAIQlE1-Q", gender: "f"},
   {username: "JNewbz42", password_digest: "$2a$10$7yDKPxm09NncL70Qw4Gd8up7gZqej2C/hunPRd.3YKLdE/sI8euEm", session_token: "nopVS66-liCRNtOZA4pUVQ", gender: "m"},
@@ -68,7 +69,6 @@ User.create!([
   {username: "NathAttack", password_digest: "$2a$10$T4ACeuUBgxYUUbHn/Mm4A.fLxEpA56UaF3lqrGuWhIljlTiYmD65a", session_token: "9HhWtGZMrvR3R-lcX6YSBg", gender: "f"},
   {username: "Brabiant", password_digest: "$2a$10$x79Q37eWrdJpdCoLz4//B.epFsXOllhDPM4c0lho/d/lYVfkHjug.", session_token: "MDr9KF4Q-GWBnFXPI2Xb0Q", gender: "m"},
   {username: "TBone", password_digest: "$2a$10$M285Y4rTy6bG7Q2H0CLw7eL8.D0p/BiLNtVh71HoNViD6HRtOT.oK", session_token: "vBYc3Ls5PDWSPKWgRffTBQ", gender: "f"},
-  {username: "Prefontaine", password_digest: "$2a$10$VbF42V38XS9FWnDTx8F7E.TQxJuQaQo86ZTkLBto9eSg2Z/dethnS", session_token: "Ep0EB7gmxHAEbVvvd91Hjg", gender: "m"}
 ])
 Workout.create!([
   {user_id: 1, title: "Schenley, 6x3 on track", activity: "Running", date: "2015-10-01 00:00:00", distance: 10.5, duration: "2000-01-01 01:09:45", notes: "45 up (quick pace), 6x300 w/ 45s rest: 51, 52, 51, 51, 50, 50. 16 down.", distance_unit: "miles", miles_equivalent: 10.5},
