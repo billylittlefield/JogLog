@@ -33,7 +33,7 @@ window.Leaderboard = React.createClass({
           return (
             <tr key={index}>
               <td>{index + 1}</td>
-              <td>{row.username}</td>
+              <td><a href={"#/users/" + row.id}>{row.username}</a></td>
               <td>{row.sum + " miles"}</td>
             </tr>
           );

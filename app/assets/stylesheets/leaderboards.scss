@@ -45,11 +45,20 @@
             padding: 0;
             border: none;
             width: 180px;
+            & > a {
+              display: inline-block;
+              width: 100%;
+              color: #F3E6BA;
+              &:hover{
+                color: #86B5FF;
+                font-weight: 700;
+                text-decoration: none;
+              }
+            }
           }
           & > td:first-child {
             width: 50px;
           }
-
         }
       }
     }

@@ -51,7 +51,7 @@ class Workout < ActiveRecord::Base
     if (filters['group'] == 'Following')
       Workout.find_by_sql("
         SELECT
-          users.username, SUM(workouts.miles_equivalent) AS sum
+          MAX(users.id) AS id, users.username, SUM(workouts.miles_equivalent) AS sum
         FROM
           workouts
         JOIN
@@ -75,7 +75,7 @@ class Workout < ActiveRecord::Base
     elsif (filters['group'] == 'Teammates')
       Workout.find_by_sql("
         SELECT
-          users.username, SUM(workouts.miles_equivalent) AS sum
+          MAX(users.id) AS id, users.username, SUM(workouts.miles_equivalent) AS sum
         FROM
           workouts
         JOIN
@@ -107,7 +107,7 @@ class Workout < ActiveRecord::Base
     else
       Workout.find_by_sql("
         SELECT
-          users.username, SUM(workouts.miles_equivalent) AS sum
+          MAX(users.id) AS id, users.username, SUM(workouts.miles_equivalent) AS sum
         FROM
           workouts
         JOIN
