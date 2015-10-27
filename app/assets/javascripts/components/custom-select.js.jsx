@@ -14,11 +14,11 @@ window.CustomSelect = React.createClass({
   },
   toggleList: function() {
     if (this.state.showList) {
-      $("#" + this.props.id).removeClass("dropdown-expanded");
+      $("#" + this.props.id + " div:first-child").removeClass("dropdown-expanded");
     } else {
       $(".dropdown-expanded").removeClass("dropdown-expanded");
       UserStore.closeDropdowns();
-      $("#" + this.props.id).addClass("dropdown-expanded");
+      $("#" + this.props.id + " div:first-child").addClass("dropdown-expanded");
     }
     this.setState({ showList: !this.state.showList });
   },
@@ -54,9 +54,10 @@ window.CustomSelect = React.createClass({
   },
   render: function() {
     return (
-      <div onClick={this.toggleList} className="choice-select-container">
-        <div id={this.props.id}
-             className="choice-select workout-input no-selection">
+      <div id={this.props.id}
+           onClick={this.toggleList}
+           className="choice-select-container">
+        <div className="choice-select workout-input no-selection">
           {this.state.choice}
           <span className="glyphicon glyphicon-chevron-left"></span>
         </div>

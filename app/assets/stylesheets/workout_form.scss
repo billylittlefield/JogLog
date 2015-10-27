@@ -12,6 +12,29 @@
   clear: left;
   width: 215px;
   float: left;
+  & > #distance-label {
+    width: 100%;
+  }
+  & > input.distance-input {
+    width: 39%;
+    display: inline-block;
+  }
+  & > div {
+    display: inline;
+    & > div#workout-form-distance-unit {
+      width: 60%;
+      float: right;
+      display: inline-block;
+      & > ul {
+        & > li {
+          width: 131px;
+          & > span {
+            left: 100px;
+          }
+        }
+      }
+    }
+  }
 }
 
 .right-input {
@@ -97,7 +120,7 @@
       &.glyphicon {
         position: absolute;
         top: 14px;
-        left: 190px;
+        right: 10px;
       }
     }
     &.dropdown-expanded > span.glyphicon {

@@ -1,3 +1,23 @@
+<script>
+  var demo = function() {
+    $("#username").typed({
+      strings: ["Prefontaine"],
+      typeSpeed: 30,
+      showCursor: true,
+      callback: function() {
+        $("#password").typed({
+          strings: ["password"],
+          typeSpeed: 30,
+          showCursor: true,
+          callback: function() {
+            $("#submit-login").click();
+          }
+        })
+      }
+    })
+  }
+</script>
+
 <div id="background">
   <%= image_tag "splash_background.jpg" %>
 </div>
@@ -12,4 +32,5 @@
   </div>
   <hr>
   <h4>First time here? <a href="/users/new">Sign up!</a></h4>
+  <h4><a onClick="demo();">Click to try the Demo Account</a></h4>
 </div>

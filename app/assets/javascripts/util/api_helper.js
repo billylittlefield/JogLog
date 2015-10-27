@@ -14,5 +14,18 @@ window.ApiHelper = {
       parsedFilters.group = "All";
     }
     return parsedFilters;
+  },
+  distanceUnitShorthand: function(distanceUnit) {
+    if (distanceUnit === "miles") {
+      return "mi";
+    } else if (distanceUnit == "kilometers") {
+      return "km";
+    } else if (distanceUnit == "yards") {
+      return "yds";
+    } else if (distanceUnit == "meters") {
+      return "m";
+    } else {
+      return "";
+    }
   }
 };

@@ -30,7 +30,7 @@
       <span class="glyphicon glyphicon-lock"></span>
     </span>
     <input class="form-control"
-           id="password"
+           id="password-confirm"
            type="password"
            placeholder="Confirm password"
            name="user[password_confirmation]">
@@ -48,5 +48,5 @@
     </div>
   </div>
   <% end %>
-  <input class="btn" type="submit" value="<%= submit_text %>">
+  <input id="submit-login" class="btn" type="submit" value="<%= submit_text %>">
 </form>

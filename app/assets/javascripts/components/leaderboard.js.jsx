@@ -51,16 +51,16 @@ window.Leaderboard = React.createClass({
         <hr/>
         <LeaderboardFilter />
         <ReactBootstrap.PanelGroup>
-          <ReactBootstrap.Panel className="leader-panel" header="Most Miles: Last 7 Days" eventKey="1">
+          <ReactBootstrap.Panel className="leader-panel" header="Most Distance: Last 7 Days" eventKey="1">
             {this.renderTable(this.state.last_week)}
           </ReactBootstrap.Panel>
-          <ReactBootstrap.Panel className="leader-panel" header="Most Miles: Last 30 Days" eventKey="2">
+          <ReactBootstrap.Panel className="leader-panel" header="Most Distance: Last 30 Days" eventKey="2">
             {this.renderTable(this.state.last_month)}
           </ReactBootstrap.Panel>
-          <ReactBootstrap.Panel className="leader-panel" header={"Most Miles: " + moment().format("MMMM YYYY")} eventKey="3">
+          <ReactBootstrap.Panel className="leader-panel" header={"Most Distance: " + moment().format("MMMM YYYY")} eventKey="3">
             {this.renderTable(this.state.current_month)}
           </ReactBootstrap.Panel>
-          <ReactBootstrap.Panel className="leader-panel" header={"Most Miles: " + moment().format("YYYY")} eventKey="4">
+          <ReactBootstrap.Panel className="leader-panel" header={"Most Distance: " + moment().format("YYYY")} eventKey="4">
             {this.renderTable(this.state.current_year)}
           </ReactBootstrap.Panel>
         </ReactBootstrap.PanelGroup>

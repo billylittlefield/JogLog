@@ -5,6 +5,9 @@ window.WorkoutForm = React.createClass({
   },
   submitWorkoutForm: function(e) {
     e.preventDefault();
+    if (this.props.onHide) {
+      this.props.onHide();
+    }
     ApiUtil.createWorkout(this.state, this.props.type);
   },
   submitButton: function() {
@@ -68,9 +71,13 @@ window.WorkoutForm = React.createClass({
   updateActivityState: function(activity) {
     this.setState({ activity: activity });
   },
+  updateDistanceUnitState: function(unit) {
+    this.setState({ distance_unit: unit });
+  },
   activities: ["Running", "Biking", "Swimming", "Walking", "Hiking",
                "Treadmill", "Exercise Bike", "Elliptical",
                "Nordic Skiing", "Rowing", "Rollerblading"],
+  distanceUnits: ["miles", "kilometers", "meters", "yards"],
   headerText: function() {
     if (this.props.type == "POST") {
       return "Log a Workout";
@@ -113,16 +120,22 @@ window.WorkoutForm = React.createClass({
             </div>
           </div>
           <div className="left-input input-group">
-            <label htmlFor="distance">Distance</label>
+            <label id="distance-label" htmlFor="distance">Distance</label>
             <input onFocus={this.colorTitle} onBlur={this.decolorTitle}
-                   className="workout-input"
+                   className="workout-input distance-input"
                    name="workout_distance"
                    type="number"
                    min="0"
                    placeholder="0.00"
                    step="0.01"
                    valueLink={this.linkState("distance")}/>
-            <div className="miles">Miles</div>
+            <div tabIndex="0" className="activity-select-wrapper"
+                 onFocus={this.colorTitle} onBlur={this.decolorTitle}>
+              <CustomSelect id="workout-form-distance-unit"
+                            choices={this.distanceUnits}
+                            default={this.state.distance_unit}
+                            bubbleState={this.updateDistanceUnitState}/>
+            </div>
           </div>
           <div className="right-input input-group group">
             <label htmlFor="duration">Duration</label>
@@ -130,6 +143,7 @@ window.WorkoutForm = React.createClass({
                    className="workout-input duration-input"
                    type="text"
                    placeholder="0:00:00"
+                   defaultValue={this.props.workout.duration}
                    onInput={this.parseDuration}/>
             <div className="duration-string">
               {this.state.humanizedDuration}

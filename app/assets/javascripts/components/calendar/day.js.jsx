@@ -66,7 +66,8 @@ window.Day = React.createClass({
     if (displayWorkout.distance !== 0) {
       return (<div>
                 {displayWorkout.activity + ": " +
-                 displayWorkout.distance + " miles"}
+                 displayWorkout.distance + " " +
+                 ApiHelper.distanceUnitShorthand(displayWorkout.distance_unit)}
               </div>);
     }
   },

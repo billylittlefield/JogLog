@@ -7,20 +7,28 @@ window.WeekTotals = React.createClass({
     };
   },
   sortedTotals: function() {
-    var sortedTotals = {};
+    var newSortedTotals = {};
     this.state.weekWorkouts.forEach(function(workout) {
+      var distanceToAdd = workout.distance;
+      if (workout.distance_unit === "kilometers") {
+        distanceToAdd = parseFloat((workout.distance * 0.621371).toFixed(2));
+      } else if (workout.distance_unit === "meters") {
+        distanceToAdd = parseFloat((workout.distance * 0.000621371).toFixed(2));
+      } else if (workout.distance_unit === "yards") {
+        distanceToAdd = parseFloat((workout.distance * 0.000568182).toFixed(2));
+      }
       var activity = workout.activity;
-      if (sortedTotals[activity]) {
-        sortedTotals[activity].duration.add(moment.duration(workout.duration));
-        sortedTotals[activity].distance += workout.distance;
+      if (newSortedTotals[activity]) {
+        newSortedTotals[activity].duration.add(moment.duration(workout.duration));
+        newSortedTotals[activity].distance += distanceToAdd;
       } else {
-        sortedTotals[activity] = {
+        newSortedTotals[activity] = {
           duration: moment.duration(workout.duration),
-          distance: workout.distance
+          distance: distanceToAdd
         };
       }
     });
-    return sortedTotals;
+    return newSortedTotals;
   },
   componentWillMount: function() {
     WorkoutStore.addCalendarChangeListener(this.updateWeekTotals);

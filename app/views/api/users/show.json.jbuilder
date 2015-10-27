@@ -18,6 +18,7 @@ json.feed_workouts @feed_workouts do |workout|
   json.title workout.title
   json.date workout.date
   json.distance workout.distance
+  json.distance_unit workout.distance_unit
   json.duration workout.duration
   json.activity workout.activity
   json.notes workout.notes

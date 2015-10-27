@@ -10,7 +10,7 @@ window.ViewWorkoutDetail = React.createClass({
         show={this.props.show}
         onHide={this.props.onHide}
         workout={this.props.workout}>
-        <button className="close" aria-label="Close">
+        <button onClick={this.props.onHide} className="close" aria-label="Close">
           <span aria-hidden="true" >×</span>
         </button>
 

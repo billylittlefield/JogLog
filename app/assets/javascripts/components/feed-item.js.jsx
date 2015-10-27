@@ -54,7 +54,7 @@ window.FeedItem = React.createClass({
             <img src="assets/glyphicons-27-road2.png" className="glyphicon"/>
           </div>
           <div className="detail-content">
-            {workout.distance + " miles"}
+            {workout.distance + " " + workout.distance_unit}
           </div>
         </td>
       );
@@ -86,7 +86,8 @@ window.FeedItem = React.createClass({
           </div>
           <div className="detail-content">
             {moment.duration(moment.duration(workout.duration) / workout.distance)
-              .format("h:mm:ss") + " min/mile"}
+              .format("h:mm:ss") + " min/" +
+              ApiHelper.distanceUnitShorthand(workout.distance_unit)}
           </div>
         </td>
       );

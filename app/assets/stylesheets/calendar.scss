@@ -17,6 +17,10 @@ table.calendar-grid {
   margin: 0;
 }
 
+.arrow {
+  color: #F3E6BA;
+}
+
 .calendar-header {
   border: 1px solid #fff;
   font-family: 'Bitter', serif;
@@ -155,6 +159,20 @@ tr > th.day-header-item, .table > tbody > tr > td {
     }
     & > div > span.glyphicon {
       font-size: 15px;
+    }
+  }
+}
+
+.user-cell {
+  > div {
+    position: relative;
+    top: 100%;
+    text-align: center;
+    & > a {
+      font-size: 16px;
+      text-align: center;
+      padding-top: 20px;
+      color: #B6F086
     }
   }
 }

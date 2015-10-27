@@ -51,7 +51,7 @@ class Workout < ActiveRecord::Base
     if (filters['group'] == 'Following')
       Workout.find_by_sql("
         SELECT
-          users.username, SUM(workouts.distance) AS sum
+          users.username, SUM(workouts.miles_equivalent) AS sum
         FROM
           workouts
         JOIN
@@ -68,14 +68,14 @@ class Workout < ActiveRecord::Base
         GROUP BY
           users.username
         ORDER BY
-          SUM(workouts.distance) desc
+          SUM(workouts.miles_equivalent) desc
         LIMIT
           10
       ")
     elsif (filters['group'] == 'Teammates')
       Workout.find_by_sql("
         SELECT
-          users.username, SUM(workouts.distance) AS sum
+          users.username, SUM(workouts.miles_equivalent) AS sum
         FROM
           workouts
         JOIN
@@ -100,14 +100,14 @@ class Workout < ActiveRecord::Base
         GROUP BY
           users.username
         ORDER BY
-          SUM(workouts.distance) desc
+          SUM(workouts.miles_equivalent) desc
         LIMIT
           10
       ")
     else
       Workout.find_by_sql("
         SELECT
-          users.username, SUM(workouts.distance) AS sum
+          users.username, SUM(workouts.miles_equivalent) AS sum
         FROM
           workouts
         JOIN
@@ -120,7 +120,7 @@ class Workout < ActiveRecord::Base
         GROUP BY
           users.username
         ORDER BY
-          SUM(workouts.distance) desc
+          SUM(workouts.miles_equivalent) desc
         LIMIT
           10
       ")

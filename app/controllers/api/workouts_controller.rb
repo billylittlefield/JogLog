@@ -4,6 +4,16 @@ class Api::WorkoutsController < ApplicationController
   def create
     @workout = Workout.new(workout_params)
     @workout.user_id = current_user.id
+    @workout.miles_equivalent = @workout.distance
+    if (@workout.distance > 0 && @workout.distance_unit != "miles")
+      if @workout.distance_unit == "kilometers"
+        @workout.miles_equivalent = (@workout.distance * 0.621371).round(2)
+      elsif @workout.distance_unit == "meters"
+        @workout.miles_equivalent = (@workout.distance * 0.000621371).round(2)
+      elsif @workout.distance_unit == "yards"
+        @workout.miles_equivalent = (@workout.distance * 0.000568182).round(2)
+      end
+    end
     if @workout.save
       render json: @workout
     else
@@ -36,6 +46,6 @@ class Api::WorkoutsController < ApplicationController
 
   def workout_params
     params.require(:workout)
-          .permit(:title, :activity, :date, :distance, :duration, :notes)
+          .permit(:title, :activity, :date, :distance, :distance_unit, :duration, :notes)
   end
 end
