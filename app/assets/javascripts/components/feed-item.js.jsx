@@ -26,7 +26,7 @@ window.FeedItem = React.createClass({
       return (
         <td className="feed-item-title notes">
           <div className="notes-wrapper group">
-            <img src="assets/glyphicons-40-notes2.png" className="glyphicon"/>
+            <img src={Helpers.notesGlyph()} className="glyphicon"/>
             <span className="notes">{notes}</span>
           </div>
         </td>
@@ -51,7 +51,7 @@ window.FeedItem = React.createClass({
       return (
         <td className="detail">
           <div className="detail-header">
-            <img src="assets/glyphicons-27-road2.png" className="glyphicon"/>
+            <img src={Helpers.roadGlyph()} className="glyphicon"/>
           </div>
           <div className="detail-content">
             {workout.distance + " " + workout.distance_unit}
@@ -66,7 +66,7 @@ window.FeedItem = React.createClass({
       return (
         <td className="detail">
           <div className="detail-header">
-            <img src="assets/glyphicons-56-stopwatch2.png" className="glyphicon"/>
+            <img src={Helpers.stopwatchGlyph()} className="glyphicon"/>
           </div>
           <div className="detail-content">
             {duration}
@@ -82,7 +82,7 @@ window.FeedItem = React.createClass({
       return (
         <td className="detail">
           <div className="detail-header">
-            <img src="assets/glyphicons-598-watch2.png" className="glyphicon"/>
+            <img src={Helpers.watchGlyph()} className="glyphicon"/>
           </div>
           <div className="detail-content">
             {moment.duration(moment.duration(workout.duration) / workout.distance)
@@ -99,7 +99,7 @@ window.FeedItem = React.createClass({
       return (
         <td className="detail">
           <div className="detail-header">
-            <img src="assets/glyphicons-195-circle-question-mark2.png" className="glyphicon"/>
+            <img src={Helpers.circleQuestionGlyph()} className="glyphicon"/>
           </div>
           <div className="detail-content">
             <span>No workout details logged</span>
