@@ -27,7 +27,7 @@
     color: #F3E6BA;
     bottom: 3px;
     &:hover {
-      color: #B6F086;
+      color: #86B5FF;
       cursor: pointer;
     }
   }
@@ -91,7 +91,7 @@
       }
     }
     &:hover > a {
-      color: #B6F086;
+      color: #86B5FF;
       text-decoration: none;
     }
   }
@@ -110,7 +110,7 @@
    background-color: #333;
    padding: 0 10px;
    top: 100%;
-   left: -28px;
+   left: -50px;
    z-index: 5;
    width: 209px;
    border: 2px solid #fff;
@@ -122,20 +122,22 @@
     font-size: 16px;
     text-align: center;
     & > a {
-      font-family: 'Bitter', serif;
+      font-family: 'Lato', sans-serif;
       color: #F3E6BA;
+      display: block;
       &:hover {
-        color: #B6F086;
+        color: #86B5FF;
+        font-weight: 700;
         text-decoration: none;
       }
     }
     & > a.add-team {
       color: #fff;
-      padding: 10px 0;
+      padding: 3px 0;
       font-size: 22px;
+      font-family: 'Bitter', serif;
       &:hover {
-        color: #B6F086;
-        text-decoration: none;
+        color: #86B5FF;
       }
       &:focus {
         text-decoration: none;

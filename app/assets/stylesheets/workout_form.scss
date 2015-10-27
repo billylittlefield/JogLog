@@ -89,7 +89,7 @@
     height: 100px;
   }
   &:focus {
-    outline-color: #B6F086
+    outline-color: #86B5FF
   }
 }
 
@@ -97,7 +97,7 @@
   &:focus {
     outline: none;
     & > div > div {
-      outline-color: #B6F086;
+      outline-color: #86B5FF;
       outline-style: auto;
       outline-width: 5px;
     }
@@ -149,7 +149,8 @@
       color: #333;
       font-size: 16px;
       &:hover {
-        background-color: #B6F086;
+        background-color: #86B5FF;
+        font-weight: 900;
       }
       & > span.glyphicon {
         position: absolute;
@@ -193,9 +194,9 @@ hr {
 
   font-size: 24px;
   &:hover {
-    background-color: #B6F086;
+    background-color: #86B5FF;
   }
   &:focus {
-    outline-color: #B6F086
+    outline-color: #86B5FF
   }
 }

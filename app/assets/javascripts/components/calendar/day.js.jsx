@@ -80,6 +80,20 @@ window.Day = React.createClass({
               </div>);
     }
   },
+  workoutItemPace: function(workout) {
+    if (workout.duration &&
+        workout.duration.substring(11,19) !== "00:00:00" &&
+        workout.distance !== 0) {
+      return (
+        <div>
+          {"Pace: " +
+            moment.duration(moment.duration(workout.duration) / workout.distance)
+            .format("h:mm:ss") + " min/" +
+            ApiHelper.distanceUnitShorthand(workout.distance_unit)}
+        </div>
+      );
+    }
+  },
   workoutItem: function() {
     if (this.state.dayWorkouts.length > 0) {
       var displayWorkout = this.state.dayWorkouts[this.state.displayIdx];
@@ -88,6 +102,7 @@ window.Day = React.createClass({
           <div className="workout-title">{displayWorkout.title}</div>
           {this.workoutItemDistance(displayWorkout)}
           {this.workoutItemTime(displayWorkout)}
+          {this.workoutItemPace(displayWorkout)}
         </div>
       );
     } else {

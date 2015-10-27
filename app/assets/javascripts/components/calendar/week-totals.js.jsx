@@ -20,7 +20,8 @@ window.WeekTotals = React.createClass({
       var activity = workout.activity;
       if (newSortedTotals[activity]) {
         newSortedTotals[activity].duration.add(moment.duration(workout.duration));
-        newSortedTotals[activity].distance += distanceToAdd;
+        newSortedTotals[activity].distance = distanceToAdd + parseFloat(newSortedTotals[activity].distance);
+        newSortedTotals[activity].distance = newSortedTotals[activity].distance.toFixed(2);
       } else {
         newSortedTotals[activity] = {
           duration: moment.duration(workout.duration),
@@ -105,6 +106,12 @@ window.WeekTotals = React.createClass({
       return (<div>{"Time: " + durationTotal}</div>);
     }
   },
+  averagePace: function(distanceTotal, durationTotal) {
+    if (distanceTotal !== 0 && durationTotal !== "0") {
+      return (<div>{"Avg Pace: " + moment.duration(moment.duration(durationTotal) / distanceTotal)
+                                          .format("h:mm:ss") + " min/mi"}</div>);
+    }
+  },
   activityTotals: function() {
     var allTotals = this.sortedTotals();
     if (!_.isEmpty(allTotals)) {
@@ -113,6 +120,8 @@ window.WeekTotals = React.createClass({
         <div className="workout-item">
           {this.distanceTotal(allTotals[displayActivity].distance)}
           {this.durationTotal(allTotals[displayActivity].duration.format("h:mm:ss"))}
+          {this.averagePace(allTotals[displayActivity].distance,
+                            allTotals[displayActivity].duration.format("h:mm:ss", {trim: false}))}
         </div>
       );
     }

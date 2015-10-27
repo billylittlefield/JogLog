@@ -43,7 +43,7 @@
       font-family: 'Bitter', serif;
       font-size: 24px;
       &:hover {
-        color: #B6F086;
+        color: #86B5FF;
         text-decoration: none;
       }
     }
@@ -125,6 +125,9 @@
   &.title-notes-table {
     height: 32px;
     border-bottom: none;
+    & tbody > tr {
+      height: 33px;
+    }
     & tbody > tr > td {
       border-bottom: none;
       &:first-child {
@@ -166,7 +169,7 @@
     padding: 5px 15px;
     cursor: pointer;
     &:hover {
-      color: #B6F086;
+      color: #86B5FF;
     }
     & > img {
       position: relative;
@@ -232,7 +235,7 @@
             color: #F3E6BA;
             text-decoration: none;
             &:hover {
-              color: #B6F086;
+              color: #86B5FF;
             }
           }
         }
@@ -252,7 +255,7 @@
       border: 0;
       color: #333;
       &:focus {
-        outline-color: #B6F086;
+        outline-color: #86B5FF;
         outline-style: auto;
         outline-width: 5px;
       }
@@ -267,10 +270,10 @@
       border: none;
       font-size: 20px;
       &:hover {
-        background-color: #B6F086;
+        background-color: #86B5FF;
       }
       &:focus {
-        outline-color: #B6F086;
+        outline-color: #86B5FF;
         outline-style: auto;
         outline-width: 5px;
       }

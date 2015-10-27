@@ -52,7 +52,7 @@
           border-radius: 0;
         }
         & > input:focus {
-          border-color: #B6F086
+          border-color: #86B5FF
         }
         &.gender-radio {
           padding: 0;
@@ -68,7 +68,7 @@
             & > label > input {
               cursor: pointer;
               &:focus {
-                outline-color: #B6F086;
+                outline-color: #86B5FF;
               }
             }
           }
@@ -84,10 +84,10 @@
         text-decoration: none;
         display: block;
         &:hover {
-          background-color: #B6F086;
+          background-color: #86B5FF;
         }
         &:focus {
-          outline-color: #B6F086
+          outline-color: #86B5FF
         }
       }
     }
@@ -98,7 +98,7 @@
     & > a {
       color: #fff;
       &:focus {
-        outline-color: #B6F086
+        outline-color: #86B5FF
       }
       &:hover {
         cursor: pointer;

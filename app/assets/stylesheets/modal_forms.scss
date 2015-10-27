@@ -48,7 +48,7 @@ div.team-form {
     color: #333;
     margin-left: 10px;
     &:focus {
-      outline-color: #B6F086
+      outline-color: #86B5FF
     }
   }
 }
@@ -91,17 +91,17 @@ div.team-form {
       border-radius: 5px;
       &:hover {
         cursor: pointer;
-        background-color: #B6F086;
+        background-color: #86B5FF;
       }
       &:focus {
-        outline-color: #B6F086
+        outline-color: #86B5FF
       }
     }
   }
 }
 
 .view-label {
-  color: #B6F086;
+  color: #86B5FF;
 }
 
 .view-content {
@@ -119,6 +119,9 @@ div.form-wrapper.view-wrapper {
 .view-workout {
   & > div.input-group {
     padding: 10px 0px;
+    & > div {
+      display:block;
+    }
   }
   & > div:first-child {
     padding-top: 0px;
@@ -128,9 +131,17 @@ div.form-wrapper.view-wrapper {
   }
 }
 
+.no-comments {
+  border-bottom: 1px solid #fff;
+}
+
 div.view-comments-wrapper > .feed-item-footer {
   border: 1px solid #fff;
   border-top: 0;
+  & > div.comments-container {
+    padding: 5px;
+    margin-top: -10px;
+  }
   & > div.comments-container > ul {
     margin-bottom: 0;
     & > li > div.comment-content > span {

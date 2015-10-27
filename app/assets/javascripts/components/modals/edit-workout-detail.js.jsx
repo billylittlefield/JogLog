@@ -9,6 +9,8 @@ window.EditWorkoutDetail = React.createClass({
                             comments={this.props.workout.comments}/>
         </div>
       );
+    } else {
+      return <div className="no-comments"/>;
     }
   },
   render: function() {

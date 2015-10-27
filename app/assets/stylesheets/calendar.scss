@@ -19,6 +19,9 @@ table.calendar-grid {
 
 .arrow {
   color: #F3E6BA;
+  &:hover {
+    color: #86B5FF;
+  }
 }
 
 .calendar-header {
@@ -39,7 +42,7 @@ table.calendar-grid {
       color: #F3E6BA;
       &:hover {
         cursor: pointer;
-        color: #B6F086;
+        color: #86B5FF;
       }
     }
     .arrow {
@@ -54,7 +57,7 @@ table.calendar-grid {
       }
       &:hover {
         cursor: pointer;
-        color: #B6F086;
+        color: #86B5FF;
       }
     }
   }
@@ -87,7 +90,7 @@ tr > th.day-header-item, .table > tbody > tr > td {
       border-radius: 2px;
       margin-top: 2px;
       border: 1px solid #999;
-      background-color: #B6F086;
+      background-color: #86B5FF;
       padding: 4px;
       color: #333;
     }
@@ -152,7 +155,7 @@ tr > th.day-header-item, .table > tbody > tr > td {
       width: 150px;
     }
     &:hover {
-      background-color: #B6F086;
+      background-color: #86B5FF;
     }
     &.following:hover, &.member:hover {
       background-color: #f06060;
@@ -172,7 +175,7 @@ tr > th.day-header-item, .table > tbody > tr > td {
       font-size: 16px;
       text-align: center;
       padding-top: 20px;
-      color: #B6F086
+      color: #86B5FF
     }
   }
 }
