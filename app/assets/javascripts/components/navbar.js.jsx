@@ -55,8 +55,7 @@
       <header className="header">
         <nav className="navbar-content group">
           <div onClick={this.returnHome} className="logo">
-              <img src="app/assets/images/running_man.png"/>
-              <div id="logo-man"/>
+              <img src="assets/running_man.png"/>
               <h1>JogLog</h1>
           </div>
           <ul className="nav-list list-left group">
