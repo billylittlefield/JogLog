@@ -34,7 +34,7 @@ window.FeedItem = React.createClass({
     }
   },
   renderActivity: function(workout) {
-    var imageUrl = "assets/" + workout.activity + ".png";
+    var imageUrl = Helpers.activityChoice(workout.activity);
     return (
       <td className="detail">
         <div className="detail-header">
@@ -118,7 +118,7 @@ window.FeedItem = React.createClass({
             <tr>
               <td className="feed-item-title">
                 <div className="title-container group">
-                  <img src="assets/glyphicons-88-log-book2.png" className="glyphicon"/>
+                  <img src={Helpers.logbookGlyph()} className="glyphicon"/>
                   <span className="title">{workout.title}</span>
                 </div>
               </td>

@@ -2,11 +2,30 @@ window.Helpers = {
   runningMan: function() {
     return "<%= asset_path('running_man.png') %>";
   },
-  biking: function() {
-    return "<%= asset_path('Biking.png') %>";
-  },
-  elliptical: function() {
-    return "<%= asset_path('Elliptical.png') %>";
+  activityChoice: function(activity) {
+    if (activity === "Biking") {
+      return "<%= asset_path('Biking.png') %>";
+    } else if (activity === "Ellptical") {
+      return "<%= asset_path('Elliptical.png') %>";
+    } else if (activity === "Hiking") {
+      return "<%= asset_path('Hiking.png') %>";
+    } else if (activity === "Rollerblading") {
+      return "<%= asset_path('Rollerblading.png') %>";
+    } else if (activity === "Nordic Skiing") {
+      return "<%= asset_path('Nordic Skiing.png') %>";
+    } else if (activity === "Rowing") {
+      return "<%= asset_path('Rowing.png') %>";
+    } else if (activity === "Running") {
+      return "<%= asset_path('Running.png') %>";
+    } else if (activity === "Swimming") {
+      return "<%= asset_path('Swimming.png') %>";
+    } else if (activity === "Treadmill") {
+      return "<%= asset_path('Treadmill.png') %>";
+    } else if (activity === "Exercise Bike") {
+      return "<%= asset_path('Exercise Bike.png') %>";
+    } else if (activity === "Walking" ) {
+        return "<%= asset_path('Walking.png') %>";
+    }
   },
   roadGlyph: function() {
     return "<%= asset_path('glyphicons-27-road2.png') %>";
@@ -31,29 +50,5 @@ window.Helpers = {
   },
   watchGlyph: function() {
     return "<%= asset_path('glyphicons-598-watch2.png') %>";
-  },
-  hiking: function() {
-    return "<%= asset_path('Hiking.png') %>";
-  },
-  nordicSkiing: function() {
-    return "<%= asset_path('Nordic Skiing.png') %>";
-  },
-  rollerblading: function() {
-    return "<%= asset_path('Rollerblading.png') %>";
-  },
-  rowing: function() {
-    return "<%= asset_path('Rowing.png') %>";
-  },
-  running: function() {
-    return "<%= asset_path('Running.png') %>";
-  },
-  swimming: function() {
-    return "<%= asset_path('Swimming.png') %>";
-  },
-  treadmill: function() {
-    return "<%= asset_path('Treadmill.png') %>";
-  },
-  walking: function() {
-    return "<%= asset_path('Walking.png') %>";
   }
 };
