@@ -26,7 +26,7 @@ window.FeedItem = React.createClass({
       return (
         <td className="feed-item-title notes">
           <div className="notes-wrapper group">
-            <img src={Helpers.notesGlyph()} className="glyphicon"/>
+            <img src="assets/glyphicons-40-notes2.png" className="glyphicon"/>
             <span className="notes">{notes}</span>
           </div>
         </td>
@@ -34,7 +34,7 @@ window.FeedItem = React.createClass({
     }
   },
   renderActivity: function(workout) {
-    var imageUrl = Helpers.activityChoice(workout.activity);
+    var imageUrl = "assets/" + workout.activity + ".png";
     return (
       <td className="detail">
         <div className="detail-header">
@@ -51,7 +51,7 @@ window.FeedItem = React.createClass({
       return (
         <td className="detail">
           <div className="detail-header">
-            <img src={Helpers.roadGlyph()} className="glyphicon"/>
+            <img src="assets/glyphicons-27-road2.png" className="glyphicon"/>
           </div>
           <div className="detail-content">
             {workout.distance + " " + workout.distance_unit}
@@ -66,7 +66,7 @@ window.FeedItem = React.createClass({
       return (
         <td className="detail">
           <div className="detail-header">
-            <img src={Helpers.stopwatchGlyph()} className="glyphicon"/>
+            <img src="assets/glyphicons-56-stopwatch2.png" className="glyphicon"/>
           </div>
           <div className="detail-content">
             {duration}
@@ -82,7 +82,7 @@ window.FeedItem = React.createClass({
       return (
         <td className="detail">
           <div className="detail-header">
-            <img src={Helpers.watchGlyph()} className="glyphicon"/>
+            <img src="assets/glyphicons-598-watch2.png" className="glyphicon"/>
           </div>
           <div className="detail-content">
             {moment.duration(moment.duration(workout.duration) / workout.distance)
@@ -99,7 +99,7 @@ window.FeedItem = React.createClass({
       return (
         <td className="detail">
           <div className="detail-header">
-            <img src={Helpers.circleQuestionGlyph()} className="glyphicon"/>
+            <img src="assets/glyphicons-195-circle-question-mark2.png" className="glyphicon"/>
           </div>
           <div className="detail-content">
             <span>No workout details logged</span>
@@ -118,7 +118,7 @@ window.FeedItem = React.createClass({
             <tr>
               <td className="feed-item-title">
                 <div className="title-container group">
-                  <img src={Helpers.logbookGlyph()} className="glyphicon"/>
+                  <img src="assets/glyphicons-88-log-book2.png" className="glyphicon"/>
                   <span className="title">{workout.title}</span>
                 </div>
               </td>

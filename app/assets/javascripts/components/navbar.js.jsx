@@ -55,7 +55,7 @@
       <header className="header">
         <nav className="navbar-content group">
           <div onClick={this.returnHome} className="logo">
-              <img src={Helpers.runningMan()}/>
+              <img src="assets/running_man.png"/>
               <h1>JogLog</h1>
           </div>
           <ul className="nav-list list-left group">
