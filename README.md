@@ -10,105 +10,58 @@ JogLog is a social exercise-tracking web application inspired by LogARun.com and
 
 ## Features
 
-- [ ] Create an account
-- [ ] Log in / Log out
-- [ ] Create, read, edit, and delete workouts
-- [ ] View workouts in a 'calendar view' (by month)
-- [ ] See weekly and monthly totals in 'calendar view'
-- [ ] Create / join a 'team' comprised of other users
-- [ ] View team members' workouts all together in 'team view'
-- [ ] Comment on other users workouts
-- [ ] 'Follow' users and see most recent workouts by followed users on homepage
-- [ ] View user leaderboards for most miles in past 7 days
-- [ ] User / team search functionality from Navbar
+* Secure user authentication using BCrypt
+* Workout form with duration parsing and selections for distance-unit / activity-type
+* Interactive calendar with modal views toggled by clicking on day
+* Weekly totals by activity for distance, duration, and average pace
+* 'Follow'  other users to track their recent workouts on activity feed
+* Join a team with other friends to view week's workouts of all team members
+* Leaderboard showcasing most distance in the last week, month, and year
+* Filter interface to adjust leaderboards by activity-type, gender, and user-group
+* Team/User search in Navbar
 
-## Design Docs
-* [View Wireframes][view]
-* [DB schema][schema]
-* [Routes table][routes]
+## App Components
 
-[view]: ./docs/views.md
-[schema]: ./docs/schema.md
-[routes]: ./docs/routes.md
+### User Authentication
 
-## Implementation Timeline
+During user/session creation, the password typed into the form is used to create a hashed and salted password_digest via BCrypt. Only the digest itself is stored in the database, ensuring secure login. Session tokens are generated using SecureRandom and ensure that logging in to the same account from a different location will disable any functionality from the original session. Before all controller actions, current_user is checked with the session token and redirects to sign-in page if the user has logged in elsewhere. Usernames are case insensitive for ease of use.
 
-### Phase 1: User Authentication, Workout Model and JSON API (1.5 days)
 
-In Phase 1, I will implement user signup and session authentication (using
-BCrypt). There will be rough pages for sign in / sign up just to verify
-functionality, and the sign-in landing page will be the root where the highest-
-nested React 'Home' component will live. Accessing any part of the site aside
-from the new session / new user will result in a redirect. I will then set up
-the JSON API for the Workout model.
+### Calendar
 
-[Details][phase-one]
+The calendar page is constructed using React.js with much help from the [moment.js] library for date manipulation. The calendar component heirarchy is as such:
+* calendar
+  * header
+    * follow-button
+    * next/prev month selection
+  * day-names
+  * weeks
+    * days
+    * week-totals
+Weeks are continuously added to the calendar until the start of the week is no longer in the current month. Props including workouts, user, current_month, and date are passed down the hierarchy to the 'Day' component. As a result, the calendar includes an event listener for any added workout so that it can update its view and the summary totals accordingly. Each day also contains a modal view that is hidden by default. Upon clicking on a day, the appropriate modal is displayed -- if the user is viewing their calendar, they will either see the 'Edit' or 'New' workout form depending on whether they clicked on a blank day or a day with a pre-existing workout. When viewing another user's calendar, the modal shows a static 'Read-only' modal with no input fields.
 
-### Phase 2: Flux Setup and Workout CRUD (1 day)
+If a user is logging more than one activity in a week (or day), a multi-workout header will appear at the top of the calendar cell. This allows the user to cycle through their workouts by activity and view data in clean format. The meat of the calendar cell shows the workout duration, distance, and average pace (if it can be calculated):
+```jsx
+workoutItem: function() {
+    if (this.state.dayWorkouts.length > 0) {
+      var displayWorkout = this.state.dayWorkouts[this.state.displayIdx];
+      return (
+        <div onClick={this.toggleModal} className="workout-item">
+          <div className="workout-title">{displayWorkout.title}</div>
+          {this.workoutItemDistance(displayWorkout)}
+          {this.workoutItemTime(displayWorkout)}
+          {this.workoutItemPace(displayWorkout)}
+        </div>
+      );
+    } else {
+      return <div onClick={this.toggleModal} className="workout-item"/>;
+    }
+  }
+```
 
-Phase 2 consists of getting the Flux architecture up and running for the
-Workout model. This will include a Workout store that will update the eventually
-update the calendar and workout feed upon change / addition of a Workout
-instance. I will create basic versions of the Workout Form and Workout Detail to
-test CRUD functionality, and will prevent Users from editing any Workouts aside
-from their own.
+[moment.js]: http://momentjs.com/
 
-[Details][phase-two]
 
-### Phase 3: Teams (1 day)
-
-Here I will implement the Team feature by building out the Team model (including
-the New Team form) to allow for creation and membership of Teams. On the page
-for a given team, the functionality should exist to join and leave a team
-that updates automatically as a React feature. The "Create Team" will move to
-the navbar in phase 4.
-
-[Details][phase-three]
-
-### Phase 4: Navbar and Calendar View (2 days)
-
-In Phase 4, I will add the Navbar to the root 'App' React component and will
-style it with bootstrap. I will also implement real-time Search functionality
-in the Navbar with clickable results that lead to either Team or User, depending
-on the selection of the drop down in the Navbar. I will then create the
-CalendarGrid React components for both PersonalCalendar and TeamCalendar to
-show a nested WorkoutItem for every given day. I will also add styling to the
-calendar views as I build them out to build this up fully before moving on.
-The grid boxes in the calendars will be associated with the workout for the
-specified user on that given day.
-
-[Details][phase-four]
-
-### Phase 5: Modal Views, Follows, and Comments (1.5 day)
-
-In Phase 5 I will add the smaller-scale models to allow users to 'Follow' and
-'Unfollow' other Users, as well as create 'Comments' on Workouts. This phase
-will also include the implementation of modal views for the New Workout (if
-accessed via Calendar view), New Team, and Workout Detail.
-
-[Details][phase-five]
-
-### Phase 6: Workout Feed and Leaderboards (1 day)
-
-Once the Follow feature is working from Phase 5, I will implement a Workout
-Feed feature that allows a user to see the most recent workouts completed by
-any users that they are following. These items will be clickable to expand the
-Workout Detail modal and allow for commenting. I will also create the
-Leaderboards for the homepage by scraping data from the Workouts DB
-
-[Details][phase-six]
-
-### Phase 7: Seeding and Final Styling (1 days)
-
-The bulk styling of the calendar views and Navbar should have been completed by
-this point, so in this phase I will finish any lingering styling necessities of
-those two components then finish styling the homepage and Form views. I will
-also add enough seed data to showcase the social aspect of this run-logging
-site, and test every aspect of the site to look for any bugs.
-
-[Details][phase-seven]
-
-### Bonus Features (TBD)
 - [ ] Add 'private' option to Team so owner must approve 'Join Team' requests
 - [ ] Track shoes for users to keep track of total mileage
 - [ ] Add message board to Team page
