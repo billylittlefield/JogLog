@@ -15,7 +15,7 @@ window.FeedItem = React.createClass({
           <a href={"#/users/" + workout.user_id}>{workout.user_username}</a>
         </div>
         <div className="feed-item-date">
-          <span>{moment(workout.date).format("dddd, M/D/YYYY")}</span>
+          <span>{moment(workout.date.substring(0,10)).format("dddd, M/D/YYYY")}</span>
         </div>
       </div>
     );

@@ -4,7 +4,7 @@ class Api::WorkoutsController < ApplicationController
   def create
     @workout = Workout.new(workout_params)
     @workout.user_id = current_user.id
-    @workout.miles_equivalent = @workout.distance
+    @workout.miles_equivalent = @workout.distance.round(2)
     if (@workout.distance > 0 && @workout.distance_unit != "miles")
       if @workout.distance_unit == "kilometers"
         @workout.miles_equivalent = (@workout.distance * 0.621371).round(2)

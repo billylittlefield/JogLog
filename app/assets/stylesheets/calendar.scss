@@ -136,6 +136,9 @@ tr > th.day-header-item, .table > tbody > tr > td {
 
 .week-totals {
   background-color: #666;
+  & > div.workout-item:hover {
+    cursor: default;
+  }
 }
 
 .table > thead > tr > th.follow-button-container,

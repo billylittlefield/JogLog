@@ -8,7 +8,12 @@ window.WorkoutForm = React.createClass({
     if (this.props.onHide) {
       this.props.onHide();
     }
-    ApiUtil.createWorkout(this.state, this.props.type);
+    if (this.state.title === "") {
+      $("#title-error, #workout-title").addClass("show-error");
+    } else {
+      $("#title-error, #workout-title").removeClass("show-error");
+      ApiUtil.createWorkout(this.state, this.props.type);
+    }
   },
   submitButton: function() {
     if (this.props.type === "PATCH") {
@@ -95,6 +100,7 @@ window.WorkoutForm = React.createClass({
               onSubmit={this.submitWorkoutForm}>
           <div className="full-input input-group">
             <label htmlFor="workout-title">Workout Title</label>
+            <span id="title-error">Please enter a title for your workout</span>
             <input onFocus={this.colorTitle} onBlur={this.decolorTitle}
                    type="text"
                    className="workout-input"
@@ -127,7 +133,7 @@ window.WorkoutForm = React.createClass({
                    type="number"
                    min="0"
                    placeholder="0.00"
-                   step="0.01"
+                   step="any"
                    valueLink={this.linkState("distance")}/>
             <div tabIndex="0" className="activity-select-wrapper"
                  onFocus={this.colorTitle} onBlur={this.decolorTitle}>

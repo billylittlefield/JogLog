@@ -57,19 +57,20 @@
     display: inline;
     padding: 10px 5px;
     ul {
-      max-height:0;
       font-family: 'Lato', sans-serif;
       overflow:hidden;
-      -webkit-transform:perspective(400) rotate3d(1,0,0,-90deg);
-      -webkit-transform-origin: 50% 0;
-      -webkit-transition: all 350ms;
-      -moz-transition: all 350ms;
-      -o-transition: all 350ms;
-      transition: all 350ms;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 10;
+      -webkit-transition: opacity 350ms;
+      -moz-transition: opacity 350ms;
+      -o-transition: opacity 350ms;
+      transition: opacity 350ms;
     }
     &:hover ul {
-      max-height:1000px;
-      -webkit-transform:perspective(400) rotate3d(0,0,0,0);
+      // max-height:500px;
+      visibility: visible;
+      opacity: 1
     }
     span.glyphicon-chevron-left {
       -webkit-transition: transform 350ms ease;
@@ -111,7 +112,6 @@
    padding: 0 10px;
    top: 100%;
    left: -50px;
-   z-index: 5;
    width: 209px;
    border: 2px solid #fff;
    border-bottom-left-radius: 5px;
@@ -127,9 +127,11 @@
       display: block;
       &:hover {
         color: #86B5FF;
-        font-weight: 700;
         text-decoration: none;
       }
+    }
+    &:last-child > a:hover {
+      font-weight: normal;
     }
     & > a.add-team {
       color: #fff;
@@ -137,6 +139,7 @@
       font-size: 22px;
       font-family: 'Bitter', serif;
       &:hover {
+        font-weight: normal;
         color: #86B5FF;
       }
       &:focus {

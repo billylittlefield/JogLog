@@ -44,7 +44,10 @@ class Workout < ActiveRecord::Base
   end
 
   def self.find_feed_workouts(followee_ids)
-    Workout.where(user_id: followee_ids).limit(10).order("date desc")
+    Workout.where(user_id: followee_ids)
+           .where("date < ?", Date.tomorrow)
+           .limit(10)
+           .order(date: :desc, created_at: :desc)
   end
 
   def self.get_leaders_since(start_date, filters, current_user)

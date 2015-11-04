@@ -200,3 +200,17 @@ hr {
     outline-color: #86B5FF
   }
 }
+
+#title-error {
+  display: none;
+  float:right;
+  color: #DA8686;
+  margin-top: 5px;
+  &.show-error {
+    display: inline-block;
+  }
+}
+
+#workout-title.show-error {
+  background-color: #DA8686;
+}

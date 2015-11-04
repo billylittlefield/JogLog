@@ -23,7 +23,7 @@ window.CustomSelect = React.createClass({
     this.setState({ showList: !this.state.showList });
   },
   changeSelected: function(e) {
-    var newChoice = e.target.innerText;
+    var newChoice = e.target.innerHTML;
     this.setState({ choice: newChoice });
     this.props.bubbleState(newChoice);
   },
