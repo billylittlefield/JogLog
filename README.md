@@ -1,15 +1,14 @@
 # JoggerLogger
 
-[Heroku link][heroku]
+[Live Link][live]
 
-[heroku]: http://www.joglog.me
+[live]: http://www.joglog.me
 
-## Minimum Viable Product
+## Application Description
 
-JoggerLogger is an exercise-tracking web application inspired by LogARun.com
-built using Ruby on Rails and React.js. JoggerLogger allows users to:
+JogLog is a social exercise-tracking web application inspired by LogARun.com and MapMyRun. The site was developed by Billy Littlefield using React.js on a Rails back-end. Users can track their workouts in an interactive calendar interface and view weekly summary statistics for each activity. On the home dashboard, users can see the activity feed for everyone they are following. Through the leaderboard display, the top 10 users are recorded for a number of date ranges. Using the filter interface, the query can be adjusted to filter by activity-type, gender, and user-group in real-time.
 
-<!-- This is a Markdown checklist. Use it to keep track of your progress! -->
+## Features
 
 - [ ] Create an account
 - [ ] Log in / Log out
