@@ -1,4 +1,5 @@
 class Api::MembershipsController < ApplicationController
+  before_action :require_login
 
   def create
     @membership = Membership.new({ member_id: current_user.id,

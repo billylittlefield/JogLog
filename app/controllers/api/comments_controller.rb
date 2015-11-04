@@ -1,4 +1,6 @@
 class Api::CommentsController < ApplicationController
+  before_action :require_login
+
   def create
     @comment = Comment.new(comment_params)
     fail if !@comment.save

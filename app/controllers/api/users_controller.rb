@@ -1,4 +1,6 @@
 class Api::UsersController < ApplicationController
+  before_action :require_login
+
   def show
     @user = User.find(params[:id])
     followee_ids = [current_user.id];

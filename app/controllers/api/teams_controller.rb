@@ -1,4 +1,6 @@
 class Api::TeamsController < ApplicationController
+  before_action :require_login
+  
   def show
     @team = Team.find(params[:id])
     @week_start = params[:week_start]
