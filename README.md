@@ -38,25 +38,43 @@ The calendar page is constructed using React.js with much help from the [moment.
   * weeks
     * days
     * week-totals
+
 Weeks are continuously added to the calendar until the start of the week is no longer in the current month. Props including workouts, user, current_month, and date are passed down the hierarchy to the 'Day' component. As a result, the calendar includes an event listener for any added workout so that it can update its view and the summary totals accordingly. Each day also contains a modal view that is hidden by default. Upon clicking on a day, the appropriate modal is displayed -- if the user is viewing their calendar, they will either see the 'Edit' or 'New' workout form depending on whether they clicked on a blank day or a day with a pre-existing workout. When viewing another user's calendar, the modal shows a static 'Read-only' modal with no input fields.
 
 If a user is logging more than one activity in a week (or day), a multi-workout header will appear at the top of the calendar cell. This allows the user to cycle through their workouts by activity and view data in clean format. The meat of the calendar cell shows the workout duration, distance, and average pace (if it can be calculated):
 ```jsx
 workoutItem: function() {
-    if (this.state.dayWorkouts.length > 0) {
-      var displayWorkout = this.state.dayWorkouts[this.state.displayIdx];
-      return (
-        <div onClick={this.toggleModal} className="workout-item">
-          <div className="workout-title">{displayWorkout.title}</div>
-          {this.workoutItemDistance(displayWorkout)}
-          {this.workoutItemTime(displayWorkout)}
-          {this.workoutItemPace(displayWorkout)}
-        </div>
-      );
-    } else {
-      return <div onClick={this.toggleModal} className="workout-item"/>;
-    }
+  if (this.state.dayWorkouts.length > 0) {
+    var displayWorkout = this.state.dayWorkouts[this.state.displayIdx];
+    return (
+      <div onClick={this.toggleModal} className="workout-item">
+        <div className="workout-title">{displayWorkout.title}</div>
+        {this.workoutItemDistance(displayWorkout)}
+        {this.workoutItemTime(displayWorkout)}
+        {this.workoutItemPace(displayWorkout)}
+      </div>
+    );
+  } else {
+    return <div onClick={this.toggleModal} className="workout-item"/>;
   }
+}
+```
+
+All dates for the calendar cells are derived from today's date in moment format. Using `moment.startOf("month").day("Sunday")` we can derive the week-start from the first week, and then use moment again to add 7 days until entering the next month. Cycling left/right through months simply changes the 'date' state for the calendar by 1 month via `moment.add(1, "month")` and `moment.subtract(1, "month")`.
+
+Because of the calendar's modular design, constructing the team calendar was fairly simple. Rather than viewing an entire month, the team calendar only views one week at a time. The rows represent users, not subsequent weeks. Therefore, rather than pushing week components and incrememnting the week-start by 7 days, I iterate through the team members and push a week component for each:
+```jsx
+renderWeeks: function() {
+  var weeks = [];
+  _.each(this.state.teamMembers, function(member) {
+    weeks.push( <Week key={"user" + member.id +
+                           "team" + this.props.params.teamid}
+                      user={member}
+                      weekStart={this.state.weekStart.clone()}
+                      type="team" /> );
+  }.bind(this));
+  return weeks;
+}
 ```
 
 [moment.js]: http://momentjs.com/
