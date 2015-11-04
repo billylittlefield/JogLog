@@ -22,6 +22,8 @@ JogLog is a social exercise-tracking web application inspired by LogARun.com and
 
 ## App Components
 
+JogLog was written using React.js and follows the Flux architecture for one-way information flow. For instance, if a user interacts with the workout form and creates a workout, this triggers an AJAX request to POST a new workout. Assuming it succeeds, the resultant data makes its way to the appropriate 'store', which then emits a notification to any components listening that there's fresh data hot off the grill. 
+
 ### User Authentication
 
 During user/session creation, the password typed into the form is used to create a hashed and salted password_digest via BCrypt. Only the digest itself is stored in the database, ensuring secure login. Session tokens are generated using SecureRandom and ensure that logging in to the same account from a different location will disable any functionality from the original session. Before all controller actions, current_user is checked with the session token and redirects to sign-in page if the user has logged in elsewhere. Usernames are case insensitive for ease of use.
@@ -77,26 +79,56 @@ renderWeeks: function() {
 }
 ```
 
+Moment.js was pivotal in massaging the dates and workout durations (using moment.duration). The transition from user input -> Ruby -> SQL DB -> Ruby -> JavaScript for date and time objects gets messy quickly, but moment kept everything in line. It also allows the calendar to be usable for any date and not hard-coded for the current year.
+
 [moment.js]: http://momentjs.com/
 
+### Activity Feed
 
-- [ ] Add 'private' option to Team so owner must approve 'Join Team' requests
-- [ ] Track shoes for users to keep track of total mileage
-- [ ] Add message board to Team page
-- [ ] Linking workouts with other users to auto fill their calendars
-- [ ] 'Like' feature on workouts (in addition to comments)
-- [ ] Profile (running) pictures for users that cycle on homepage
-- [ ] RSS feed on homepage with running news
-- [ ] Create monthly / weekly status reports on homepage
-- [ ] Add tags to workout (#easy, #longrun, #intervals) and search by tags
-- [ ] Change 'follow' feature to 'friend' feature, add notifications
-- [ ] Garmin upload for GPS watch to auto-fill workout form
-- [ ] Forums for users to discuss running topics
+Upon logging in, a database query is made to extract data needed for that user's dashboard. This includes all team memberships, followees, and feed workouts for their followees. In order to garner all this data, jbuilder is utilized to structure the results as needed. The activity feed component itself is comprised of feed-items, each representing one feed workout for either the user themselves or another user they are following. Because there is no "not-null" constraint on a workouts distance, duration, and notes, each feed-item displays slightly different information. As a result, the feed-items were more difficult from a styling perspective than anything else. Through appropriate conditionals, though, everything comes together. For instance, rendering the pace is dependent on both workout distance and duration. The JSX for pace looks like this:
+```jsx
+renderPace: function(workout) {
+  var distance = workout.distance,
+      duration = moment.duration(workout.duration).format("h:mm:ss");
+  if (distance !== 0 && duration !== "0") {
+    return (
+      <td className="detail">
+        <div className="detail-header">
+          <img src="assets/glyphicons-598-watch2.png" className="glyphicon"/>
+        </div>
+        <div className="detail-content">
+          {moment.duration(moment.duration(workout.duration) / workout.distance)
+            .format("h:mm:ss") + " min/" +
+            ApiHelper.distanceUnitShorthand(workout.distance_unit)}
+        </div>
+      </td>
+    );
+  }
+} 
+```
 
-[phase-one]: ./docs/phases/phase1.md
-[phase-two]: ./docs/phases/phase2.md
-[phase-three]: ./docs/phases/phase3.md
-[phase-four]: ./docs/phases/phase4.md
-[phase-five]: ./docs/phases/phase5.md
-[phase-six]: ./docs/phases/phase6.md
-[phase-seven]: ./docs/phases/phase7.md
+Like the calendar, the activity feed is listening for any added or edited workout to re-render. Each feed-item also has a comments dropdown section, which allows comment creation in real-time by re-rendering the component accordingly. After initially creating the comments section as a component unique to the feed item, I refactored to allow this same comments section to be used on the workout modal in calendar view. All it really needs to know about is the workout that it is holding comments for, and the rest is just stylistic differences - pieces of cake. Moment was used once more to show the humanized / verbose 'time since post' after comment creation.
+
+### Leaderboard
+
+The Leaderboard showcases the users with the most distance in the past week/month/year. A filter interface allows the leaderboards to be adjusted based on activity type, gender, and user-group. These filter dropdowns tie into the back-end by tailoring the activerecord query to match the new parameters. Once the API request succeeds, the Leaderboard store is updated and indicates to the component on the page that it should update. Username and id are collected for each row on the leaderboard, allowing them to serve as links to their personal calendars. 
+
+Every dropdown menu used on the site is actually a React component of its own called custom-select. Being disappointed with the HTML default select, I chose to stick with the flat design theme of JogLog and create my own version. Selecting a list item in the drop down causes the component to 'bubble up' the change until it gets to the appropriate level to update a query or workout activity. jQuery serves to toggle the showing and hiding of the unordered list that contained the select options. The dropdown component just requires an array of options and a function to bubbleState back the component chain.
+
+
+## Future Work
+
+I'd like to keep developing JogLog and am always open ears for suggestions. Here are a few things I'd like to implement in the coming weeks:
+
+* Add 'private' option to Team so owner must approve 'Join Team' requests
+* Track shoes for users to keep track of total mileage
+* Add message board to Team page
+* Linking workouts with other users to auto fill their calendars
+* 'Like' feature on workouts (in addition to comments)
+* Profile (running) pictures for users that cycle on homepage
+* RSS feed on homepage with running news
+* Create monthly / weekly status reports on homepage
+* Add tags to workout (#easy, #longrun, #intervals) and search by tags
+* Change 'follow' feature to 'friend' feature, add notifications
+* Garmin upload for GPS watch to auto-fill workout form
+* Trace run on a map UI to determine distance
