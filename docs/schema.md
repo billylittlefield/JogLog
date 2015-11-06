@@ -9,16 +9,17 @@ password_digest | string    | not null
 session_token   | string    | not null, indexed, unique
 
 ## workouts
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-user_id     | integer   | not null, foreign key (references users), indexed
-title       | string    | not null
-activity    | string    | not null
-date        | datetime  | not null
-distance    | float     |
-duration    | time      |
-notes       | text      |
+column name   | data type | details
+--------------|-----------|-----------------------
+id            | integer   | not null, primary key
+user_id       | integer   | not null, foreign key (references users), indexed
+title         | string    | not null
+activity      | string    | not null
+date          | datetime  | not null
+distance      | float     |
+distance_unit | string    |
+duration      | time      |
+notes         | text      |
 
 ## teams
 column name | data type | details
