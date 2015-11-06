@@ -20,6 +20,14 @@ JogLog is a social exercise-tracking web application inspired by LogARun.com and
 * Filter interface to adjust leaderboards by activity-type, gender, and user-group
 * Team/User search in Navbar
 
+## Schema
+
+[DB schema][schema]
+[Routes table][routes]
+
+[schema]: ./docs/schema.md
+[routes]: ./docs/routes.md
+
 ## App Components
 
 JogLog was written using React.js and follows the Flux architecture for one-way information flow. For instance, if a user interacts with the workout form and creates a workout, this triggers an AJAX request to POST a new workout. Assuming it succeeds, the resultant data makes its way to the appropriate 'store', which then emits a notification to any components listening that there's fresh data hot off the grill. 
