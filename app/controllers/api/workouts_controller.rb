@@ -20,7 +20,7 @@ class Api::WorkoutsController < ApplicationController
 
   def update
     @workout = Workout.find(params[:id])
-    miles_equivalent = parse_distance(params[:workout][:distance].to_i,
+    miles_equivalent = parse_distance(params[:workout][:distance].to_f,
                                       params[:workout][:distance_unit])
     new_params = workout_params.merge({"miles_equivalent": miles_equivalent.to_s})
     if @workout.user_id == current_user.id && @workout.update(new_params)
