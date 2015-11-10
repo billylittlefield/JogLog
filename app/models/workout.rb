@@ -84,32 +84,38 @@ class Workout < ActiveRecord::Base
     elsif (filters['group'] == 'Teammates')
       Workout.find_by_sql("
         SELECT
-          MAX(users.id) AS id, users.username, SUM(workouts.miles_equivalent) AS sum
+          MAX(user_id), username, SUM(miles_equivalent) AS sum
         FROM
-          workouts
-        JOIN
-          memberships ON workouts.user_id = memberships.member_id
-        JOIN
-          users ON users.id = workouts.user_id
-        WHERE
-          memberships.team_id IN (
-            SELECT
-              teams.id
-            FROM
-              teams
-            JOIN
-              memberships ON memberships.team_id = teams.id
-            WHERE
-              memberships.member_id = #{current_user.id}
-          ) AND
-          (workouts.date BETWEEN '#{start_date}' AND '#{Date.today}') AND
-          workouts.activity = '#{filters['activity']}' AND
-          (users.gender = '#{filters['gender'][0]}' OR
-          users.gender = '#{filters['gender'][1]}')
+          (
+          SELECT
+            DISTINCT(workouts.id), users.id AS user_id,
+            users.username, workouts.miles_equivalent
+          FROM
+            workouts
+          JOIN
+            memberships ON workouts.user_id = memberships.member_id
+          JOIN
+            users ON users.id = workouts.user_id
+          WHERE
+            memberships.team_id IN (
+              SELECT
+                teams.id
+              FROM
+                teams
+              JOIN
+                memberships ON memberships.team_id = teams.id
+              WHERE
+                memberships.member_id = #{current_user.id}
+            ) AND
+            (workouts.date BETWEEN '#{start_date}' AND '#{Date.today}') AND
+            workouts.activity = '#{filters['activity']}' AND
+            (users.gender = '#{filters['gender'][0]}' OR
+            users.gender = '#{filters['gender'][1]}')
+          ) AS sum_workouts
         GROUP BY
-          users.username
+          username
         ORDER BY
-          SUM(workouts.miles_equivalent) desc
+          SUM(miles_equivalent) desc
         LIMIT
           10
       ")
