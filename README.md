@@ -23,14 +23,12 @@ JogLog is a social exercise-tracking web application inspired by LogARun.com and
 ## Schema
 
 [DB schema][schema]
-[Routes table][routes]
 
 [schema]: ./docs/schema.md
-[routes]: ./docs/routes.md
 
 ## App Components
 
-JogLog was written using React.js and follows the Flux architecture for one-way information flow. For instance, if a user interacts with the workout form and creates a workout, this triggers an AJAX request to POST a new workout. Assuming it succeeds, the resultant data makes its way to the appropriate 'store', which then emits a notification to any components listening that there's fresh data hot off the grill. 
+JogLog was written using React.js and follows the Flux architecture for one-way information flow. For instance, if a user interacts with the workout form and creates a workout, this triggers an AJAX request to POST a new workout. Assuming it succeeds, the resultant data makes its way to the appropriate 'store', which then emits a notification to any components listening that there's fresh data hot off the grill.
 
 ### User Authentication
 
@@ -112,14 +110,14 @@ renderPace: function(workout) {
       </td>
     );
   }
-} 
+}
 ```
 
 Like the calendar, the activity feed is listening for any added or edited workout to re-render. Each feed-item also has a comments dropdown section, which allows comment creation in real-time by re-rendering the component accordingly. After initially creating the comments section as a component unique to the feed item, I refactored to allow this same comments section to be used on the workout modal in calendar view. All it really needs to know about is the workout that it is holding comments for, and the rest is just stylistic differences - pieces of cake. Moment was used once more to show the humanized / verbose 'time since post' after comment creation.
 
 ### Leaderboard
 
-The Leaderboard showcases the users with the most distance in the past week/month/year. A filter interface allows the leaderboards to be adjusted based on activity type, gender, and user-group. These filter dropdowns tie into the back-end by tailoring the activerecord query to match the new parameters. Once the API request succeeds, the Leaderboard store is updated and indicates to the component on the page that it should update. Username and id are collected for each row on the leaderboard, allowing them to serve as links to their personal calendars. 
+The Leaderboard showcases the users with the most distance in the past week/month/year. A filter interface allows the leaderboards to be adjusted based on activity type, gender, and user-group. These filter dropdowns tie into the back-end by tailoring the activerecord query to match the new parameters. Once the API request succeeds, the Leaderboard store is updated and indicates to the component on the page that it should update. Username and id are collected for each row on the leaderboard, allowing them to serve as links to their personal calendars.
 
 Every dropdown menu used on the site is actually a React component of its own called custom-select. Being disappointed with the HTML default select, I chose to stick with the flat design theme of JogLog and create my own version. Selecting a list item in the drop down causes the component to 'bubble up' the change until it gets to the appropriate level to update a query or workout activity. jQuery serves to toggle the showing and hiding of the unordered list that contained the select options. The dropdown component just requires an array of options and a function to bubbleState back the component chain.
 
