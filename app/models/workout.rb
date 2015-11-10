@@ -58,9 +58,15 @@ class Workout < ActiveRecord::Base
         FROM
           workouts
         JOIN
-          follows ON workouts.user_id = follows.followee_id
-        JOIN
-          users ON users.id = workouts.user_id
+          users ON workouts.user_id = users.id
+        LEFT JOIN
+          (SELECT
+            *
+          FROM
+            follows
+          WHERE
+            follows.follower_id = '#{current_user.id}'
+          ) AS follows ON workouts.user_id = follows.followee_id
         WHERE
           (follows.follower_id = '#{current_user.id}' OR
           workouts.user_id = '#{current_user.id}') AND
@@ -69,7 +75,7 @@ class Workout < ActiveRecord::Base
           (users.gender = '#{filters['gender'][0]}' OR
           users.gender = '#{filters['gender'][1]}')
         GROUP BY
-          users.username
+          users.id
         ORDER BY
           SUM(workouts.miles_equivalent) desc
         LIMIT
