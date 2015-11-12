@@ -11,9 +11,7 @@
 @import "leaderboards.scss";
 
 body {
-  background-image: image-url('marble.png');
-  background-repeat: repeat;
-  // background-color: #F3E6BA;
+  background-color: #F9EBD2;
 }
 
 
@@ -67,8 +65,11 @@ div.footer {
 }
 
 .home-container {
-  width: 100%;
+  width: 1180px;
   margin: auto;
+  background-color: #FFF6E6;
+  border: 1px solid #DED0B7;
+  border-top: 0;
   & > .left-container {
     width: 50%;
     float: left;

@@ -3,9 +3,6 @@ window.Home = React.createClass({
     return (
       <div className="home-container">
         <div className="left-container">
-          <div className="workout-form-container">
-            <WorkoutForm type="POST" workout={WorkoutConstants.BLANK_WORKOUT}/>
-          </div>
           <div className="leaderboards-container">
             <Leaderboard />
           </div>

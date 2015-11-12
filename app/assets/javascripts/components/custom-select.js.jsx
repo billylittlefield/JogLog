@@ -59,7 +59,7 @@ window.CustomSelect = React.createClass({
            className="choice-select-container">
         <div className="choice-select workout-input no-selection">
           {this.state.choice}
-          <span className="glyphicon glyphicon-chevron-left"></span>
+          <span className="glyphicon glyphicon-chevron-down"></span>
         </div>
         {this.renderList()}
       </div>

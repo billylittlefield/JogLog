@@ -1,56 +1,67 @@
 .leaderboards-container {
   float: right;
-  margin: 0 2% 4% 2%;
   width: 100%;
+  margin: 10px 30px 10px 60px;
   max-width: 500px;
-  -webkit-box-shadow: 1px -1px 5px 0px #333;
-  -moz-box-shadow: 1px -1px 5px 0px #333;
-  box-shadow: 1px -1px 5px 0px #333;
 }
 
 .leaderboard-wrapper {
-  background-color: #333;
-  padding: 10px;
-  border: 1px solid #fff;
+  & > hr {
+    margin: 15px 15px;
+  }
   & > h1 {
-    color: #F3E6BA;
+    color: #3E5A39;
     font-family: 'Bitter', serif;
-    font-size: 36px;
+    font-size: 40px;
+    text-shadow: 1px 1px 0px #fff;
     text-align: center;
-    margin: 10px auto;
   }
   & > div.panel-group {
     margin-bottom: 0px;
+    padding-top: 10px;
     & > div.leader-panel {
       border-radius: 0;
+      margin-bottom: 15px;
     }
     & > div > div.panel-heading {
-      background-color: #86B5FF;
+      background-color: #3F593A;
       font-family: 'Bitter', serif;
+      text-shadow: 2px 2px 0px #333;
       border-radius: 0;
-      color: #333;
+      color: #FFFBF4;
       padding: 5px;
-      font-size: 18px;
-      border-bottom: 1px solid #fff;
+      font-size: 20px;
       text-align: center;
     }
     & > div > div.panel-body {
-      background-color: #333;
-      color: #fff;
+      background-color: #fff;
+      color: #333;
       font-size: 18px;
+      border: 1px solid #999;
+      & > span {
+        padding: 6px 10px;
+        display: block;
+      }
       & > table.table {
         margin-bottom: 0;
         & > tbody > tr {
+          &:nth-child(even) {
+            background-color: #FFFBF4;
+          }
+          border-top: 1px solid #333;
+          &:first-child {
+            border-top: 0;
+          }
           & > td {
-            padding: 0;
+            padding: 4px;
             border: none;
             width: 180px;
             & > a {
               display: inline-block;
               width: 100%;
-              color: #F3E6BA;
+              color: #333;
+              transition: font-weight 100ms ease-out;
               &:hover{
-                color: #86B5FF;
                 font-weight: 700;
                 text-decoration: none;
               }
@@ -58,11 +69,16 @@
           }
           & > td:first-child {
             width: 50px;
+            padding-left: 10px;
           }
         }
       }
     }
   }
+}
+
+.panel-body {
+  padding: 0;
 }
 
 .filter-container {
@@ -87,7 +103,7 @@
           left: 130px;
         }
         & > ul > li {
-          width: 152px;
+          width: 150px;
           & > span.glyphicon-ok {
             left: 120px;
           }
@@ -101,7 +117,7 @@
           left: 80px;
         }
         & > ul > li {
-          width: 102px;
+          width: 100px;
           & > span.glyphicon-ok {
             left: 70px;
           }
@@ -115,7 +131,7 @@
           left: 170px;
         }
         & > ul > li {
-          width: 192px;
+          width: 190px;
           & > span.glyphicon-ok {
             left: 160px;
           }
@@ -123,16 +139,18 @@
       }
     }
     & > div.filter-label {
-      color: #86B5FF;
+      color: #333;
       font-size: 12px;
     }
     & > .choice-select-container {
-      height: 100%;
+      & > ul.choice-list {
+        top: 88%;
+      }
       & > div > span:first-child {
-        top: 3px;
+        top: 8px;
       }
       & > div > span.glyphicon-chevron-left {
-        top: 10px;
+        top: 14px;
       }
     }
   }

@@ -20,6 +20,7 @@ window.WorkoutFeed = React.createClass({
   render: function() {
     return (
       <div className="feed-wrapper">
+        <h1>Workout Feed</h1>
         <ul className="feed-list">
           {this.renderFeedItems()}
         </ul>

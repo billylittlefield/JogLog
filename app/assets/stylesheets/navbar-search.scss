@@ -9,7 +9,7 @@
   & > form {
     width: 200px;
     & > input:focus {
-      outline-color: #86B5FF;
+      outline-color: #71B764;
       outline-style: auto;
       outline-width: 5px;
     }
@@ -24,15 +24,15 @@
   overflow: hidden;
   width: 200px;
   padding: 5px 10px;
-  top: 44px;
+  top: 43px;
   max-height: 600px;
-  background-color: #333;
+  background-color: #3E5A39;
   list-style: none;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  border-left: 2px solid #fff;
-  border-right: 2px solid #fff;
-  border-bottom: 2px solid #fff;
+  border-left: 1px solid #999;
+  border-right: 1px solid #999;
+  border-bottom: 1px solid #999;
   z-index: 1;
   font-family: 'Lato', sans-serif;
   &.active {
@@ -49,7 +49,7 @@
       width: 100%;
     }
     &:hover > a {
-      color: #86B5FF;
+      color: #71B764;
       font-weight: 700;
       text-decoration: none;
     }

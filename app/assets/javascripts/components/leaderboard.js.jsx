@@ -48,7 +48,6 @@ window.Leaderboard = React.createClass({
     return (
       <div className="leaderboard-wrapper">
         <h1>Leaderboards</h1>
-        <hr/>
         <LeaderboardFilter />
         <ReactBootstrap.PanelGroup>
           <ReactBootstrap.Panel className="leader-panel" header="Most Distance: Last 7 Days" eventKey="1">

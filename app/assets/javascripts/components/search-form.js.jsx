@@ -78,7 +78,7 @@ window.SearchForm = React.createClass({
           <input onInput={this.sendQuery}
                  type="text"
                  className="form-control search-input"
-                 placeholder="Search..."/>
+                 placeholder="Search for users/teams..."/>
         </form>
           <ul className="search-results-list">
             {this.userSearchHeader()}

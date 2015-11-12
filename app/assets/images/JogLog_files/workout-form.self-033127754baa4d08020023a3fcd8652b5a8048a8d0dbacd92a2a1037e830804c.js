@@ -53,7 +53,7 @@ window.WorkoutForm = React.createClass({
     }
   },
   colorTitle: function (e) {
-    $(e.target.parentElement).css("color", "#86B5FF");
+    $(e.target.parentElement).css("color", "#71B764");
   },
   decolorTitle: function (e) {
     $(e.target.parentElement).css("color", "#fff");

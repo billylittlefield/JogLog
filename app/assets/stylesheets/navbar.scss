@@ -1,9 +1,6 @@
 .header {
-  background-color: #333;
-  border-bottom: 2px solid #fff;
-  -webkit-box-shadow: 0px 1px 1px 0px #333;
-  -moz-box-shadow: 0px 1px 1px 0px #333;
-  box-shadow: 0px 1px 1px 0px #333;
+  background-color: #3F593A;
+  border-bottom: 1px solid #999;
 }
 
 .navbar-content {
@@ -24,11 +21,11 @@
     font-size: 36px;
     line-height: 40px;
     position: relative;
-    color: #F3E6BA;
+    color: #F9EBD2;
     bottom: 3px;
+    text-shadow: 2px 2px 1px #333;
     &:hover {
-      color: #86B5FF;
-      cursor: pointer;
+      cursor: default;
     }
   }
   & > img {
@@ -50,7 +47,7 @@
   padding: 0;
   margin-bottom: 0px;
   line-height: 30px;
-  font-size: 22px;
+  font-size: 18px;
   & > li {
     float: left;
     position: relative;
@@ -72,17 +69,10 @@
       visibility: visible;
       opacity: 1
     }
-    span.glyphicon-chevron-left {
-      -webkit-transition: transform 350ms ease;
-      -moz-transition: transform 350ms ease;
-      -o-transition: transform 350ms ease;
-      transition: transform 350ms ease;
-    }
-    &:hover span.glyphicon-chevron-left {
-      -webkit-transform: rotate(-90deg);
-      -moz-transform: rotate(-90deg);
-      -o-transform: rotate(-90deg);
-      -ms-transform: rotate(-90deg);
+    span.glyphicon-chevron-down {
+      font-size: 13px;
+      left: 5px;
+      position: relative;
     }
     & > a {
       color: #fff;
@@ -90,9 +80,16 @@
       &:focus {
         text-decoration: none;
       }
+      &.username {
+        cursor: default;
+      }
     }
     &:hover > a {
-      color: #86B5FF;
+      color: #71B764;
+      text-decoration: none;
+    }
+    &:hover > a.username {
+      color: #fff;
       text-decoration: none;
     }
   }
@@ -108,25 +105,25 @@
 .team-list {
    position: absolute;
    list-style: none;
-   background-color: #333;
+   background-color: #3F593A;
    padding: 0 10px;
    top: 100%;
-   left: -50px;
-   width: 209px;
-   border: 2px solid #fff;
+   left: -23px;
+   width: 180px;
+   border: 1px solid #999;
    border-bottom-left-radius: 5px;
    border-bottom-right-radius: 5px;
   & > li {
-    padding: 5px 0;
+    padding: 0;
     color: #F3E6BA;
     font-size: 16px;
     text-align: center;
     & > a {
       font-family: 'Lato', sans-serif;
-      color: #F3E6BA;
+      color: #fff;
       display: block;
       &:hover {
-        color: #86B5FF;
+        color: #71B764;
         text-decoration: none;
       }
     }
@@ -134,13 +131,13 @@
       font-weight: normal;
     }
     & > a.add-team {
-      color: #fff;
+      color: #F9EBD2;
       padding: 3px 0;
-      font-size: 22px;
+      font-size: 18px;
       font-family: 'Bitter', serif;
       &:hover {
         font-weight: normal;
-        color: #86B5FF;
+        color: #71B764;
       }
       &:focus {
         text-decoration: none;
@@ -150,6 +147,7 @@
   }
   & > hr {
     margin: 2px 0px;
+    border-top: 1px solid #fff;
   }
 }
 

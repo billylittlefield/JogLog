@@ -1,6 +1,6 @@
   window.Navbar = React.createClass({
   getInitialState: function() {
-    return { teams: [], showTeamForm: false };
+    return { teams: [], showTeamForm: false, showWorkoutForm: false };
   },
   handleLogout: function () {
     $.ajax({
@@ -47,22 +47,39 @@
   hideTeamList: function(e) {
     $(".team-list").addClass("hide");
   },
-  returnHome: function() {
-    window.location = "#";
+  toggleModal: function() {
+    this.setState({ showWorkoutForm: !this.state.showWorkoutForm });
+  },
+  workoutModal: function() {
+    return (
+      <Modal
+        show={this.state.showWorkoutForm}
+        onHide={this.toggleModal}>
+        <button onClick={this.toggleModal} className="close" aria-label="Close">
+          <span aria-hidden="true" >×</span>
+        </button>
+        <WorkoutForm onHide={this.toggleModal}
+                     type="POST"
+                     workout={WorkoutConstants.BLANK_WORKOUT}/>
+      </Modal>
+    );
   },
   render: function () {
     return (
       <header className="header">
         <nav className="navbar-content group">
-          <div onClick={this.returnHome} className="logo">
+          <div className="logo">
               <img src="assets/running_man.png"/>
               <h1>JogLog</h1>
           </div>
           <ul className="nav-list list-left group">
             <li><a href="#/">Home</a></li>
-            <li><a href="#/calendar">Calendar</a></li>
-            <li className="team-link"><a href="javascript:void(0)">Teams
-              <span className="glyphicon glyphicon-chevron-left"></span></a>
+            <li><a href="javascript:void(0)"
+                   onClick={this.toggleModal}>Log Workout</a></li>
+                {this.workoutModal()}
+            <li><a href="#/calendar">My Calendar</a></li>
+            <li className="team-link"><a href="javascript:void(0)">My Teams 
+              <span className="glyphicon glyphicon-chevron-down"></span></a>
               <ul className="team-list">
                 {this.teamsList()}
                 <hr/>
@@ -77,8 +94,8 @@
           </ul>
           <SearchForm />
           <ul className="nav-list list-right">
-            <li><a href="#">{window.CURRENT_USERNAME}</a></li>
-            <li onClick={this.handleLogout}><a href="#">Logout</a></li>
+            <li><a className="username" href="javascript:void(0)">{window.CURRENT_USERNAME}</a></li>
+            <li onClick={this.handleLogout}><a href="javascript:void(0)">Logout</a></li>
           </ul>
         </nav>
       </header>
